@@ -41,12 +41,12 @@ public class BoatController : MonoBehaviour
             Quaternion rotationMax = Quaternion.Euler(new Vector3(0f, 0f, _maxRotationAngle));
             Quaternion rotation = transform.rotation;
 
-            if(move.x < 0 && rotation.z < rotationMax.z)
+            if(move.y > 0 && rotation.z < rotationMax.z)
             {
                 rotation.z += Quaternion.Euler(new Vector3(0f, 0f, _rotationSpeed * Time.deltaTime)).z;
             }
 
-            if(move.x > 0 && rotation.z > rotationMin.z)
+            if(move.y < 0 && rotation.z > rotationMin.z)
             {
                 rotation.z -= Quaternion.Euler(new Vector3(0f, 0f, _rotationSpeed * Time.deltaTime)).z;
             }
