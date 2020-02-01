@@ -12,11 +12,10 @@ public class PlayerController : MonoBehaviour
     public static int Index = 0;
     public int currentPlayerIndex = -1;
 
-    private SpriteRenderer _sprite;
+
 
     private void Awake()
     {
-        _sprite = GetComponentInChildren<SpriteRenderer>();
         currentPlayerIndex = Index++;
         GameManager.instance.PlayerJoined(this);
     }
@@ -29,7 +28,7 @@ public class PlayerController : MonoBehaviour
         model = GetComponent<PlayerModel>();
     }
     
-    void FixedUpdate() {
+    private void FixedUpdate() {
         Move();
     }
 
@@ -45,13 +44,14 @@ public class PlayerController : MonoBehaviour
         // Move character
         if(moveVector != Vector3.zero)
         {
-            _sprite.gameObject.GetComponent<Animator>().SetBool("Walking", true);
+            model.PlayAnimation("Walking", true);
+
             float angle = Mathf.Atan2(_move.y, _move.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             model.checkJob();
         } else
         {
-            _sprite.gameObject.GetComponent<Animator>().SetBool("Walking", false);
+            model.PlayAnimation("Walking", false);
         }
 
     }

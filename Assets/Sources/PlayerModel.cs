@@ -14,6 +14,7 @@ public class PlayerModel : MonoBehaviour
 
     [SerializeField]
     private Jobs currentJob = Jobs.None;
+    private string _currentAnimationParameter = string.Empty;
     public ContactFilter2D fishContactFilter;
     public ContactFilter2D actionContactFilter;
     Hashtable jobsImages = new Hashtable();
@@ -21,9 +22,20 @@ public class PlayerModel : MonoBehaviour
     private bool isInAction = false;
     public float actionDuration = 1.5f;
 
+    private Animator _animator = null;
+    private SpriteRenderer _sprite = null;
+
+    public Animator animator { get { return _animator; } }
+    public SpriteRenderer sprite { get { return _sprite; } }
+
+    private void Awake()
+    {
+        _sprite = GetComponentInChildren<SpriteRenderer>();
+        _animator = GetComponentInChildren<Animator>();
+    }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         GameObject boat = GameObject.Find("Ship");
         transform.SetParent(boat.transform);
@@ -40,7 +52,7 @@ public class PlayerModel : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (isInAction == true)
         {
@@ -79,7 +91,7 @@ public class PlayerModel : MonoBehaviour
             {
                 if (hitColliders[i].gameObject.GetComponent<PositionModel>().job == Jobs.Direction)
                 {
-                    currentJob = Jobs.Direction;
+                    setCurrentJob(Jobs.Direction);
                     transform.Find("CurrentAction/Bubble").gameObject.SetActive(true);
                     transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
                     transform.parent.GetComponent<BoatController>().setCaptain(gameObject);
@@ -99,7 +111,7 @@ public class PlayerModel : MonoBehaviour
         actionStartTime = 0;
         if (currentJob == Jobs.Direction) // je lâche la barre
         {
-            currentJob = Jobs.None;
+            setCurrentJob(Jobs.None);
             transform.Find("CurrentAction/Bubble").gameObject.SetActive(true);
             transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = null;
             transform.parent.GetComponent<BoatController>().setCaptain(null);
@@ -202,7 +214,7 @@ public class PlayerModel : MonoBehaviour
             if (colliderJob != Jobs.Direction && colliderJob != Jobs.None)
             {
                 // on marche sur une position
-                currentJob = colliderJob;
+                setCurrentJob(colliderJob);
                 transform.Find("CurrentAction/Bubble").gameObject.SetActive(true);
                 transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
                 break;
@@ -211,7 +223,7 @@ public class PlayerModel : MonoBehaviour
             // je passe sur le collider Direction, et je suis sur un autre poste ? Je lâche mon poste !
             if (colliderJob == Jobs.None || (colliderJob == Jobs.Direction && currentJob != Jobs.Direction && currentJob != Jobs.None))
             {
-                currentJob = Jobs.None;
+                setCurrentJob(Jobs.None);
                 transform.Find("CurrentAction/Bubble").gameObject.SetActive(false);
                 transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = null;
             }
@@ -221,16 +233,60 @@ public class PlayerModel : MonoBehaviour
 
         if (hitColliders.Count == 0)
         {
-            currentJob = Jobs.None;
+            setCurrentJob(Jobs.None);
             transform.Find("CurrentAction/Bubble").gameObject.SetActive(false);
             transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = null;
         }
 
     }
 
-    public void setCurrentJob(Jobs job)
+    private void setCurrentJob(Jobs job)
     {
         currentJob = job;
+
+        if(currentJob != Jobs.None)
+        {
+            PlayJobAnimation(true);
+        }
+        else
+        {
+            StopCurrentAnimation();
+        }
+    }
+
+    private void PlayJobAnimation(bool enable)
+    {
+        if (currentJob == Jobs.Fish1 || currentJob == Jobs.Fish2)
+        {
+            PlayAnimation("Fishing", enable);
+        }
+        else if (currentJob == Jobs.Repair)
+        {
+            PlayAnimation("Repairing", enable);
+        }
+        else if (currentJob == Jobs.Direction)
+        {
+            PlayAnimation("Directing", enable);
+        }
+        else if (currentJob == Jobs.BailOut)
+        {
+            PlayAnimation("BailingOut", enable);
+        }
+    }
+
+    private void StopCurrentAnimation()
+    {
+        _animator.SetBool(_currentAnimationParameter, false);
+    }
+
+    public void PlayAnimation(string parameter, bool enable)
+    {
+        StopCurrentAnimation();
+
+        _animator.SetBool(parameter, enable);
+
+        _currentAnimationParameter = enable == true ? parameter : string.Empty;
+
     }
 
     public Jobs getCurrentJob()
