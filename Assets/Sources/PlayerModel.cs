@@ -44,11 +44,13 @@ public class PlayerModel : MonoBehaviour
         {
             float actionTime = (Time.time - actionStartTime);
             float progress = actionTime / actionDuration;
+            transform.Find("Gauge/gaugeFill").GetComponent<Transform>().localScale = new Vector3(125.0f * progress, 10.0f, 1.0f);
             Debug.Log("gauge fill " + progress);
             if (progress > 1)
             {
                 triggerActionSuccess();
                 isInAction = false;
+                transform.Find("Gauge/gaugeFill").GetComponent<Transform>().localScale = new Vector3(0.0f, 10.0f, 1.0f);
             }
         }
     }
@@ -90,6 +92,7 @@ public class PlayerModel : MonoBehaviour
     // relache du bouton a
     public void actionStop()
     {
+        transform.Find("Gauge/gaugeFill").GetComponent<Transform>().localScale = new Vector3(0.0f, 10.0f, 1.0f);
         isInAction = false;
         actionStartTime = 0;
         if (currentJob == Jobs.Direction)
