@@ -21,10 +21,13 @@ public class TileGrid : MonoBehaviour
 
     [SerializeField]
     private int _countEmptyTiles;
+    public float countEmptyTiles { get { return _countEmptyTiles; } }
     [SerializeField]
     private int _countBrokenTiles;
     [SerializeField]
     private int _countFloodedTiles;
+
+    public float totalTiles { get { return _width * _height; } }
 
     public GameObject tilePrefab;
 
@@ -134,6 +137,13 @@ public class TileGrid : MonoBehaviour
             } else
             {
                 _countBrokenTiles++;
+            }
+        } else if(_availableTiles.Contains(tile) == true)
+        {
+            if(tile.GetComponent<Tile>().type == TileType.EMPTY)
+            {
+                _countEmptyTiles++;
+                _countBrokenTiles--;
             }
         }
     }
