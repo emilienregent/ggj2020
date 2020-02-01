@@ -121,6 +121,7 @@ public class PlayerModel : MonoBehaviour
             int i = 0;
             while (i < hitColliders.Count)
             {
+                ResourcesModel.Add(1);              
                 // détruit la planche
                 Destroy(hitColliders[i].gameObject);
 
@@ -142,6 +143,7 @@ public class PlayerModel : MonoBehaviour
             int i = 0;
             while (i < hitColliders.Count)
             {
+                ResourcesModel.Add(1);              
                 // détruit la planche
                 Destroy(hitColliders[i].gameObject);
 
@@ -164,9 +166,17 @@ public class PlayerModel : MonoBehaviour
             {
                 if (hitColliders[i].transform.gameObject.GetComponent<Tile>().type != TileType.EMPTY)
                 {
-                    // détruit la planche
-                    hitColliders[i].transform.gameObject.GetComponent<Tile>().doRepair();
-                    break;
+                    int res = 0;
+                    if (currentJob == Jobs.Repair) 
+                    {
+                        res = ResourcesModel.Use(1);
+                    }
+                    if(res != -1) 
+                    {
+                        // détruit la planche
+                        hitColliders[i].transform.gameObject.GetComponent<Tile>().doRepair();
+                        break;
+                    }
                 }
                 i++;
             }
