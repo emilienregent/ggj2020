@@ -30,6 +30,8 @@ public class Tile : MonoBehaviour {
 
     //private FMODUnity.StudioEventEmitter _eventEmitter;
 
+    private bool _underRepair;
+
     private void Awake()
     {
         //_eventEmitter = GetComponent<FMODUnity.StudioEventEmitter>();
@@ -40,6 +42,7 @@ public class Tile : MonoBehaviour {
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         changeTileType(TileType.EMPTY);
+        _underRepair = false;
     }
 
     public void changeTileType(TileType newType) {
@@ -64,6 +67,9 @@ public class Tile : MonoBehaviour {
     }
 
     public TileType DoDamage() {
+        if (_underRepair) {
+            return _type;
+        }
         switch(_type)
         {
             case TileType.BROKEN:
@@ -93,6 +99,11 @@ public class Tile : MonoBehaviour {
 
     public void SetGrid(TileGrid grid) {
         _grid = grid;
+    }
+
+    public void SetUnderRepair(bool underRepair)
+    {
+        _underRepair = underRepair;
     }
 
     // Update is called once per frame
