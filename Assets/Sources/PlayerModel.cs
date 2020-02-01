@@ -16,7 +16,6 @@ public class PlayerModel : MonoBehaviour
     private Jobs currentJob = Jobs.None;
     public ContactFilter2D fishContactFilter;
     public ContactFilter2D actionContactFilter;
-    public GameObject boat;
     private bool actionButtonTriggered = false;
     private bool actionButtonPressed = false;
     Hashtable jobsImages = new Hashtable();
