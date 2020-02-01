@@ -17,7 +17,7 @@ public class BoatModel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(getShipLife() <= 90 && GameManager.instance.currentGameState == GameManager.enumGameState.Game)
+        if(getShipLife() <= 0 && GameManager.instance.currentGameState == GameManager.enumGameState.Game)
         {
             GameManager.instance.GameOver();
         }
