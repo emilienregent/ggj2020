@@ -82,10 +82,10 @@ GameObject:
   - component: {fileID: 731305785152967273}
   - component: {fileID: 731305785152967270}
   - component: {fileID: 731305785152967268}
-  - component: {fileID: 731305785152967271}
   - component: {fileID: 1031905754251889272}
   - component: {fileID: -8087059909955017535}
   - component: {fileID: -649929610838779924}
+  - component: {fileID: 1250206274}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -192,19 +192,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &731305785152967271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 731305785152967272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00392157350271f439fed07f722c8b16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 5
 --- !u!114 &1031905754251889272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,12 +243,29 @@ Rigidbody2D:
   m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1250206274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731305785152967272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d9af02caaabf24eaad034ac3fa6e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
+  _rotationSpeed: 3
+  _maxRotationAngle: 45
+  _maxTop: 4
+  _maxBottom: -4
 --- !u!1 &2355547971100208955
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +458,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 731305785152967273}
     m_Modifications:
+    - target: {fileID: -9084910260656783274, guid: 73f230339b4e1794da1fa8542ac7236a,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1195057916998816545, guid: 73f230339b4e1794da1fa8542ac7236a,
         type: 3}
       propertyPath: m_Name
