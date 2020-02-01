@@ -291,6 +291,11 @@ public class PlayerModel : MonoBehaviour
                 setBubbleIcon(null);
             }
 
+            if (colliderJob == Jobs.Direction && currentJob != Jobs.Direction)
+            {
+                setBubbleIcon((Sprite)jobsImages[colliderJob]);
+            }
+
             i++;
         }
 
