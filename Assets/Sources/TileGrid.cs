@@ -12,7 +12,9 @@ public class TileGrid : MonoBehaviour
     private int _height = 2;
 
     [SerializeField]
-    private float _tileSize = 1f;
+    private float _tileSizeX = .5f;
+    [SerializeField]
+    private float _tileSizeY = .5f;
 
     private ArrayList _availableTiles;
     private ArrayList _unavailableTiles;
@@ -43,7 +45,24 @@ public class TileGrid : MonoBehaviour
         {
             for(int j = 0; j < _height; j++)
             {
-                GameObject newTile = Instantiate(tilePrefab, new Vector3(transform.position.x + _tileSize * i, transform.position.y + _tileSize * j, 0), Quaternion.identity);
+                Random random = new Random();
+                float maximum = _tileSizeX / 2.0f;
+                float minimum = -1* _tileSizeX / 2.0f;
+                int randomXInt = Random.Range((int)(minimum*1000), (int)(maximum*1000));
+                float randomX = randomXInt / 1000.0f;
+
+                float maximumY = _tileSizeY / 2.0f;
+                float minimumY = -1 * _tileSizeY / 2.0f;
+                int randomYInt = Random.Range((int)(minimumY * 1000), (int)(maximumY * 1000));
+                float randomY = randomXInt / 1000.0f;
+
+                Vector3 position = new Vector3(
+                    transform.position.x + _tileSizeX * i + randomX, 
+                    transform.position.y + _tileSizeY * j + randomY, 
+                    0
+                );
+
+                GameObject newTile = Instantiate(tilePrefab, position, Quaternion.identity);
                 newTile.GetComponent<Tile>().SetGrid(this);
                 newTile.transform.SetParent(transform);
                 newTile.name = "Tile " + i + "-" + j;
