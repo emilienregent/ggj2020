@@ -23,10 +23,11 @@ public class PlayerModel : MonoBehaviour
     private bool isInAction = false;
     private float actionDuration = 2.0f;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        boat = GameObject.Find("Ship");
+        GameObject boat = GameObject.Find("Ship");
         transform.SetParent(boat.transform);
         Sprite fishSpriteImage = Resources.Load<Sprite>("fishPositionImage");
 
