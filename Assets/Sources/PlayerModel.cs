@@ -18,10 +18,16 @@ public class PlayerModel : MonoBehaviour
     public GameObject boat;
     private bool actionButtonTriggered = false;
     private bool actionButtonPressed = false;
+    Hashtable jobsImages = new Hashtable();
+
 
     // Start is called before the first frame update
     void Start()
     {
+        Sprite fishSpriteImage = Resources.Load<Sprite>("fishPositionImage");
+
+        jobsImages.Add(Jobs.Fish1, fishSpriteImage);
+        jobsImages.Add(Jobs.Fish2, fishSpriteImage);
     }
 
     // Update is called once per frame
@@ -63,7 +69,7 @@ public class PlayerModel : MonoBehaviour
 
                     // dégage la planche au loinnnn 
                     hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
-                    fish();
+
                     //Increase the number of Colliders in the array
                     i++;
                 }
@@ -95,39 +101,66 @@ public class PlayerModel : MonoBehaviour
         }
 
         // bouton de prise de position
-        if (gamepad.buttonSouth.wasPressedThisFrame)
-        {
-            if (currentJob == Jobs.None)
-            {
-                Collider2D myBoxCollider = GetComponent<Collider2D>();
+        //if (gamepad.buttonSouth.wasPressedThisFrame)
+        //{
+        //    if (currentJob == Jobs.None)
+        //    {
+        //        Collider2D myBoxCollider = GetComponent<Collider2D>();
 
-                // liste des colliders sur lesquels je suis
-                List<Collider2D> hitColliders = new List<Collider2D>();
-                myBoxCollider.OverlapCollider(actionContactFilter, hitColliders);
+        //        // liste des colliders sur lesquels je suis
+        //        List<Collider2D> hitColliders = new List<Collider2D>();
+        //        myBoxCollider.OverlapCollider(actionContactFilter, hitColliders);
 
-                // Pour chaque collider sur lequel je suis...
-                int i = 0;
-                while (i < hitColliders.Count)
-                {
-                    //Output all of the collider names
-                    Debug.Log("Hit : " + hitColliders[i].name + i);
-                    Debug.Log(hitColliders[i].gameObject);
-                    // dégage la planche au loinnnn 
-                    //hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
-                    currentJob = hitColliders[i].gameObject.GetComponent<PositionModel>().job;
-                    //Increase the number of Colliders in the array
-                    i++;
-                }
-            } else {
-                currentJob = Jobs.None;
-            }
-           
-        }
-
+        //        // Pour chaque collider sur lequel je suis...
+        //        int i = 0;
+        //        while (i < hitColliders.Count)
+        //        {
+        //            //Output all of the collider names
+        //            Debug.Log("Hit : " + hitColliders[i].name + i);
+        //            Debug.Log(hitColliders[i].gameObject);
+        //            // dégage la planche au loinnnn 
+        //            //hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
+        //            currentJob = hitColliders[i].gameObject.GetComponent<PositionModel>().job;
+        //            //Increase the number of Colliders in the array
+        //            i++;
+        //        }
+        //    } else {
+        //        currentJob = Jobs.None;
+        //    }
+        //}
     }
 
-    public void fish()
+    public void checkJob()
     {
+        Collider2D myBoxCollider = GetComponent<Collider2D>();
+
+        // liste des colliders sur lesquels je suis
+        List<Collider2D> hitColliders = new List<Collider2D>();
+        myBoxCollider.OverlapCollider(actionContactFilter, hitColliders);
+
+        // Pour chaque collider sur lequel je suis...
+        int i = 0;
+        while (i < hitColliders.Count)
+        {
+            //Output all of the collider names
+            Debug.Log("Hit : " + hitColliders[i].name + i);
+            Debug.Log(hitColliders[i].gameObject);
+            // dégage la planche au loinnnn 
+            //hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
+            currentJob = hitColliders[i].gameObject.GetComponent<PositionModel>().job;
+
+            //Increase the number of Colliders in the array
+            i++;
+            transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
+
+            break;
+        }
+
+        if (hitColliders.Count == 0)
+        {
+            currentJob = Jobs.None;
+            transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = null;
+        }
 
     }
 

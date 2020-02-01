@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
     private bool _isPressed = false;
     [SerializeField]
     private int _speed = 5;
+    private PlayerModel model;
 
     // Start is called before the first frame update
     void Start()
     {
+        model = GetComponent<PlayerModel>();
     }
 
     // Update is called once per frame
@@ -52,12 +54,15 @@ public class PlayerController : MonoBehaviour
             Debug.Log("BUTTON A RELEASED");
             _isPressed = false;
         }
+
+        model.checkJob();
+
     }
 
     bool canMove()
     {
-        PlayerModel model = GetComponent<PlayerModel>();
-        return model.getCurrentJob() == Jobs.None;
+        //return model.getCurrentJob() == Jobs.None;
+        return true;
     }
 
 }
