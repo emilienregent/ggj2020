@@ -84,6 +84,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void GameOver() {
+        currentGameState = GameManager.enumGameState.End;
+
+        Debug.Log("GAME OVER");
+    }
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
