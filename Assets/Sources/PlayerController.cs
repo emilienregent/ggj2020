@@ -9,6 +9,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private int _speed = 5;
 
+    private SpriteRenderer _sprite;
+
+    private void Awake()
+    {
+        _sprite = GetComponentInChildren<SpriteRenderer>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +27,8 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void FixedUpdate() {
-        var gamepad = Gamepad.current;
+    public void FixedUpdate() {
+        Gamepad gamepad = Gamepad.current;
         if(gamepad == null)
             return; // No gamepad connected.
 
@@ -37,8 +44,12 @@ public class PlayerController : MonoBehaviour
         // Move character
         if(moveVector != Vector3.zero)
         {
-            var angle = Mathf.Atan2(move.y, move.x) * Mathf.Rad2Deg;
+            _sprite.gameObject.GetComponent<Animator>().SetBool("Walking", true);
+            float angle = Mathf.Atan2(move.y, move.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        } else
+        {
+            _sprite.gameObject.GetComponent<Animator>().SetBool("Walking", false);
         }
 
         if(_isPressed == false && gamepad.buttonSouth.isPressed)
@@ -54,7 +65,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    bool canMove()
+    public bool canMove()
     {
         PlayerModel model = GetComponent<PlayerModel>();
         return model.getCurrentJob() == Jobs.None;
