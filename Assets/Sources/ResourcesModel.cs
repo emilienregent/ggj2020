@@ -2,6 +2,10 @@
 {
     private static int _stock = 0;
 
+    public static int getStock() {
+        return _stock;
+    }
+
     public static int Add(int resourcesNb) {
         _stock += resourcesNb;
         return _stock;
