@@ -28,11 +28,6 @@ public class TileGrid : MonoBehaviour
 
     public GameObject tilePrefab;
 
-    private float currentTime = 0f;
-    [SerializeField]
-    private float refreshTime = 2f;
-
-
     [SerializeField]
     private float _playtimeTreshold = 0f;
     [SerializeField]
