@@ -31,10 +31,14 @@ public class PlayerModel : MonoBehaviour
         transform.SetParent(boat.transform);
         Sprite fishSpriteImage = Resources.Load<Sprite>("fishPositionImage");
         Sprite directionSpriteImage = Resources.Load<Sprite>("directionPositionImage");
+        Sprite repairSpriteImage = Resources.Load<Sprite>("repairPositionImage");
+        Sprite bailOutSpriteImage = Resources.Load<Sprite>("bailOutPositionImage");
 
         jobsImages.Add(Jobs.Fish1, fishSpriteImage);
         jobsImages.Add(Jobs.Fish2, fishSpriteImage);
         jobsImages.Add(Jobs.Direction, directionSpriteImage);
+        jobsImages.Add(Jobs.Repair, repairSpriteImage);
+        jobsImages.Add(Jobs.BailOut, bailOutSpriteImage);
     }
 
     // Update is called once per frame
@@ -42,10 +46,10 @@ public class PlayerModel : MonoBehaviour
     {
         if (isInAction == true)
         {
+            // le bloc suivant gère la gauge
             float actionTime = (Time.time - actionStartTime);
             float progress = actionTime / actionDuration;
             transform.Find("Gauge/gaugeFill").GetComponent<Transform>().localScale = new Vector3(125.0f * progress, 10.0f, 1.0f);
-            Debug.Log("gauge fill " + progress);
             if (progress > 1)
             {
                 triggerActionSuccess();
@@ -63,7 +67,7 @@ public class PlayerModel : MonoBehaviour
         if (currentJob != Jobs.None)
         {
             isInAction = true;
-        } else // j'ai pas de taff, et je suis sur la zone du gouvernail, je deviens captain !
+        } else // j'ai appuyé sur A, j'ai pas de taff, et je suis sur la zone du gouvernail, je deviens captain !
         {
             Collider2D myBoxCollider = GetComponent<Collider2D>();
 
@@ -75,7 +79,6 @@ public class PlayerModel : MonoBehaviour
             int i = 0;
             while (i < hitColliders.Count)
             {
-                Debug.Log(hitColliders[i].gameObject.GetComponent<PositionModel>().job);
                 if (hitColliders[i].gameObject.GetComponent<PositionModel>().job == Jobs.Direction)
                 {
                     currentJob = Jobs.Direction;
@@ -95,7 +98,7 @@ public class PlayerModel : MonoBehaviour
         transform.Find("Gauge/gaugeFill").GetComponent<Transform>().localScale = new Vector3(0.0f, 10.0f, 1.0f);
         isInAction = false;
         actionStartTime = 0;
-        if (currentJob == Jobs.Direction)
+        if (currentJob == Jobs.Direction) // je lâche la barre
         {
             currentJob = Jobs.None;
             transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = null;
@@ -124,7 +127,6 @@ public class PlayerModel : MonoBehaviour
                 // détruit la planche
                 Destroy(hitColliders[i].gameObject);
 
-                //Increase the number of Colliders in the array
                 i++;
             }
             isInAction = true;
@@ -143,17 +145,34 @@ public class PlayerModel : MonoBehaviour
             int i = 0;
             while (i < hitColliders.Count)
             {
-                //Output all of the collider names
-                Debug.Log("Hit : " + hitColliders[i].name + i);
-
                 // détruit la planche
                 Destroy(hitColliders[i].gameObject);
 
-                //Increase the number of Colliders in the array
                 i++;
             }
             isInAction = true;
         }
+
+        if (currentJob == Jobs.Repair || currentJob == Jobs.BailOut)
+        {
+            Collider2D myBoxCollider = GetComponent<Collider2D>();
+
+            // liste des colliders sur lesquels je suis
+            List<Collider2D> hitColliders = new List<Collider2D>();
+            myBoxCollider.OverlapCollider(actionContactFilter, hitColliders);
+
+            // Pour chaque collider dans la fishing zone ...
+            int i = 0;
+            while (i < hitColliders.Count)
+            {
+                // détruit la planche
+                hitColliders[i].transform.gameObject.GetComponent<Tile>().doRepair();
+                break;
+                i++;
+            }
+            isInAction = true;
+        }
+        checkJob();
     }
 
     public void checkJob()

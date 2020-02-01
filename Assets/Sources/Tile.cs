@@ -30,7 +30,18 @@ public class Tile : MonoBehaviour
     public void changeTileType(TileType newType) {
         _type = newType;
         spriteRenderer.sprite = tileSprites[(int)_type];
-
+        switch (_type)
+        {
+            case TileType.BROKEN:
+                GetComponent<PositionModel>().setJob(Jobs.Repair);
+                break;
+            case TileType.FLOODED:
+                GetComponent<PositionModel>().setJob(Jobs.BailOut);
+                break;
+            case TileType.EMPTY:
+                GetComponent<PositionModel>().setJob(Jobs.None);
+                break;
+        }
     }
 
     public TileType DoDamage() {

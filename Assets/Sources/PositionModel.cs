@@ -18,4 +18,9 @@ public class PositionModel : MonoBehaviour
     {
         
     }
+
+    public void setJob(Jobs jobToSet)
+    {
+        job = jobToSet;
+    }
 }
