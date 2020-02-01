@@ -5,15 +5,16 @@ using UnityEngine.InputSystem;
 
 public enum Jobs
 {
-    Fish1, Fish2, Direction
+    Fish1, Fish2, Direction, None
 }
 
 public class PlayerModel : MonoBehaviour
 {
 
     [SerializeField]
-    private Jobs currentJob = Jobs.Fish1;
-    public ContactFilter2D contactFilter;
+    private Jobs currentJob = Jobs.None;
+    public ContactFilter2D fishContactFilter;
+    public ContactFilter2D actionContactFilter;
     public GameObject boat;
     private bool actionButtonTriggered = false;
     private bool actionButtonPressed = false;
@@ -51,7 +52,7 @@ public class PlayerModel : MonoBehaviour
 
                 // liste des colliders dans la fishing zone
                 List<Collider2D> hitColliders = new List<Collider2D>();
-                boxCollider.OverlapCollider(contactFilter, hitColliders);
+                boxCollider.OverlapCollider(fishContactFilter, hitColliders);
 
                 // Pour chaque collider dans la fishing zone ...
                 int i = 0;
@@ -62,18 +63,82 @@ public class PlayerModel : MonoBehaviour
 
                     // dégage la planche au loinnnn 
                     hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
+                    fish();
+                    //Increase the number of Colliders in the array
+                    i++;
+                }
+            }
+
+            if (currentJob == Jobs.Fish2)
+            {
+                GameObject fishingZone1 = GameObject.Find("FishZone2");
+                Collider2D boxCollider = fishingZone1.GetComponent<Collider2D>();
+
+                // liste des colliders dans la fishing zone
+                List<Collider2D> hitColliders = new List<Collider2D>();
+                boxCollider.OverlapCollider(fishContactFilter, hitColliders);
+
+                // Pour chaque collider dans la fishing zone ...
+                int i = 0;
+                while (i < hitColliders.Count)
+                {
+                    //Output all of the collider names
+                    Debug.Log("Hit : " + hitColliders[i].name + i);
+
+                    // dégage la planche au loinnnn 
+                    hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
+ 
                     //Increase the number of Colliders in the array
                     i++;
                 }
             }
         }
 
-        // bouton d'action
+        // bouton de prise de position
         if (gamepad.buttonSouth.wasPressedThisFrame)
         {
-            
+            if (currentJob == Jobs.None)
+            {
+                Collider2D myBoxCollider = GetComponent<Collider2D>();
+
+                // liste des colliders sur lesquels je suis
+                List<Collider2D> hitColliders = new List<Collider2D>();
+                myBoxCollider.OverlapCollider(actionContactFilter, hitColliders);
+
+                // Pour chaque collider sur lequel je suis...
+                int i = 0;
+                while (i < hitColliders.Count)
+                {
+                    //Output all of the collider names
+                    Debug.Log("Hit : " + hitColliders[i].name + i);
+                    Debug.Log(hitColliders[i].gameObject);
+                    // dégage la planche au loinnnn 
+                    //hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
+                    currentJob = hitColliders[i].gameObject.GetComponent<PositionModel>().job;
+                    //Increase the number of Colliders in the array
+                    i++;
+                }
+            } else {
+                currentJob = Jobs.None;
+            }
+           
         }
 
+    }
+
+    public void fish()
+    {
+
+    }
+
+    public void setCurrentJob(Jobs job)
+    {
+        currentJob = job;
+    }
+
+    public Jobs getCurrentJob()
+    {
+        return currentJob;
     }
 
 }

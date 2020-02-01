@@ -25,6 +25,11 @@ public class PlayerController : MonoBehaviour
         if(gamepad == null)
             return; // No gamepad connected.
 
+        if (canMove() == false)
+        {
+            return;
+        }
+
         Vector2 move = gamepad.rightStick.ReadValue();
         Vector3 moveVector = new Vector3(move.x, move.y, 0);
         transform.position = transform.position + (moveVector * _speed * Time.deltaTime);
@@ -47,6 +52,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log("BUTTON A RELEASED");
             _isPressed = false;
         }
+    }
+
+    bool canMove()
+    {
+        PlayerModel model = GetComponent<PlayerModel>();
+        return model.getCurrentJob() == Jobs.None;
     }
 
 }
