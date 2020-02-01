@@ -14,7 +14,15 @@ public class TileGrid : MonoBehaviour
     [SerializeField]
     private float _tileSize = 1f;
 
-    private GameObject[,] _grid;
+    private ArrayList _availableTiles;
+    private ArrayList _unavailableTiles;
+
+    [SerializeField]
+    private int countEmptyTiles;
+    [SerializeField]
+    private int countBrokenTiles;
+    [SerializeField]
+    private int countFloodedTiles;
 
     public GameObject tilePrefab;
 
@@ -22,21 +30,27 @@ public class TileGrid : MonoBehaviour
     [SerializeField]
     private float refreshTime = 2f;
 
-
     // Start is called before the first frame update
     void Start()
     {
-        _grid = new GameObject[_width, _height];
+        _availableTiles = new ArrayList();
+        _unavailableTiles = new ArrayList();
+
+        countBrokenTiles = 0;
+        countFloodedTiles = 0;
 
         for(int i = 0; i < _width; i++)
         {
             for(int j = 0; j < _height; j++)
             {
-                _grid[i,j] = Instantiate(tilePrefab, new Vector3(transform.position.x + _tileSize * i, transform.position.y + _tileSize * j, 0), Quaternion.identity);
-                _grid[i, j].transform.SetParent(transform);
-                _grid[i, j].name = "Tile " + i + "-" + j;
+                GameObject newTile = Instantiate(tilePrefab, new Vector3(transform.position.x + _tileSize * i, transform.position.y + _tileSize * j, 0), Quaternion.identity);
+                newTile.transform.SetParent(transform);
+                newTile.name = "Tile " + i + "-" + j;
+                _availableTiles.Add(newTile);
             }
         }
+
+        countEmptyTiles = _width * _height;
     }
 
     // Update is called once per frame
@@ -45,10 +59,26 @@ public class TileGrid : MonoBehaviour
         if(Time.time > currentTime)
         {
             currentTime += refreshTime;
-            int randomX = Random.Range(0, _width - 1);
-            int randomY = Random.Range(0, _height -1);
+            if(_availableTiles.Count >0)
+            {
+                int random = Random.Range(0, _availableTiles.Count - 1);
+                GameObject selectedTile = _availableTiles[random] as GameObject;
+                TileType newType = selectedTile.GetComponent<Tile>().DoDamage();
 
-            _grid[randomX, randomY].GetComponent<Tile>().DoDamage();
+                switch(newType)
+                {
+                    case TileType.BROKEN:
+                        countEmptyTiles--;
+                        countBrokenTiles++;
+                        break;
+                    case TileType.FLOODED:
+                        countBrokenTiles--;
+                        countFloodedTiles++;
+                        _availableTiles.RemoveAt(random);
+                        _unavailableTiles.Add(selectedTile);
+                        break;
+                }
+            }
         }
     }
 }

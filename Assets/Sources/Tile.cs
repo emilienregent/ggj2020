@@ -33,7 +33,7 @@ public class Tile : MonoBehaviour
 
     }
 
-    public void DoDamage() {
+    public TileType DoDamage() {
         switch(_type)
         {
             case TileType.BROKEN:
@@ -43,6 +43,8 @@ public class Tile : MonoBehaviour
                 changeTileType(TileType.BROKEN);
                 break;
         }
+
+        return _type;
     }
 
     public void doRepair() {
