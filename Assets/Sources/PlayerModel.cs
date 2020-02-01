@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public enum Jobs
@@ -15,11 +16,12 @@ public class PlayerModel : MonoBehaviour
     private Jobs currentJob = Jobs.None;
     public ContactFilter2D fishContactFilter;
     public ContactFilter2D actionContactFilter;
-    public GameObject boat;
     private bool actionButtonTriggered = false;
     private bool actionButtonPressed = false;
     Hashtable jobsImages = new Hashtable();
-
+    private float actionStartTime = 0;
+    private bool isInAction = false;
+    private float actionDuration = 2.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,73 +35,87 @@ public class PlayerModel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var gamepad = Gamepad.current;
-        if (gamepad == null)
+        if (isInAction == true)
         {
-            return; // No gamepad connected.
-        }
-
-        if (gamepad.rightTrigger.wasPressedThisFrame)
-        {
-            actionButtonPressed = true;
-        }
-
-        if (gamepad.rightTrigger.wasReleasedThisFrame)
-        {
-            actionButtonPressed = false;
-        }
-
-        if (actionButtonPressed == true)
-        {
-            if (currentJob == Jobs.Fish1)
+            float actionTime = (Time.time - actionStartTime);
+            float progress = actionTime / actionDuration;
+            Debug.Log("gauge fill " + progress);
+            if (progress > 1)
             {
-                GameObject fishingZone1 = GameObject.Find("FishZone1");
-                Collider2D boxCollider = fishingZone1.GetComponent<Collider2D>();
-
-                // liste des colliders dans la fishing zone
-                List<Collider2D> hitColliders = new List<Collider2D>();
-                boxCollider.OverlapCollider(fishContactFilter, hitColliders);
-
-                // Pour chaque collider dans la fishing zone ...
-                int i = 0;
-                while (i < hitColliders.Count)
-                {
-                    //Output all of the collider names
-                    Debug.Log("Hit : " + hitColliders[i].name + i);
-
-                    // dégage la planche au loinnnn 
-                    hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
-
-                    //Increase the number of Colliders in the array
-                    i++;
-                }
-            }
-
-            if (currentJob == Jobs.Fish2)
-            {
-                GameObject fishingZone1 = GameObject.Find("FishZone2");
-                Collider2D boxCollider = fishingZone1.GetComponent<Collider2D>();
-
-                // liste des colliders dans la fishing zone
-                List<Collider2D> hitColliders = new List<Collider2D>();
-                boxCollider.OverlapCollider(fishContactFilter, hitColliders);
-
-                // Pour chaque collider dans la fishing zone ...
-                int i = 0;
-                while (i < hitColliders.Count)
-                {
-                    //Output all of the collider names
-                    Debug.Log("Hit : " + hitColliders[i].name + i);
-
-                    // dégage la planche au loinnnn 
-                    hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
- 
-                    //Increase the number of Colliders in the array
-                    i++;
-                }
+                triggerActionSuccess();
+                isInAction = false;
             }
         }
+    }
 
+    public void actionStart()
+    {
+        actionStartTime = Time.time;
+
+        if (currentJob != Jobs.None)
+        {
+            isInAction = true;
+        }
+
+    }
+
+    public void actionStop()
+    {
+        isInAction = false;
+        actionStartTime = 0;
+    }
+
+    public void triggerActionSuccess()
+    {
+        if (currentJob == Jobs.Fish1)
+        {
+            GameObject fishingZone1 = GameObject.Find("FishZone1");
+            Collider2D boxCollider = fishingZone1.GetComponent<Collider2D>();
+
+            // liste des colliders dans la fishing zone
+            List<Collider2D> hitColliders = new List<Collider2D>();
+            boxCollider.OverlapCollider(fishContactFilter, hitColliders);
+
+            // Pour chaque collider dans la fishing zone ...
+            int i = 0;
+            while (i < hitColliders.Count)
+            {
+                //Output all of the collider names
+                Debug.Log("Hit : " + hitColliders[i].name + i);
+
+                // dégage la planche au loinnnn 
+                hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
+
+                //Increase the number of Colliders in the array
+                i++;
+            }
+            isInAction = true;
+        }
+
+        if (currentJob == Jobs.Fish2)
+        {
+            GameObject fishingZone1 = GameObject.Find("FishZone2");
+            Collider2D boxCollider = fishingZone1.GetComponent<Collider2D>();
+
+            // liste des colliders dans la fishing zone
+            List<Collider2D> hitColliders = new List<Collider2D>();
+            boxCollider.OverlapCollider(fishContactFilter, hitColliders);
+
+            // Pour chaque collider dans la fishing zone ...
+            int i = 0;
+            while (i < hitColliders.Count)
+            {
+                //Output all of the collider names
+                Debug.Log("Hit : " + hitColliders[i].name + i);
+
+                // dégage la planche au loinnnn 
+                hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
+
+                //Increase the number of Colliders in the array
+                i++;
+            }
+            isInAction = true;
+        }
     }
 
     public void checkJob()
@@ -118,7 +134,6 @@ public class PlayerModel : MonoBehaviour
 
             i++;
             transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
-
             break;
         }
 

@@ -30,10 +30,11 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Move() {
-        if(canMove() == false)
-        {
-            return;
-        }
+
+        //if(canMove() == false)
+        //{
+        //    return;
+        //}
         Vector3 moveVector = new Vector3(_move.x, _move.y, 0);
         transform.position = transform.position + (moveVector * _speed * Time.deltaTime);
 
@@ -43,10 +44,12 @@ public class PlayerController : MonoBehaviour
             _sprite.gameObject.GetComponent<Animator>().SetBool("Walking", true);
             float angle = Mathf.Atan2(_move.y, _move.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            model.checkJob();
         } else
         {
             _sprite.gameObject.GetComponent<Animator>().SetBool("Walking", false);
         }
+
     }
 
     private void OnMove(InputValue inputValue) {
@@ -55,6 +58,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnDoAction() {
         Debug.Log("PRESS A");
+    }
+
+    private void OnActionPressed()
+    {
+        Debug.Log("startA");
+        model.actionStart();
+    }
+
+    private void OnActionReleased()
+    {
+        Debug.Log("stopA");
+        model.actionStop();
     }
 
     public bool canMove()
