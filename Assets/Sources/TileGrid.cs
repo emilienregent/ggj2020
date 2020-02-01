@@ -39,6 +39,18 @@ public class TileGrid : MonoBehaviour
     [SerializeField]
     private AnimationCurve _spawnDelayByDifficulty = new AnimationCurve();
 
+
+    [SerializeField]
+    private float _playtimeTreshold = 0f;
+    [SerializeField]
+    private float _minimumDelay = 0f;
+    [SerializeField]
+    private float _maximumDelay = 0f;
+    [SerializeField]
+    private AnimationCurve _difficultyByTime = new AnimationCurve();
+    [SerializeField]
+    private AnimationCurve _spawnDelayByDifficulty = new AnimationCurve();
+
     // Start is called before the first frame update
     void Start()
     {
