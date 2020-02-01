@@ -92,8 +92,7 @@ public class PlayerModel : MonoBehaviour
                 if (hitColliders[i].gameObject.GetComponent<PositionModel>().job == Jobs.Direction)
                 {
                     setCurrentJob(Jobs.Direction);
-                    transform.Find("CurrentAction/Bubble").gameObject.SetActive(true);
-                    transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
+                    setBubbleIcon((Sprite)jobsImages[currentJob]);
                     transform.parent.GetComponent<BoatController>().setCaptain(gameObject);
                     break;
                 }
@@ -112,10 +111,22 @@ public class PlayerModel : MonoBehaviour
         if (currentJob == Jobs.Direction) // je lâche la barre
         {
             setCurrentJob(Jobs.None);
-            transform.Find("CurrentAction/Bubble").gameObject.SetActive(true);
-            transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = null;
+            setBubbleIcon(null);
             transform.parent.GetComponent<BoatController>().setCaptain(null);
         }
+    }
+
+    public void setBubbleIcon(Sprite icon)
+    {
+        if (icon == null)
+        {
+            transform.Find("CurrentAction/Bubble").gameObject.SetActive(false);
+            transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = null;
+        } else {
+            transform.Find("CurrentAction/Bubble").gameObject.SetActive(true);
+            transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = icon;
+        }
+       
     }
 
     public void triggerActionSuccess()
@@ -216,8 +227,7 @@ public class PlayerModel : MonoBehaviour
             {
                 // on marche sur une position
                 setCurrentJob(colliderJob);
-                transform.Find("CurrentAction/Bubble").gameObject.SetActive(true);
-                transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
+                setBubbleIcon((Sprite)jobsImages[currentJob]);
                 break;
             }
 
@@ -225,8 +235,8 @@ public class PlayerModel : MonoBehaviour
             if (colliderJob == Jobs.None || (colliderJob == Jobs.Direction && currentJob != Jobs.Direction && currentJob != Jobs.None))
             {
                 setCurrentJob(Jobs.None);
-                transform.Find("CurrentAction/Bubble").gameObject.SetActive(false);
-                transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = null;
+                setBubbleIcon(null);
+
             }
 
             i++;
@@ -235,8 +245,7 @@ public class PlayerModel : MonoBehaviour
         if (hitColliders.Count == 0)
         {
             setCurrentJob(Jobs.None);
-            transform.Find("CurrentAction/Bubble").gameObject.SetActive(false);
-            transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = null;
+            setBubbleIcon(null);
         }
 
     }
