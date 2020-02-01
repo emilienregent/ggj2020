@@ -7,16 +7,42 @@ public class ItemManager : MonoBehaviour
     private static int inGameIndex = 0;
 
     [SerializeField]
+    private float _playtimeTreshold = 0f;
+    [SerializeField]
+    private float _minimumDelay = 0f;
+    [SerializeField]
+    private float _maximumDelay = 0f;
+    [SerializeField]
+    private AnimationCurve _difficultyByTime = new AnimationCurve();
+    [SerializeField]
+    private AnimationCurve _spawnDelayByDifficulty = new AnimationCurve();
+
+
+    [SerializeField]
     private List<ItemController> itemPrefabs = new List<ItemController>();
 
     private List<ItemController> availableItems = new List<ItemController>();
     private Dictionary<int, ItemController> inGameItems = new Dictionary<int, ItemController>();
 
-    private void Update()
+    private void Start()
     {
-        // Replace when to add new items
-        if (Input.GetKeyDown("left"))
+        StartCoroutine("SpawnItems");
+    }
+
+    private IEnumerator SpawnItems()
+    {
+        while (true)
         {
+            float difficulty = _difficultyByTime.Evaluate(Time.timeSinceLevelLoad / _playtimeTreshold);
+
+            // From maximum delay (no difficulty) to minimum delay
+            float delay = Mathf.Clamp(_maximumDelay * _spawnDelayByDifficulty.Evaluate(difficulty),
+                _minimumDelay, _maximumDelay);
+
+            Debug.Log("Start for " + Time.timeSinceLevelLoad + "s\nDifficulty of " + difficulty + " --> Delay of " + delay + "s");
+
+            yield return new WaitForSeconds(delay);
+
             int indexToUse = Random.Range(0, itemPrefabs.Count);
 
             UseItem(itemPrefabs[indexToUse]);
