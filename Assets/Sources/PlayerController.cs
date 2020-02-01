@@ -17,57 +17,44 @@ public class PlayerController : MonoBehaviour
         _sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
+    private Vector2 _move = Vector2.zero;
+
     // Start is called before the first frame update
     void Start()
     {
         model = GetComponent<PlayerModel>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    
+    void FixedUpdate() {
+        Move();
     }
 
-    public void FixedUpdate() {
-        Gamepad gamepad = Gamepad.current;
-        if(gamepad == null)
-            return; // No gamepad connected.
-
-        if (canMove() == false)
+    private void Move() {
+        if(canMove() == false)
         {
             return;
         }
-
-        Vector2 move = gamepad.rightStick.ReadValue();
-        Vector3 moveVector = new Vector3(move.x, move.y, 0);
+        Vector3 moveVector = new Vector3(_move.x, _move.y, 0);
         transform.position = transform.position + (moveVector * _speed * Time.deltaTime);
 
         // Move character
         if(moveVector != Vector3.zero)
         {
             _sprite.gameObject.GetComponent<Animator>().SetBool("Walking", true);
-            float angle = Mathf.Atan2(move.y, move.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(_move.y, _move.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         } else
         {
             _sprite.gameObject.GetComponent<Animator>().SetBool("Walking", false);
         }
+    }
 
-        if(_isPressed == false && gamepad.buttonSouth.isPressed)
-        {
-            Debug.Log("BUTTON A PRESSED");
-            _isPressed = true;
-        }
+    private void OnMove(InputValue inputValue) {
+        _move = inputValue.Get<Vector2>();
+    }
 
-        if(_isPressed == true && gamepad.buttonSouth.isPressed == false)
-        {
-            Debug.Log("BUTTON A RELEASED");
-            _isPressed = false;
-        }
-
-        model.checkJob();
-
+    private void OnDoAction() {
+        Debug.Log("PRESS A");
     }
 
     public bool canMove()
