@@ -268,6 +268,7 @@ public class PlayerModel : MonoBehaviour
         else if (currentJob == Jobs.Direction)
         {
             PlayAnimation("Directing", enable);
+            SetAnimationValue("Direction", 0f);
         }
         else if (currentJob == Jobs.BailOut)
         {
@@ -288,6 +289,11 @@ public class PlayerModel : MonoBehaviour
 
         _currentAnimationParameter = enable == true ? parameter : string.Empty;
 
+    }
+
+    public void SetAnimationValue(string parameter, float value)
+    {
+        _animator.SetFloat(parameter, value);
     }
 
     public Jobs getCurrentJob()

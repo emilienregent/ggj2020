@@ -55,6 +55,7 @@ public class BoatController : MonoBehaviour
             }
             transform.rotation = rotation;
 
+            captainPlayer.GetComponent<PlayerModel>().SetAnimationValue("Direction", move.y);
         }
 
         float transformAngleZ = transform.rotation.eulerAngles.z - 180;
