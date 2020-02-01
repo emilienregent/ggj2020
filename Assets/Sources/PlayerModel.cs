@@ -77,6 +77,27 @@ public class PlayerModel : MonoBehaviour
     {
         actionStartTime = Time.time;
 
+        if (currentJob == Jobs.Repair)
+        {
+            Collider2D myBoxCollider = GetComponent<Collider2D>();
+
+            // liste des colliders sur lesquels je suis
+            List<Collider2D> hitColliders = new List<Collider2D>();
+            myBoxCollider.OverlapCollider(actionContactFilter, hitColliders);
+
+            int i = 0;
+            while (i < hitColliders.Count)
+            {
+                Tile hitTile = hitColliders[i].transform.gameObject.GetComponent<Tile>();
+                if (!!hitTile) 
+                {
+                hitTile.SetUnderRepair(true);
+
+                }
+                i++;
+            }
+        }
+
         if (currentJob != Jobs.None)
         {
             PlayJobAnimation(true);
@@ -119,6 +140,26 @@ public class PlayerModel : MonoBehaviour
             setBubbleIcon(null);
             transform.parent.GetComponent<BoatController>().setCaptain(null);
         }
+        if (currentJob == Jobs.Repair)
+        {
+            Collider2D myBoxCollider = GetComponent<Collider2D>();
+
+            // liste des colliders sur lesquels je suis
+            List<Collider2D> hitColliders = new List<Collider2D>();
+            myBoxCollider.OverlapCollider(actionContactFilter, hitColliders);
+
+            int i = 0;
+            while (i < hitColliders.Count)
+            {
+                Tile hitTile = hitColliders[i].transform.gameObject.GetComponent<Tile>();
+                if (!!hitTile) 
+                {
+                  hitTile.SetUnderRepair(false);
+                }
+                i++;
+            }
+        }
+
         StopCurrentAnimation();
     }
 
@@ -227,7 +268,6 @@ public class PlayerModel : MonoBehaviour
         while (i < hitColliders.Count)
         {
             Jobs colliderJob = hitColliders[i].gameObject.GetComponent<PositionModel>().job;
-            Debug.Log(colliderJob);
             if (colliderJob != Jobs.Direction && colliderJob != Jobs.None)
             {
                 // on marche sur une position
@@ -245,7 +285,6 @@ public class PlayerModel : MonoBehaviour
             {
                 setCurrentJob(Jobs.None);
                 setBubbleIcon(null);
-
             }
 
             i++;
