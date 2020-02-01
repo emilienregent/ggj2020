@@ -73,6 +73,7 @@ public class PlayerModel : MonoBehaviour
             int i = 0;
             while (i < hitColliders.Count)
             {
+                Debug.Log(hitColliders[i].gameObject.GetComponent<PositionModel>().job);
                 if (hitColliders[i].gameObject.GetComponent<PositionModel>().job == Jobs.Direction)
                 {
                     currentJob = Jobs.Direction;
@@ -171,7 +172,7 @@ public class PlayerModel : MonoBehaviour
             }
 
             // je passe sur le collider Direction, et je suis sur un autre poste ? Je lâche mon poste !
-            if (hitColliders[i].gameObject.GetComponent<PositionModel>().job == Jobs.Direction && currentJob != Jobs.Direction)
+            if (hitColliders[i].gameObject.GetComponent<PositionModel>().job == Jobs.Direction && currentJob != Jobs.Direction && currentJob != Jobs.None)
             {
                 currentJob = Jobs.None;
                 transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = null;

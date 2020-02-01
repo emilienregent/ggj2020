@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d0eeb135c7a4e419329b48dc726563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentJob: 3
+  currentJob: 5
   fishContactFilter:
     useTriggers: 0
     useLayerMask: 1
@@ -91,7 +91,6 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  boat: {fileID: 0}
 --- !u!114 &610630102280843443
 MonoBehaviour:
   m_ObjectHideFlags: 0

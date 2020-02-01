@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance = null;
     private static object _lock = new object();
 
+    public PlayerController[] players = new PlayerController[4];
+
+    public MenuController menuController;
+
     public static GameManager instance
     {
         get
@@ -49,4 +53,12 @@ public class GameManager : MonoBehaviour
         _leftCorner = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         _rightCorner = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
     }
+
+    public void PlayerJoined(PlayerController player)
+    {
+
+        _instance.players[player.currentPlayerIndex] = player;
+        menuController.PlayerJoin(player);
+    }
+
 }
