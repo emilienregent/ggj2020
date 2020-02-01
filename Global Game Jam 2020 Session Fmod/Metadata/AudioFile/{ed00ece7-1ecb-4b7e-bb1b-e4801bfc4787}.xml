@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{ed00ece7-1ecb-4b7e-bb1b-e4801bfc4787}">
+		<property name="assetPath">
+			<value>bad_event_event_2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7e7baef2-ee27-49f0-b15c-fee462eeea4a}</destination>
+		</relationship>
+	</object>
+</objects>

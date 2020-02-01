@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{bd31ae62-4c5b-4e56-8990-5ce4509c54e8}">
+		<property name="assetPath">
+			<value>gouvernail_1-001.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.4793333333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7e7baef2-ee27-49f0-b15c-fee462eeea4a}</destination>
+		</relationship>
+	</object>
+</objects>

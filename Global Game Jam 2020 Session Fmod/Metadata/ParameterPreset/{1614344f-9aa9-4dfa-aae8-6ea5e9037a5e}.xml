@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="ParameterPreset" id="{1614344f-9aa9-4dfa-aae8-6ea5e9037a5e}">
+		<property name="name">
+			<value>touché_déplacement</value>
+		</property>
+		<relationship name="folder">
+			<destination>{72bb86f7-a183-4228-a265-8cf0c784e694}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{8e334337-0b55-471d-82cb-c2b1ce1c8c81}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{8e334337-0b55-471d-82cb-c2b1ce1c8c81}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

@@ -20,6 +20,19 @@ public class Tile : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    [FMODUnity.EventRef]
+    public string sfxBrokenEvent;
+
+    [FMODUnity.EventRef]
+    public string sfxFloodedEvent;
+
+    private FMODUnity.StudioEventEmitter _eventEmitter;
+
+    private void Awake()
+    {
+        _eventEmitter = GetComponent<FMODUnity.StudioEventEmitter>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +46,13 @@ public class Tile : MonoBehaviour
         switch (_type)
         {
             case TileType.BROKEN:
+                _eventEmitter.Event = sfxBrokenEvent;
+                //_eventEmitter.Play();
                 GetComponent<PositionModel>().setJob(Jobs.Repair);
                 break;
             case TileType.FLOODED:
+                _eventEmitter.Event = sfxFloodedEvent;
+                //_eventEmitter.Play();
                 GetComponent<PositionModel>().setJob(Jobs.BailOut);
                 break;
             case TileType.EMPTY:

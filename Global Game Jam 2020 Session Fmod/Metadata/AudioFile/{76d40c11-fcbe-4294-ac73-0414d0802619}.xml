@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{76d40c11-fcbe-4294-ac73-0414d0802619}">
+		<property name="assetPath">
+			<value>deplacement_eau.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>55</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7e7baef2-ee27-49f0-b15c-fee462eeea4a}</destination>
+		</relationship>
+	</object>
+</objects>

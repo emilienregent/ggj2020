@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7542943705390231345}
   - component: {fileID: -2581591624524659007}
   - component: {fileID: -6631002682059190685}
+  - component: {fileID: 3595196268197829979}
   m_Layer: 8
   m_Name: Tile
   m_TagString: Untagged
@@ -51,6 +52,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5e42b9d5c5424b94994823816c2f912a, type: 3}
   - {fileID: 21300000, guid: c5cea333271c59440b6d37e2d31990e8, type: 3}
   _type: 0
+  sfxBrokenEvent: "event:/SD/cr\xE9ation_trou"
+  sfxFloodedEvent: event:/SD/Flood
 --- !u!212 &7542943705390231345
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -140,3 +143,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &3595196268197829979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5873487977653062813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
