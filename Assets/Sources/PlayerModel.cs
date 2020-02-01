@@ -92,6 +92,7 @@ public class PlayerModel : MonoBehaviour
     // relache du bouton a
     public void actionStop()
     {
+        transform.Find("Gauge/gaugeFill").GetComponent<Transform>().localScale = new Vector3(0.0f, 10.0f, 1.0f);
         isInAction = false;
         actionStartTime = 0;
         if (currentJob == Jobs.Direction)
