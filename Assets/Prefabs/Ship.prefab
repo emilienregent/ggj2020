@@ -46,6 +46,9 @@ MonoBehaviour:
   _width: 7
   _height: 4
   _tileSize: 1
+  countEmptyTiles: 0
+  countBrokenTiles: 0
+  countFloodedTiles: 0
   tilePrefab: {fileID: 5873487977653062813, guid: 232cc10859d3b4c4cbc547896643781d,
     type: 3}
   refreshTime: 1
@@ -107,7 +110,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.23359507, y: 0.20345366}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -118,7 +121,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 6}
+  m_Size: {x: 0.96719027, y: 7.9742556}
   m_EdgeRadius: 0
 --- !u!1 &731305785152967272
 GameObject:

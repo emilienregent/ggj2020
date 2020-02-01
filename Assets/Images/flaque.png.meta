@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: e9726ae56629b3342ae21160ae7f8303
+=======
+guid: 5d7cf4b5a82289042aba7ad967795b63
+>>>>>>> Fix repair none tiles...
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

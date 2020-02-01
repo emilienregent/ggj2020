@@ -162,9 +162,13 @@ public class PlayerModel : MonoBehaviour
             int i = 0;
             while (i < hitColliders.Count)
             {
-                // détruit la planche
-                hitColliders[i].transform.gameObject.GetComponent<Tile>().doRepair();
-                break;
+                if (hitColliders[i].transform.gameObject.GetComponent<Tile>().type != TileType.EMPTY)
+                {
+                    // détruit la planche
+                    hitColliders[i].transform.gameObject.GetComponent<Tile>().doRepair();
+                    break;
+                }
+                i++;
             }
             isInAction = true;
         }
@@ -184,12 +188,14 @@ public class PlayerModel : MonoBehaviour
         while (i < hitColliders.Count)
         {
             Jobs colliderJob = hitColliders[i].gameObject.GetComponent<PositionModel>().job;
+            Debug.Log(colliderJob);
             if (colliderJob != Jobs.Direction && colliderJob != Jobs.None)
             {
                 // on marche sur une position
-                currentJob = hitColliders[i].gameObject.GetComponent<PositionModel>().job;
+                currentJob = colliderJob;
                 transform.Find("CurrentAction/Bubble").gameObject.SetActive(true);
                 transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
+                break;
             }
 
             // je passe sur le collider Direction, et je suis sur un autre poste ? Je lâche mon poste !
@@ -201,7 +207,6 @@ public class PlayerModel : MonoBehaviour
             }
 
             i++;
-            break;
         }
 
         if (hitColliders.Count == 0)
