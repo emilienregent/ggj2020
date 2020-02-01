@@ -21,7 +21,7 @@ public class PlayerModel : MonoBehaviour
     Hashtable jobsImages = new Hashtable();
     private float actionStartTime = 0;
     private bool isInAction = false;
-    private float actionDuration = 2.0f;
+    public float actionDuration = 1.5f;
 
 
     // Start is called before the first frame update
@@ -118,8 +118,8 @@ public class PlayerModel : MonoBehaviour
                 //Output all of the collider names
                 Debug.Log("Hit : " + hitColliders[i].name + i);
 
-                // dégage la planche au loinnnn 
-                hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
+                // détruit la planche
+                Destroy(hitColliders[i].gameObject);
 
                 //Increase the number of Colliders in the array
                 i++;
@@ -143,8 +143,8 @@ public class PlayerModel : MonoBehaviour
                 //Output all of the collider names
                 Debug.Log("Hit : " + hitColliders[i].name + i);
 
-                // dégage la planche au loinnnn 
-                hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
+                // détruit la planche
+                Destroy(hitColliders[i].gameObject);
 
                 //Increase the number of Colliders in the array
                 i++;
