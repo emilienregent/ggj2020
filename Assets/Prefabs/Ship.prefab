@@ -84,6 +84,8 @@ GameObject:
   - component: {fileID: 731305785152967268}
   - component: {fileID: 731305785152967271}
   - component: {fileID: 1031905754251889272}
+  - component: {fileID: -8087059909955017535}
+  - component: {fileID: -649929610838779924}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -216,6 +218,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishingZone1: {fileID: 0}
+--- !u!68 &-8087059909955017535
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731305785152967272}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 1.6834196, y: 1.1642215}
+  - {x: -3.837726, y: 1.149651}
+  - {x: -3.8816109, y: -1.1775966}
+  - {x: 1.737782, y: -1.1617483}
+  - {x: 2.6843243, y: -0.836784}
+  - {x: 2.6398125, y: 0.7979984}
+  - {x: 1.8092468, y: 1.2006053}
+--- !u!50 &-649929610838779924
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731305785152967272}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2355547971100208955
 GameObject:
   m_ObjectHideFlags: 0
