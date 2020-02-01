@@ -83,7 +83,7 @@ MonoBehaviour:
     useTriggers: 1
     useLayerMask: 1
     useDepth: 0
-    useOutsideDepth: 0
+    useOutsideDepth: 1
     useNormalAngle: 0
     useOutsideNormalAngle: 0
     layerMask:
@@ -93,7 +93,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  actionDuration: 1
+  actionDuration: 3
 --- !u!114 &610630102280843443
 MonoBehaviour:
   m_ObjectHideFlags: 0

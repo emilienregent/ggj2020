@@ -76,6 +76,7 @@ public class PlayerModel : MonoBehaviour
 
         if (currentJob != Jobs.None)
         {
+            PlayJobAnimation(true);
             isInAction = true;
         } else // j'ai appuyé sur A, j'ai pas de taff, et je suis sur la zone du gouvernail, je deviens captain !
         {
@@ -94,6 +95,7 @@ public class PlayerModel : MonoBehaviour
                     setCurrentJob(Jobs.Direction);
                     setBubbleIcon((Sprite)jobsImages[currentJob]);
                     transform.parent.GetComponent<BoatController>().setCaptain(gameObject);
+                    PlayJobAnimation(true);
                     break;
                 }
                 i++;
@@ -114,6 +116,7 @@ public class PlayerModel : MonoBehaviour
             setBubbleIcon(null);
             transform.parent.GetComponent<BoatController>().setCaptain(null);
         }
+        StopCurrentAnimation();
     }
 
     public void setBubbleIcon(Sprite icon)
@@ -126,7 +129,6 @@ public class PlayerModel : MonoBehaviour
             transform.Find("CurrentAction/Bubble").gameObject.SetActive(true);
             transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = icon;
         }
-       
     }
 
     public void triggerActionSuccess()
@@ -253,15 +255,6 @@ public class PlayerModel : MonoBehaviour
     private void setCurrentJob(Jobs job)
     {
         currentJob = job;
-
-        if(currentJob != Jobs.None)
-        {
-            PlayJobAnimation(true);
-        }
-        else
-        {
-            StopCurrentAnimation();
-        }
     }
 
     private void PlayJobAnimation(bool enable)
