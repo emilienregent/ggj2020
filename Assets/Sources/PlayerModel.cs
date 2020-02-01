@@ -26,6 +26,8 @@ public class PlayerModel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        boat = GameObject.Find("Ship");
+        transform.SetParent(boat.transform);
         Sprite fishSpriteImage = Resources.Load<Sprite>("fishPositionImage");
 
         jobsImages.Add(Jobs.Fish1, fishSpriteImage);

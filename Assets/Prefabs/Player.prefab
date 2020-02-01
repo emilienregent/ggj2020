@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1195057916998816548}
   - component: {fileID: 1195057916998816551}
   - component: {fileID: 1195057916998816550}
-  - component: {fileID: 9117242571311802368}
   - component: {fileID: 610630102280843443}
   - component: {fileID: 8763744098102319680}
   - component: {fileID: -9084910260656783274}
@@ -93,19 +92,6 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   boat: {fileID: 0}
---- !u!114 &9117242571311802368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195057916998816545}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00392157350271f439fed07f722c8b16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 5
 --- !u!114 &610630102280843443
 MonoBehaviour:
   m_ObjectHideFlags: 0
