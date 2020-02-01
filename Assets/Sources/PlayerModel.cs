@@ -287,7 +287,10 @@ public class PlayerModel : MonoBehaviour
 
     private void StopCurrentAnimation()
     {
-        _animator.SetBool(_currentAnimationParameter, false);
+        if(_currentAnimationParameter != string.Empty)
+        {
+            _animator.SetBool(_currentAnimationParameter, false);
+        }
     }
 
     public void PlayAnimation(string parameter, bool enable)

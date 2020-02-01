@@ -12,8 +12,6 @@ public class PlayerController : MonoBehaviour
     public static int Index = 0;
     public int currentPlayerIndex = -1;
 
-
-
     private void Awake()
     {
         currentPlayerIndex = Index++;
@@ -27,6 +25,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         model = GetComponent<PlayerModel>();
+        gameObject.transform.position = new Vector2(-5f, 0f);
     }
     
     private void FixedUpdate() {
