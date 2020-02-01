@@ -17,34 +17,16 @@ public class MenuController : MonoBehaviour
     private bool _countDownStarted;
     private int _totalPlayerReady;
 
-    private bool _canLeave;
-    private bool _canUSeInput = false;
-
     private void Awake()
     {
 
         ResetCountDown();
         _totalPlayerReady = 0;
-        _canLeave = true;
 
-        // Listen InputManager event
-        //PlayerInputManager.PlayerJoinedEvent _playerJoinedEvent = new PlayerInputManager.PlayerJoinedEvent();
-        //_playerJoinedEvent.AddListener(PlayerJoin);
     }
-
-    //private void PlayerJoin(PlayerInput arg0)
-    //{
-    //    throw new NotImplementedException();
-    //}
-
-    //public void OnSubmit(InputAction.CallbackContext context)
-    //{
-    //    Debug.Log(context);
-    //}
 
     private void EnableInput()
     {
-        _canUSeInput = true;
         GetComponent<Animator>().SetBool("Idle", true);
     }
 
@@ -69,7 +51,6 @@ public class MenuController : MonoBehaviour
             } else
             {
                 TimerTextUI.text = "Go !!";
-                _canLeave = false;
             }
 
             if(_timeLeftBeforeStart < 0)
@@ -84,7 +65,6 @@ public class MenuController : MonoBehaviour
 
     public void ResetCountDown()
     {
-        _canLeave = true;
         _countDownStarted = false;
         _timeLeftBeforeStart = StartCountDownTimer;
         TimerTextUI.gameObject.SetActive(false);
@@ -101,10 +81,6 @@ public class MenuController : MonoBehaviour
 
     public void PlayerJoin()
     {
-        if (_canUSeInput == false)
-        {
-            return;
-        }
 
         _totalPlayerReady++;
         StartCountDown();
