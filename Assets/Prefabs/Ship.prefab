@@ -52,7 +52,6 @@ MonoBehaviour:
   _countFloodedTiles: 0
   tilePrefab: {fileID: 5873487977653062813, guid: 232cc10859d3b4c4cbc547896643781d,
     type: 3}
-  refreshTime: 1
   _playtimeTreshold: 20
   _minimumDelay: 3
   _maximumDelay: 5
@@ -293,8 +292,8 @@ MonoBehaviour:
   _speed: 5
   _rotationSpeed: 3
   _maxRotationAngle: 45
-  _maxTop: 4
-  _maxBottom: -4
+  _maxTop: 5
+  _maxBottom: -5
   captainPlayer: {fileID: 0}
 --- !u!68 &-8087059909955017535
 EdgeCollider2D:

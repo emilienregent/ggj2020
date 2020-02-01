@@ -31,18 +31,39 @@ public class BoatController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        Quaternion rotation = transform.rotation;
+        float transformAngleZ = transform.rotation.eulerAngles.z - 180;
+
+        Vector3 newPosition = transform.position + (Vector3.down * Mathf.Sin(transformAngleZ * Mathf.Deg2Rad) * _speed * Time.deltaTime);
+        newPosition.y = Mathf.Clamp(newPosition.y, _maxBottom, _maxTop);
+
+        transform.position = newPosition;
+
+        if(newPosition.y <= _maxBottom && rotation.z != 0)
+        {
+            rotation.z += Quaternion.Euler(new Vector3(0f, 0f, _rotationSpeed * Time.deltaTime)).z;
+            transform.rotation = rotation;
+        }
+
+        if(newPosition.y >= _maxTop && rotation.z != 0)
+        {
+            rotation.z -= Quaternion.Euler(new Vector3(0f, 0f, _rotationSpeed * Time.deltaTime)).z;
+            transform.rotation = rotation;
+        }
+
         // personne a la barre, monsieur!
         if (captainPlayer == null)
             return;
 
         Vector2 move = captainPlayer.GetComponent<PlayerController>().move;
         Vector3 moveVector = new Vector3(move.x, move.y, 0);
-
+        
         if(moveVector != Vector3.zero)
         {
             Quaternion rotationMin = Quaternion.Euler(new Vector3(0f, 0f, _maxRotationAngle * -1));
             Quaternion rotationMax = Quaternion.Euler(new Vector3(0f, 0f, _maxRotationAngle));
-            Quaternion rotation = transform.rotation;
+           
 
             if(move.y > 0 && rotation.z < rotationMax.z)
             {
@@ -57,13 +78,7 @@ public class BoatController : MonoBehaviour
 
             captainPlayer.GetComponent<PlayerModel>().SetAnimationValue("Direction", move.y);
         }
-
-        float transformAngleZ = transform.rotation.eulerAngles.z - 180;
-
-        Vector3 newPosition = transform.position + (Vector3.down * Mathf.Sin(transformAngleZ * Mathf.Deg2Rad) * _speed * Time.deltaTime);
-        newPosition.y = Mathf.Clamp(newPosition.y, _maxBottom, _maxTop);
-
-        transform.position = newPosition;
+        
     }
 
     public void setCaptain(GameObject captainToSet)
