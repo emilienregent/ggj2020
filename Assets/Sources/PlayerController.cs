@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
         {
             _sprite.gameObject.GetComponent<Animator>().SetBool("Walking", false);
         }
+
     }
 
     private void OnMove(InputValue inputValue) {
@@ -55,6 +56,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnDoAction() {
         Debug.Log("PRESS A");
+    }
+
+    private void OnActionPressed()
+    {
+        Debug.Log("startA");
+        model.actionStart();
+    }
+
+    private void OnActionReleased()
+    {
+        Debug.Log("stopA");
+        model.actionStop();
     }
 
     public bool canMove()

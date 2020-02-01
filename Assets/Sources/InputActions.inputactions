@@ -36,6 +36,22 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ActionPressed",
+                    "type": "Button",
+                    "id": "791a2926-783d-435a-8c96-0688506662f8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ActionReleased",
+                    "type": "Button",
+                    "id": "a025c3cc-96b3-4192-8d9d-dbec14c9e829",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -267,6 +283,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "DoAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c26b194c-d037-4939-bf2c-f695485eb4e3",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ActionPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "725eb234-6137-45a8-b433-54f9093e965d",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ActionReleased",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
