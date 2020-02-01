@@ -11,7 +11,7 @@ public class BackgroundManager : MonoBehaviour
     {
         for (int i = 0; i < backgrounds.Count; ++i)
         {
-            backgrounds[i].transform.position = new Vector2((i - 1) * backgrounds[i].GetWorldSize(), 0f);
+            backgrounds[i].transform.position = new Vector2((i - 2) * backgrounds[i].GetWorldSize(), 0f);
 
             backgrounds[i].Initialize(this);
         }

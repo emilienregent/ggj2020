@@ -8,11 +8,13 @@ public enum TileType {
     FLOODED,
 }
 
-public class Tile : MonoBehaviour
-{
+public class Tile : MonoBehaviour {
 
     [SerializeField]
     Sprite[] tileSprites;
+
+    [SerializeField]
+    private TileGrid _grid;
 
     [SerializeField]
     private TileType _type;
@@ -85,6 +87,12 @@ public class Tile : MonoBehaviour
                 changeTileType(TileType.BROKEN);
                 break;
         }
+        // Préviens la grille qu'il faut mettre à jour ses listes de Tiles
+        _grid.updateList(this.gameObject);
+    }
+
+    public void SetGrid(TileGrid grid) {
+        _grid = grid;
     }
 
     // Update is called once per frame

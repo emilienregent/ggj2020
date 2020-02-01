@@ -12,17 +12,19 @@ public class TileGrid : MonoBehaviour
     private int _height = 2;
 
     [SerializeField]
-    private float _tileSize = 1f;
+    private float _tileSizeX = .5f;
+    [SerializeField]
+    private float _tileSizeY = .5f;
 
     private ArrayList _availableTiles;
     private ArrayList _unavailableTiles;
 
     [SerializeField]
-    private int countEmptyTiles;
+    private int _countEmptyTiles;
     [SerializeField]
-    private int countBrokenTiles;
+    private int _countBrokenTiles;
     [SerializeField]
-    private int countFloodedTiles;
+    private int _countFloodedTiles;
 
     public GameObject tilePrefab;
 
@@ -36,21 +38,39 @@ public class TileGrid : MonoBehaviour
         _availableTiles = new ArrayList();
         _unavailableTiles = new ArrayList();
 
-        countBrokenTiles = 0;
-        countFloodedTiles = 0;
+        _countBrokenTiles = 0;
+        _countFloodedTiles = 0;
 
         for(int i = 0; i < _width; i++)
         {
             for(int j = 0; j < _height; j++)
             {
-                GameObject newTile = Instantiate(tilePrefab, new Vector3(transform.position.x + _tileSize * i, transform.position.y + _tileSize * j, 0), Quaternion.identity);
+                Random random = new Random();
+                float maximum = _tileSizeX / 2.0f;
+                float minimum = -1* _tileSizeX / 2.0f;
+                int randomXInt = Random.Range((int)(minimum*1000), (int)(maximum*1000));
+                float randomX = randomXInt / 1000.0f;
+
+                float maximumY = _tileSizeY / 2.0f;
+                float minimumY = -1 * _tileSizeY / 2.0f;
+                int randomYInt = Random.Range((int)(minimumY * 1000), (int)(maximumY * 1000));
+                float randomY = randomXInt / 1000.0f;
+
+                Vector3 position = new Vector3(
+                    transform.position.x + _tileSizeX * i + randomX, 
+                    transform.position.y + _tileSizeY * j + randomY, 
+                    0
+                );
+
+                GameObject newTile = Instantiate(tilePrefab, position, Quaternion.identity);
+                newTile.GetComponent<Tile>().SetGrid(this);
                 newTile.transform.SetParent(transform);
                 newTile.name = "Tile " + i + "-" + j;
                 _availableTiles.Add(newTile);
             }
         }
 
-        countEmptyTiles = _width * _height;
+        _countEmptyTiles = _width * _height;
     }
 
     // Update is called once per frame
@@ -59,7 +79,7 @@ public class TileGrid : MonoBehaviour
         if(Time.time > currentTime)
         {
             currentTime += refreshTime;
-            if(_availableTiles.Count >0)
+            if(_availableTiles.Count > 0)
             {
                 int random = Random.Range(0, _availableTiles.Count - 1);
                 GameObject selectedTile = _availableTiles[random] as GameObject;
@@ -68,16 +88,33 @@ public class TileGrid : MonoBehaviour
                 switch(newType)
                 {
                     case TileType.BROKEN:
-                        countEmptyTiles--;
-                        countBrokenTiles++;
+                        _countEmptyTiles--;
+                        _countBrokenTiles++;
                         break;
                     case TileType.FLOODED:
-                        countBrokenTiles--;
-                        countFloodedTiles++;
+                        _countBrokenTiles--;
+                        _countFloodedTiles++;
                         _availableTiles.RemoveAt(random);
                         _unavailableTiles.Add(selectedTile);
                         break;
                 }
+            }
+        }
+    }
+
+    // Met à jour les Tiles dispo/pas dispo
+    public void updateList(GameObject tile) {
+       if(_unavailableTiles.Contains(tile) == true)
+        {
+            _unavailableTiles.Remove(tile);
+            _availableTiles.Add(tile);
+            _countFloodedTiles--;
+            if(tile.GetComponent<Tile>().type == TileType.EMPTY)
+            {
+                _countEmptyTiles++;
+            } else
+            {
+                _countBrokenTiles++;
             }
         }
     }

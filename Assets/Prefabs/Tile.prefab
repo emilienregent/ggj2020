@@ -49,8 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileSprites:
   - {fileID: 0}
-  - {fileID: 21300000, guid: 5e42b9d5c5424b94994823816c2f912a, type: 3}
-  - {fileID: 21300000, guid: c5cea333271c59440b6d37e2d31990e8, type: 3}
+  - {fileID: 21300000, guid: 9e3b7e8fe5c7a324c972d0002ee49906, type: 3}
+  - {fileID: 21300000, guid: e58728b864df8484fa14b11c7c1aa19c, type: 3}
+  _grid: {fileID: 0}
   _type: 0
   sfxBrokenEvent: "event:/SD/cr\xE9ation_trou"
   sfxFloodedEvent: event:/SD/Flood
