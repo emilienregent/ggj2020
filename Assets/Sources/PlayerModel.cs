@@ -79,6 +79,10 @@ public class PlayerModel : MonoBehaviour
 
         if (currentJob == Jobs.Repair)
         {
+            if(ResourcesModel.getStock() <= 0)
+            {
+                return;
+            }
             Collider2D myBoxCollider = GetComponent<Collider2D>();
 
             // liste des colliders sur lesquels je suis
