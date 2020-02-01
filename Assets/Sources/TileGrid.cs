@@ -39,6 +39,8 @@ public class TileGrid : MonoBehaviour
     [SerializeField]
     private AnimationCurve _spawnDelayByDifficulty = new AnimationCurve();
 
+    private bool _damageShipStarted = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,12 +81,21 @@ public class TileGrid : MonoBehaviour
 
         _countEmptyTiles = _width * _height;
 
-        StartCoroutine("DamageShip");
+    }
+
+    public void StartDamageShip()
+    {
+        if(_damageShipStarted == false && GameManager.instance.currentGameState == GameManager.enumGameState.Game)
+        {
+            _damageShipStarted = true;
+            StartCoroutine("DamageShip");
+        }
     }
 
     private IEnumerator DamageShip() {
         while(true)
         {
+
             float difficulty = _difficultyByTime.Evaluate(Time.timeSinceLevelLoad / _playtimeTreshold);
 
             // From maximum delay (no difficulty) to minimum delay
@@ -93,7 +104,7 @@ public class TileGrid : MonoBehaviour
 
             yield return new WaitForSeconds(delay);
 
-            if(_availableTiles.Count > 0)
+            if (_availableTiles.Count > 0)
             {
                 int random = Random.Range(0, _availableTiles.Count - 1);
                 GameObject selectedTile = _availableTiles[random] as GameObject;
@@ -119,6 +130,7 @@ public class TileGrid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        StartDamageShip();
     }
 
     // Met à jour les Tiles dispo/pas dispo

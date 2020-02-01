@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     private PlayerInputManager _playerInputManager;
 
+    public enum enumGameState { Menu, Game, End };
+    public enumGameState currentGameState;
+
     public static GameManager instance
     {
         get
@@ -56,6 +59,8 @@ public class GameManager : MonoBehaviour
     {
         _leftCorner = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         _rightCorner = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+        currentGameState = GameManager.enumGameState.Menu;
     }
 
     public void PlayerJoined(PlayerController player)

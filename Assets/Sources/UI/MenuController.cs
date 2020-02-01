@@ -75,9 +75,9 @@ public class MenuController : MonoBehaviour
             if(_timeLeftBeforeStart < 0)
             {
                 // Hide title screen
-                Debug.Log("Hide title screen");
                 ResetCountDown();
                 gameObject.SetActive(false);
+                GameManager.instance.currentGameState = GameManager.enumGameState.Game;
             }
         }
     }
