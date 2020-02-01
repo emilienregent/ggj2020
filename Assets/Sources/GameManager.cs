@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -71,6 +72,17 @@ public class GameManager : MonoBehaviour
         PlayerController.Index--;
         Destroy(playerToDestroy.gameObject);
 
+    }
+
+    public void reloadGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+            reloadGame();
     }
 
 }
