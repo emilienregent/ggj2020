@@ -106,6 +106,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2559035102507748837}
     m_Modifications:
+    - target: {fileID: 375314287031394425, guid: 464480e73594e4641830c3b971da91cf,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 375314287031394425, guid: 464480e73594e4641830c3b971da91cf,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 375314287031394425, guid: 464480e73594e4641830c3b971da91cf,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 375314287031394425, guid: 464480e73594e4641830c3b971da91cf,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 375314287915930212, guid: 464480e73594e4641830c3b971da91cf,
         type: 3}
       propertyPath: m_Name

@@ -18,6 +18,7 @@ public class MenuController : MonoBehaviour
     private int _totalPlayerReady;
 
     private bool _canLeave;
+    private bool _canUSeInput = false;
 
     private void Awake()
     {
@@ -40,6 +41,12 @@ public class MenuController : MonoBehaviour
         ResetCountDown();
         _totalPlayerReady = 0;
         _canLeave = true;
+    }
+
+    private void EnableInput()
+    {
+        _canUSeInput = true;
+        GetComponent<Animator>().SetBool("Idle", true);
     }
 
     // Update is called once per frame
@@ -130,7 +137,7 @@ public class MenuController : MonoBehaviour
 
     private void PlayerJoin(int id)
     {
-        if(JoinButtons[id].gameObject.activeSelf == false)
+        if(_canUSeInput == false || JoinButtons[id].gameObject.activeSelf == false)
         {
             return;
         }
@@ -144,7 +151,7 @@ public class MenuController : MonoBehaviour
 
     private void PlayerLeave(int id)
     {
-        if (LeaveButtons[id].gameObject.activeSelf == false || _canLeave == false)
+        if (_canUSeInput == false || LeaveButtons[id].gameObject.activeSelf == false || _canLeave == false)
         {
             return;
         }
