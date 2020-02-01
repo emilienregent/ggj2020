@@ -28,21 +28,6 @@ public class TileGrid : MonoBehaviour
 
     public GameObject tilePrefab;
 
-<<<<<<< HEAD
-    [SerializeField]
-    private float _playtimeTreshold = 0f;
-    [SerializeField]
-    private float _minimumDelay = 0f;
-    [SerializeField]
-    private float _maximumDelay = 0f;
-    [SerializeField]
-    private AnimationCurve _difficultyByTime = new AnimationCurve();
-    [SerializeField]
-    private AnimationCurve _spawnDelayByDifficulty = new AnimationCurve();
-
-
-=======
->>>>>>> Fucking .log !
     [SerializeField]
     private float _playtimeTreshold = 0f;
     [SerializeField]
