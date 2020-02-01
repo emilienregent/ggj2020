@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
@@ -41,7 +43,21 @@ public class MenuController : MonoBehaviour
         ResetCountDown();
         _totalPlayerReady = 0;
         _canLeave = true;
+
+        // Listen InputManager event
+        //PlayerInputManager.PlayerJoinedEvent _playerJoinedEvent = new PlayerInputManager.PlayerJoinedEvent();
+        //_playerJoinedEvent.AddListener(PlayerJoin);
     }
+
+    //private void PlayerJoin(PlayerInput arg0)
+    //{
+    //    throw new NotImplementedException();
+    //}
+
+    //public void OnSubmit(InputAction.CallbackContext context)
+    //{
+    //    Debug.Log(context);
+    //}
 
     private void EnableInput()
     {
@@ -52,41 +68,6 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // Get inputs
-        if(Input.GetButtonDown("Join1") == true)
-        {
-            PlayerJoin(0);
-        }
-        if(Input.GetButtonDown("Join2") == true)
-        {
-            PlayerJoin(1);
-        }
-        if(Input.GetButtonDown("Join3") == true)
-        {
-            PlayerJoin(2);
-        }
-        if(Input.GetButtonDown("Join4") == true)
-        {
-            PlayerJoin(3);
-        }
-
-        if (Input.GetButtonDown("Leave1") == true)
-        {
-            PlayerLeave(0);
-        }
-        if (Input.GetButtonDown("Leave2") == true)
-        {
-            PlayerLeave(1);
-        }
-        if (Input.GetButtonDown("Leave3") == true)
-        {
-            PlayerLeave(2);
-        }
-        if (Input.GetButtonDown("Leave4") == true)
-        {
-            PlayerLeave(3);
-        }
 
         if(_totalPlayerReady == 0)
         {
@@ -135,30 +116,30 @@ public class MenuController : MonoBehaviour
         TimerTextUI.text = StartCountDownTimer.ToString();
     }
 
-    private void PlayerJoin(int id)
+    public void PlayerJoin(PlayerController player)
     {
-        if(_canUSeInput == false || JoinButtons[id].gameObject.activeSelf == false)
+        if (_canUSeInput == false || JoinButtons[player.currentPlayerIndex].gameObject.activeSelf == false)
         {
             return;
         }
 
         _totalPlayerReady++;
-        JoinButtons[id].SetActive(false);
-        LeaveButtons[id].SetActive(true);
+        JoinButtons[player.currentPlayerIndex].SetActive(false);
+        LeaveButtons[player.currentPlayerIndex].SetActive(true);
         StartCountDown();
 
     }
 
-    private void PlayerLeave(int id)
+    public void PlayerLeave(PlayerController player)
     {
-        if (_canUSeInput == false || LeaveButtons[id].gameObject.activeSelf == false || _canLeave == false)
+        if (_canUSeInput == false || LeaveButtons[player.currentPlayerIndex].gameObject.activeSelf == false || _canLeave == false)
         {
             return;
         }
 
         _totalPlayerReady--;
-        LeaveButtons[id].SetActive(false);
-        JoinButtons[id].SetActive(true);
+        LeaveButtons[player.currentPlayerIndex].SetActive(false);
+        JoinButtons[player.currentPlayerIndex].SetActive(true);
         StartCountDown();
 
     }

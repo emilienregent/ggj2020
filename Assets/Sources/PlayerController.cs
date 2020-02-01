@@ -10,11 +10,16 @@ public class PlayerController : MonoBehaviour
     private int _speed = 5;
     private PlayerModel model;
 
+    public static int Index = 0;
+    public int currentPlayerIndex = -1;
+
     private SpriteRenderer _sprite;
 
     private void Awake()
     {
         _sprite = GetComponentInChildren<SpriteRenderer>();
+        currentPlayerIndex = Index++;
+        GameManager.instance.PlayerJoined(this);
     }
 
     private Vector2 _move = Vector2.zero;
