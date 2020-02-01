@@ -54,20 +54,21 @@ public class TileGrid : MonoBehaviour
         {
             for(int j = 0; j < _height; j++)
             {
-                Random random = new Random();
-                float maximum = _tileSizeX / 2.0f;
-                float minimum = -1* _tileSizeX / 2.0f;
-                int randomXInt = Random.Range((int)(minimum*1000), (int)(maximum*1000));
-                float randomX = randomXInt / 1000.0f;
+                // code gardé de côté
+                //Random random = new Random();
+                //float maximum = _tileSizeX / 2.0f;
+                //float minimum = -1* _tileSizeX / 2.0f;
+                //int randomXInt = Random.Range((int)(minimum*1000), (int)(maximum*1000));
+                //float randomX = randomXInt / 1000.0f;
 
-                float maximumY = _tileSizeY / 2.0f;
-                float minimumY = -1 * _tileSizeY / 2.0f;
-                int randomYInt = Random.Range((int)(minimumY * 1000), (int)(maximumY * 1000));
-                float randomY = randomXInt / 1000.0f;
+                //float maximumY = _tileSizeY / 2.0f;
+                //float minimumY = -1 * _tileSizeY / 2.0f;
+                //int randomYInt = Random.Range((int)(minimumY * 1000), (int)(maximumY * 1000));
+                //float randomY = randomXInt / 1000.0f;
 
                 Vector3 position = new Vector3(
-                    transform.position.x + _tileSizeX * i + randomX, 
-                    transform.position.y + _tileSizeY * j + randomY, 
+                    transform.position.x + _tileSizeX * i, 
+                    transform.position.y + _tileSizeY * j, 
                     0
                 );
 

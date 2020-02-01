@@ -21,6 +21,7 @@ public class PlayerModel : MonoBehaviour
     private float actionStartTime = 0;
     private bool isInAction = false;
     public float actionDuration = 1.5f;
+    private Sprite missingPlankImage;
 
     private Animator _animator = null;
     private SpriteRenderer _sprite = null;
@@ -49,6 +50,8 @@ public class PlayerModel : MonoBehaviour
         jobsImages.Add(Jobs.Direction, directionSpriteImage);
         jobsImages.Add(Jobs.Repair, repairSpriteImage);
         jobsImages.Add(Jobs.BailOut, bailOutSpriteImage);
+
+        missingPlankImage = Resources.Load<Sprite>("missingPlankImage");
     }
 
     // Update is called once per frame
@@ -230,6 +233,10 @@ public class PlayerModel : MonoBehaviour
                 // on marche sur une position
                 setCurrentJob(colliderJob);
                 setBubbleIcon((Sprite)jobsImages[currentJob]);
+                if (currentJob == Jobs.Repair && ResourcesModel.getStock() == 0)
+                {
+                    setBubbleIcon(missingPlankImage);
+                }
                 break;
             }
 
