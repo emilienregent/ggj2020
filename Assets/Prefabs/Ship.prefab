@@ -52,7 +52,7 @@ MonoBehaviour:
   _countFloodedTiles: 0
   tilePrefab: {fileID: 5873487977653062813, guid: 232cc10859d3b4c4cbc547896643781d,
     type: 3}
-  refreshTime: 0.1
+  refreshTime: 1
 --- !u!1 &28243197851581119
 GameObject:
   m_ObjectHideFlags: 0
