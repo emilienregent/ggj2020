@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BoatModel : MonoBehaviour
 {
-    public GameObject fishingZone1;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +16,4 @@ public class BoatModel : MonoBehaviour
         
     }
 
-    public GameObject getFishingZone1()
-    {
-        return fishingZone1;
-    }
 }

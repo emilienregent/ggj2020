@@ -14,6 +14,9 @@ public class ItemController : AbstractScrollableController
     [SerializeField]
     private ItemEnum _itemType = ItemEnum.NONE;
 
+    [SerializeField]
+    private float _speedOffset = 0f;
+
     public int index { get { return _index; } }
     public ItemEnum itemType { get { return _itemType; } }
 
@@ -51,7 +54,7 @@ public class ItemController : AbstractScrollableController
             _manager.ReleaseItem(this);
         }
 
-        _position.x -= GameManager.instance.speed * Time.deltaTime;
+        _position.x -= (GameManager.instance.speed - _speedOffset) * Time.deltaTime;
 
         transform.position = _position;
     }

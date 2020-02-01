@@ -43,6 +43,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14eae468dbd8a483cbace8f9eeeb36b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playtimeTreshold: 20
+  _minimumDelay: 3
+  _maximumDelay: 5
+  _difficultyByTime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _spawnDelayByDifficulty:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   itemPrefabs:
   - {fileID: 8213421318410477090, guid: edf50ac31e9504bafbb2c99e4392f721, type: 3}
   - {fileID: 4593944381216188472, guid: 6d76a6de8a35ac94ea1d3becdebc73b8, type: 3}

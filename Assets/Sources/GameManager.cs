@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
     public Vector2 leftCorner { get { return _leftCorner; } }
     public Vector2 rightCorner { get { return _rightCorner; } }
 
-
     private void Start()
     {
         _leftCorner = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));

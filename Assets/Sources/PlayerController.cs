@@ -36,10 +36,10 @@ public class PlayerController : MonoBehaviour
 
     private void Move() {
 
-        //if(canMove() == false)
-        //{
-        //    return;
-        //}
+        if (model.canMove() == false)
+        {
+            return;
+        }
         Vector3 moveVector = new Vector3(_move.x, _move.y, 0);
         transform.position = transform.position + (moveVector * _speed * Time.deltaTime);
 
@@ -75,12 +75,6 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("stopA");
         model.actionStop();
-    }
-
-    public bool canMove()
-    {
-        //return model.getCurrentJob() == Jobs.None;
-        return true;
     }
 
 }
