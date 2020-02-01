@@ -9,9 +9,7 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
     public Text TimerTextUI;
-
-    public GameObject[] JoinButtons;
-    public GameObject[] LeaveButtons;
+    public GameObject buttonJoin;
 
     public float StartCountDownTimer = 6;
 
@@ -24,21 +22,6 @@ public class MenuController : MonoBehaviour
 
     private void Awake()
     {
-        try
-        {
-            for (int i = 0; i < JoinButtons.Length; i++)
-            {
-                JoinButtons[i].SetActive(true);
-            }
-
-            for (int j = 0; j < LeaveButtons.Length; j++)
-            {
-                LeaveButtons[j].SetActive(false);
-            }
-        } catch(Exception e)
-        {
-            Debug.LogException(e, this);
-        }
 
         ResetCountDown();
         _totalPlayerReady = 0;
@@ -69,7 +52,7 @@ public class MenuController : MonoBehaviour
     void Update()
     {
 
-        if(_totalPlayerReady == 0)
+        if (_totalPlayerReady == 0)
         {
             ResetCountDown();
         }
@@ -116,31 +99,20 @@ public class MenuController : MonoBehaviour
         TimerTextUI.text = StartCountDownTimer.ToString();
     }
 
-    public void PlayerJoin(PlayerController player)
+    public void PlayerJoin()
     {
-        if (_canUSeInput == false || JoinButtons[player.currentPlayerIndex].gameObject.activeSelf == false)
+        if (_canUSeInput == false)
         {
             return;
         }
 
         _totalPlayerReady++;
-        JoinButtons[player.currentPlayerIndex].SetActive(false);
-        LeaveButtons[player.currentPlayerIndex].SetActive(true);
         StartCountDown();
 
-    }
-
-    public void PlayerLeave(PlayerController player)
-    {
-        if (_canUSeInput == false || LeaveButtons[player.currentPlayerIndex].gameObject.activeSelf == false || _canLeave == false)
+        if(_totalPlayerReady == 4)
         {
-            return;
+            buttonJoin.SetActive(false);
         }
-
-        _totalPlayerReady--;
-        LeaveButtons[player.currentPlayerIndex].SetActive(false);
-        JoinButtons[player.currentPlayerIndex].SetActive(true);
-        StartCountDown();
 
     }
 

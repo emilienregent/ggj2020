@@ -193,6 +193,12 @@ PrefabInstance:
       propertyPath: menuController
       value: 
       objectReference: {fileID: 2118214669}
+    - target: {fileID: 8053092123180451149, guid: 22aad8bb70de0400bb4c6eaca8f5c058,
+        type: 3}
+      propertyPath: playerToInstantiate
+      value: 
+      objectReference: {fileID: 1195057916998816545, guid: 73f230339b4e1794da1fa8542ac7236a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22aad8bb70de0400bb4c6eaca8f5c058, type: 3}
 --- !u!1001 &332764520
@@ -585,6 +591,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: 4f50c4ff80006794789308cd59dbd522,
         type: 3}
+    - target: {fileID: 8506965923495956001, guid: 54d1068d2778ea347b9b63490d7d16f9,
+        type: 3}
+      propertyPath: StartCountDownTimer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8907936354661479704, guid: 54d1068d2778ea347b9b63490d7d16f9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -774,6 +785,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PlayerJoinedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598625707456698918, guid: aebb19bbf9e68044f99552436051a345,
+        type: 3}
+      propertyPath: m_JoinBehavior
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598625707456698918, guid: aebb19bbf9e68044f99552436051a345,
+        type: 3}
+      propertyPath: m_JoinAction.m_UseReference
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5598625707456698919, guid: aebb19bbf9e68044f99552436051a345,
         type: 3}
