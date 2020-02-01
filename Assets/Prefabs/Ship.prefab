@@ -46,9 +46,9 @@ MonoBehaviour:
   _width: 7
   _height: 4
   _tileSize: 1
-  countEmptyTiles: 0
-  countBrokenTiles: 0
-  countFloodedTiles: 0
+  _countEmptyTiles: 0
+  _countBrokenTiles: 0
+  _countFloodedTiles: 0
   tilePrefab: {fileID: 5873487977653062813, guid: 232cc10859d3b4c4cbc547896643781d,
     type: 3}
   refreshTime: 1
@@ -501,7 +501,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5398799318336873028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.19, y: 0, z: 0}
+  m_LocalPosition: {x: 3.9, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 731305785152967273}
