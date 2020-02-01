@@ -35,11 +35,7 @@ public class BoatController : MonoBehaviour
         if (captainPlayer == null)
             return;
 
-        var gamepad = Gamepad.current;
-        if(gamepad == null)
-            return; // No gamepad connected.
-
-        Vector2 move = gamepad.leftStick.ReadValue();
+        Vector2 move = captainPlayer.GetComponent<PlayerController>().move;
         Vector3 moveVector = new Vector3(move.x, move.y, 0);
 
         if(moveVector != Vector3.zero)

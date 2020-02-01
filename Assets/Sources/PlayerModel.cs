@@ -176,7 +176,8 @@ public class PlayerModel : MonoBehaviour
             int i = 0;
             while (i < hitColliders.Count)
             {
-                if (hitColliders[i].transform.gameObject.GetComponent<Tile>().type != TileType.EMPTY)
+                Tile hitTile = hitColliders[i].transform.gameObject.GetComponent<Tile>();
+                if (hitTile != null && hitTile.type != TileType.EMPTY)
                 {
                     int res = 0;
                     if (currentJob == Jobs.Repair) 

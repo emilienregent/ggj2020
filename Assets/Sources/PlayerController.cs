@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private Vector2 _move = Vector2.zero;
+    public Vector2 move { get { return _move; } }
 
     // Start is called before the first frame update
     void Start()
