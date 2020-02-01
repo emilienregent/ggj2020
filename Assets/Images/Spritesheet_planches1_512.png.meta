@@ -1,7 +1,34 @@
 fileFormatVersion: 2
 guid: 4be4dd625945bca44b4e9d29460af3f6
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -981971933198310055
+    second: Spritesheet_planches1_512_0
+  - first:
+      213: -6552154688742665693
+    second: Spritesheet_planches1_512_1
+  - first:
+      213: -6913644657845432569
+    second: Spritesheet_planches1_512_2
+  - first:
+      213: -360405658193776663
+    second: Spritesheet_planches1_512_3
+  - first:
+      213: -5878921752746708153
+    second: Spritesheet_planches1_512_4
+  - first:
+      213: 8345397624787873695
+    second: Spritesheet_planches1_512_5
+  - first:
+      213: -1475425621330715656
+    second: Spritesheet_planches1_512_6
+  - first:
+      213: -5575102528902372431
+    second: Spritesheet_planches1_512_7
+  - first:
+      213: -4247922913490619443
+    second: Spritesheet_planches1_512_8
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,12 +67,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -60,7 +87,19 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -72,7 +111,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Spritesheet_planches1_512_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 955af4ebab55f52f0800000000000000
+      internalID: -981971933198310055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_planches1_512_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 322551086021215a0800000000000000
+      internalID: -6552154688742665693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_planches1_512_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70f88d150dccd00a0800000000000000
+      internalID: -6913644657845432569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_planches1_512_3
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9efa150a6f49ffaf0800000000000000
+      internalID: -360405658193776663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

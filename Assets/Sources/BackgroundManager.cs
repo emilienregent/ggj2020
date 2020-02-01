@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BackgroundManager : MonoBehaviour
 {
-	public float speed = 0f;
     public List<BackgroundController> backgrounds = new List<BackgroundController>();
 
     // Initialize backgrounds to have proper position
@@ -12,7 +11,7 @@ public class BackgroundManager : MonoBehaviour
     {
         for (int i = 0; i < backgrounds.Count; ++i)
         {
-            backgrounds[i].transform.position = new Vector2((i - 1) * BackgroundController.TILE_WORLD_SIZE, 0f);
+            backgrounds[i].transform.position = new Vector2((i - 1) * backgrounds[i].GetWorldSize(), 0f);
 
             backgrounds[i].Initialize(this);
         }
@@ -27,7 +26,7 @@ public class BackgroundManager : MonoBehaviour
         backgrounds.Remove(background);
         backgrounds.Add(background);
 
-        position.x = lastBackground.transform.position.x + BackgroundController.TILE_WORLD_SIZE;
+        position.x = lastBackground.transform.position.x + background.GetWorldSize();
 
         return position;
     }
