@@ -16,8 +16,6 @@ public class PlayerModel : MonoBehaviour
     private Jobs currentJob = Jobs.None;
     public ContactFilter2D fishContactFilter;
     public ContactFilter2D actionContactFilter;
-    private bool actionButtonTriggered = false;
-    private bool actionButtonPressed = false;
     Hashtable jobsImages = new Hashtable();
     private float actionStartTime = 0;
     private bool isInAction = false;
@@ -82,7 +80,8 @@ public class PlayerModel : MonoBehaviour
                 if (hitColliders[i].gameObject.GetComponent<PositionModel>().job == Jobs.Direction)
                 {
                     currentJob = Jobs.Direction;
-                    transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
+                    transform.Find("CurrentAction/Bubble").gameObject.SetActive(true);
+                    transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
                     transform.parent.GetComponent<BoatController>().setCaptain(gameObject);
                     break;
                 }
@@ -101,7 +100,8 @@ public class PlayerModel : MonoBehaviour
         if (currentJob == Jobs.Direction) // je lâche la barre
         {
             currentJob = Jobs.None;
-            transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = null;
+            transform.Find("CurrentAction/Bubble").gameObject.SetActive(true);
+            transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = null;
             transform.parent.GetComponent<BoatController>().setCaptain(null);
         }
     }
@@ -121,9 +121,6 @@ public class PlayerModel : MonoBehaviour
             int i = 0;
             while (i < hitColliders.Count)
             {
-                //Output all of the collider names
-                Debug.Log("Hit : " + hitColliders[i].name + i);
-
                 // détruit la planche
                 Destroy(hitColliders[i].gameObject);
 
@@ -168,7 +165,6 @@ public class PlayerModel : MonoBehaviour
                 // détruit la planche
                 hitColliders[i].transform.gameObject.GetComponent<Tile>().doRepair();
                 break;
-                i++;
             }
             isInAction = true;
         }
@@ -187,17 +183,21 @@ public class PlayerModel : MonoBehaviour
         int i = 0;
         while (i < hitColliders.Count)
         {
-            if (hitColliders[i].gameObject.GetComponent<PositionModel>().job != Jobs.Direction)
+            Jobs colliderJob = hitColliders[i].gameObject.GetComponent<PositionModel>().job;
+            if (colliderJob != Jobs.Direction && colliderJob != Jobs.None)
             {
+                // on marche sur une position
                 currentJob = hitColliders[i].gameObject.GetComponent<PositionModel>().job;
-                transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
+                transform.Find("CurrentAction/Bubble").gameObject.SetActive(true);
+                transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
             }
 
             // je passe sur le collider Direction, et je suis sur un autre poste ? Je lâche mon poste !
-            if (hitColliders[i].gameObject.GetComponent<PositionModel>().job == Jobs.Direction && currentJob != Jobs.Direction && currentJob != Jobs.None)
+            if (colliderJob == Jobs.None || (colliderJob == Jobs.Direction && currentJob != Jobs.Direction && currentJob != Jobs.None))
             {
                 currentJob = Jobs.None;
-                transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = null;
+                transform.Find("CurrentAction/Bubble").gameObject.SetActive(false);
+                transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = null;
             }
 
             i++;
@@ -207,7 +207,8 @@ public class PlayerModel : MonoBehaviour
         if (hitColliders.Count == 0)
         {
             currentJob = Jobs.None;
-            transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = null;
+            transform.Find("CurrentAction/Bubble").gameObject.SetActive(false);
+            transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = null;
         }
 
     }

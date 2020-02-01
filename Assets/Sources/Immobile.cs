@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gauge : MonoBehaviour
+public class Immobile : MonoBehaviour
 {
       Quaternion rotation;
   void Awake()

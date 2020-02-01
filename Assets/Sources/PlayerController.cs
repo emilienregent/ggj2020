@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private bool _isPressed = false;
     [SerializeField]
     private int _speed = 5;
     private PlayerModel model;
