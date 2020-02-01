@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public enum Jobs
 {
-    Fish1, Fish2, Direction, None
+    Fish1, Fish2, Direction, Repair, BailOut, None
 }
 
 public class PlayerModel : MonoBehaviour
@@ -30,9 +30,11 @@ public class PlayerModel : MonoBehaviour
         GameObject boat = GameObject.Find("Ship");
         transform.SetParent(boat.transform);
         Sprite fishSpriteImage = Resources.Load<Sprite>("fishPositionImage");
+        Sprite directionSpriteImage = Resources.Load<Sprite>("directionPositionImage");
 
         jobsImages.Add(Jobs.Fish1, fishSpriteImage);
         jobsImages.Add(Jobs.Fish2, fishSpriteImage);
+        jobsImages.Add(Jobs.Direction, directionSpriteImage);
     }
 
     // Update is called once per frame
@@ -51,6 +53,7 @@ public class PlayerModel : MonoBehaviour
         }
     }
 
+    // appui sur le bouton a
     public void actionStart()
     {
         actionStartTime = Time.time;
@@ -58,14 +61,42 @@ public class PlayerModel : MonoBehaviour
         if (currentJob != Jobs.None)
         {
             isInAction = true;
+        } else // j'ai pas de taff, et je suis sur la zone du gouvernail, je deviens captain !
+        {
+            Collider2D myBoxCollider = GetComponent<Collider2D>();
+
+            // liste des colliders sur lesquels je suis
+            List<Collider2D> hitColliders = new List<Collider2D>();
+            myBoxCollider.OverlapCollider(actionContactFilter, hitColliders);
+
+            // Pour chaque collider sur lequel je suis...
+            int i = 0;
+            while (i < hitColliders.Count)
+            {
+                if (hitColliders[i].gameObject.GetComponent<PositionModel>().job == Jobs.Direction)
+                {
+                    currentJob = Jobs.Direction;
+                    transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
+                    transform.parent.GetComponent<BoatController>().setCaptain(gameObject);
+                    break;
+                }
+                i++;
+            }
         }
 
     }
 
+    // relache du bouton a
     public void actionStop()
     {
         isInAction = false;
         actionStartTime = 0;
+        if (currentJob == Jobs.Direction)
+        {
+            currentJob = Jobs.None;
+            transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = null;
+            transform.parent.GetComponent<BoatController>().setCaptain(null);
+        }
     }
 
     public void triggerActionSuccess()
@@ -133,10 +164,20 @@ public class PlayerModel : MonoBehaviour
         int i = 0;
         while (i < hitColliders.Count)
         {
-            currentJob = hitColliders[i].gameObject.GetComponent<PositionModel>().job;
+            if (hitColliders[i].gameObject.GetComponent<PositionModel>().job != Jobs.Direction)
+            {
+                currentJob = hitColliders[i].gameObject.GetComponent<PositionModel>().job;
+                transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
+            }
+
+            // je passe sur le collider Direction, et je suis sur un autre poste ? Je lâche mon poste !
+            if (hitColliders[i].gameObject.GetComponent<PositionModel>().job == Jobs.Direction && currentJob != Jobs.Direction)
+            {
+                currentJob = Jobs.None;
+                transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = null;
+            }
 
             i++;
-            transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
             break;
         }
 
@@ -156,6 +197,17 @@ public class PlayerModel : MonoBehaviour
     public Jobs getCurrentJob()
     {
         return currentJob;
+    }
+
+    public bool canMove()
+    {
+        if (currentJob == Jobs.Direction || isInAction == true)
+        {
+            return false;
+        } else
+        {
+            return true;
+        }
     }
 
 }

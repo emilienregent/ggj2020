@@ -19,6 +19,9 @@ public class BoatController : MonoBehaviour
     [SerializeField]
     private float _maxBottom = -4f;
 
+    [SerializeField]
+    private GameObject captainPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,10 @@ public class BoatController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // personne a la barre, monsieur!
+        if (captainPlayer == null)
+            return;
+
         var gamepad = Gamepad.current;
         if(gamepad == null)
             return; // No gamepad connected.
@@ -60,5 +67,10 @@ public class BoatController : MonoBehaviour
         newPosition.y = Mathf.Clamp(newPosition.y, _maxBottom, _maxTop);
 
         transform.position = newPosition;
+    }
+
+    public void setCaptain(GameObject captainToSet)
+    {
+        captainPlayer = captainToSet;
     }
 }
