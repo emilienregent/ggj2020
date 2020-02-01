@@ -42,6 +42,8 @@ public class TileGrid : MonoBehaviour
     [SerializeField]
     private AnimationCurve _spawnDelayByDifficulty = new AnimationCurve();
 
+    private bool _damageShipStarted = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,20 +57,21 @@ public class TileGrid : MonoBehaviour
         {
             for(int j = 0; j < _height; j++)
             {
-                Random random = new Random();
-                float maximum = _tileSizeX / 2.0f;
-                float minimum = -1* _tileSizeX / 2.0f;
-                int randomXInt = Random.Range((int)(minimum*1000), (int)(maximum*1000));
-                float randomX = randomXInt / 1000.0f;
+                // code gardé de côté
+                //Random random = new Random();
+                //float maximum = _tileSizeX / 2.0f;
+                //float minimum = -1* _tileSizeX / 2.0f;
+                //int randomXInt = Random.Range((int)(minimum*1000), (int)(maximum*1000));
+                //float randomX = randomXInt / 1000.0f;
 
-                float maximumY = _tileSizeY / 2.0f;
-                float minimumY = -1 * _tileSizeY / 2.0f;
-                int randomYInt = Random.Range((int)(minimumY * 1000), (int)(maximumY * 1000));
-                float randomY = randomXInt / 1000.0f;
+                //float maximumY = _tileSizeY / 2.0f;
+                //float minimumY = -1 * _tileSizeY / 2.0f;
+                //int randomYInt = Random.Range((int)(minimumY * 1000), (int)(maximumY * 1000));
+                //float randomY = randomXInt / 1000.0f;
 
                 Vector3 position = new Vector3(
-                    transform.position.x + _tileSizeX * i + randomX, 
-                    transform.position.y + _tileSizeY * j + randomY, 
+                    transform.position.x + _tileSizeX * i, 
+                    transform.position.y + _tileSizeY * j, 
                     0
                 );
 
@@ -82,12 +85,21 @@ public class TileGrid : MonoBehaviour
 
         _countEmptyTiles = _width * _height;
 
-        StartCoroutine("DamageShip");
+    }
+
+    public void StartDamageShip()
+    {
+        if(_damageShipStarted == false && GameManager.instance.currentGameState == GameManager.enumGameState.Game)
+        {
+            _damageShipStarted = true;
+            StartCoroutine("DamageShip");
+        }
     }
 
     private IEnumerator DamageShip() {
         while(true)
         {
+
             float difficulty = _difficultyByTime.Evaluate(Time.timeSinceLevelLoad / _playtimeTreshold);
 
             // From maximum delay (no difficulty) to minimum delay
@@ -96,7 +108,7 @@ public class TileGrid : MonoBehaviour
 
             yield return new WaitForSeconds(delay);
 
-            if(_availableTiles.Count > 0)
+            if (_availableTiles.Count > 0)
             {
                 int random = Random.Range(0, _availableTiles.Count - 1);
                 GameObject selectedTile = _availableTiles[random] as GameObject;
@@ -122,6 +134,7 @@ public class TileGrid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        StartDamageShip();
     }
 
     // Met à jour les Tiles dispo/pas dispo

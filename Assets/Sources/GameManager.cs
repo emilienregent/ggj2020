@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour
     public MenuController menuController;
 
     private PlayerInputManager _playerInputManager;
+
+    public enum enumGameState { Menu, Game, End };
+    public enumGameState currentGameState;
 
     public static GameManager instance
     {
@@ -55,6 +59,8 @@ public class GameManager : MonoBehaviour
     {
         _leftCorner = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         _rightCorner = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+        currentGameState = GameManager.enumGameState.Menu;
     }
 
     public void PlayerJoined(PlayerController player)
@@ -71,6 +77,17 @@ public class GameManager : MonoBehaviour
         PlayerController.Index--;
         Destroy(playerToDestroy.gameObject);
 
+    }
+
+    public void reloadGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+            reloadGame();
     }
 
 }
