@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance = null;
     private static object _lock = new object();
 
-    public GameObject playerToInstantiate;
     public PlayerController[] players = new PlayerController[4];
 
     public MenuController menuController;
@@ -56,7 +55,6 @@ public class GameManager : MonoBehaviour
     {
         _leftCorner = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         _rightCorner = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-        _playerInputManager = playerToInstantiate.GetComponent<PlayerInputManager>();
     }
 
     public void PlayerJoined(PlayerController player)
