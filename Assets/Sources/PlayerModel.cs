@@ -100,34 +100,6 @@ public class PlayerModel : MonoBehaviour
             }
         }
 
-        // bouton de prise de position
-        //if (gamepad.buttonSouth.wasPressedThisFrame)
-        //{
-        //    if (currentJob == Jobs.None)
-        //    {
-        //        Collider2D myBoxCollider = GetComponent<Collider2D>();
-
-        //        // liste des colliders sur lesquels je suis
-        //        List<Collider2D> hitColliders = new List<Collider2D>();
-        //        myBoxCollider.OverlapCollider(actionContactFilter, hitColliders);
-
-        //        // Pour chaque collider sur lequel je suis...
-        //        int i = 0;
-        //        while (i < hitColliders.Count)
-        //        {
-        //            //Output all of the collider names
-        //            Debug.Log("Hit : " + hitColliders[i].name + i);
-        //            Debug.Log(hitColliders[i].gameObject);
-        //            // dégage la planche au loinnnn 
-        //            //hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
-        //            currentJob = hitColliders[i].gameObject.GetComponent<PositionModel>().job;
-        //            //Increase the number of Colliders in the array
-        //            i++;
-        //        }
-        //    } else {
-        //        currentJob = Jobs.None;
-        //    }
-        //}
     }
 
     public void checkJob()
@@ -142,14 +114,8 @@ public class PlayerModel : MonoBehaviour
         int i = 0;
         while (i < hitColliders.Count)
         {
-            //Output all of the collider names
-            Debug.Log("Hit : " + hitColliders[i].name + i);
-            Debug.Log(hitColliders[i].gameObject);
-            // dégage la planche au loinnnn 
-            //hitColliders[i].transform.position = new Vector2(-50.0f, -50.0f);
             currentJob = hitColliders[i].gameObject.GetComponent<PositionModel>().job;
 
-            //Increase the number of Colliders in the array
             i++;
             transform.Find("Icon").GetComponent<SpriteRenderer>().sprite = (Sprite)jobsImages[currentJob];
 
