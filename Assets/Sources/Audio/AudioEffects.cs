@@ -17,13 +17,15 @@ public static class AudioEffects
 
             yield return null;
         }
+
+        audioSource.volume = startVolume;
     }
 
     public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
     {
         float startVolume = audioSource.volume;
 
-        while (audioSource.volume > 0)
+        while (audioSource.volume > 0.1f)
         {
             audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
 

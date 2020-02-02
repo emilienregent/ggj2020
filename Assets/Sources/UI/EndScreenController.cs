@@ -10,11 +10,7 @@ public class EndScreenController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.instance.audioManager.PlayEndScreenMusic();
+        GameManager.instance.audioManager.PlayEndScreenMusic(0.5f);
     }
 
-    private void OnDisable()
-    {
-        GameManager.instance.audioManager.Stop(3f);
-    }
 }

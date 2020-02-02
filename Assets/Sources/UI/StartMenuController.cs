@@ -25,7 +25,7 @@ public class StartMenuController : MonoBehaviour
 
     }
 
-    private void OnEnable()
+    private void Start()
     {
         GameManager.instance.audioManager.PlayStartScreenMusic(1f);
     }
