@@ -78,6 +78,32 @@ public class PlayerAudioController : MonoBehaviour
                 }
             }
 
+            if (clipToPlay == null && GameManager.instance.itemMalusManager.inGameItemsCount > 0)
+            {
+                if (RockItemVoice.Count > 0 && Random.Range(1, 3) == 1) // 33% de chance d'avoir un voice fx
+                {
+                    clipToPlay = availableRockItemVoice[Random.Range(0, availableRockItemVoice.Count)];
+                    availableRockItemVoice.Remove(clipToPlay);
+                    if (availableRockItemVoice.Count == 0)
+                    {
+                        availableRockItemVoice = RockItemVoice;
+                    }
+                }
+            }
+
+            if (clipToPlay == null && GameManager.instance.itemBonusManager.inGameItemsCount > 0)
+            {
+                if (PlankItemVoice.Count > 0 && Random.Range(1, 3) == 1) // 33% de chance d'avoir un voice fx
+                {
+                    clipToPlay = availablePlankItemVoice[Random.Range(0, availablePlankItemVoice.Count)];
+                    availablePlankItemVoice.Remove(clipToPlay);
+                    if (availablePlankItemVoice.Count == 0)
+                    {
+                        availablePlankItemVoice = PlankItemVoice;
+                    }
+                }
+            }
+
             if (clipToPlay != null)
             {
                 audioSourceVoice.clip = clipToPlay;
