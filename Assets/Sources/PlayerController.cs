@@ -62,18 +62,16 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnDoAction() {
-        Debug.Log("PRESS A");
+        Debug.Log("OnDoAction : Do something");
     }
 
     private void OnActionPressed()
     {
-        Debug.Log("startA");
         model.actionStart();
     }
 
     private void OnActionReleased()
     {
-        Debug.Log("stopA");
         model.actionStop();
     }
 

@@ -29,10 +29,13 @@ public class PlayerModel : MonoBehaviour
     public Animator animator { get { return _animator; } }
     public SpriteRenderer sprite { get { return _sprite; } }
 
+    private PlayerAudioController _audioController;
+
     private void Awake()
     {
         _sprite = GetComponentInChildren<SpriteRenderer>();
         _animator = GetComponentInChildren<Animator>();
+        _audioController = GetComponentInChildren<PlayerAudioController>();
     }
 
     // Start is called before the first frame update
@@ -95,8 +98,7 @@ public class PlayerModel : MonoBehaviour
                 Tile hitTile = hitColliders[i].transform.gameObject.GetComponent<Tile>();
                 if (!!hitTile) 
                 {
-                hitTile.SetUnderRepair(true);
-
+                    hitTile.SetUnderRepair(true);
                 }
                 i++;
             }
@@ -339,6 +341,8 @@ public class PlayerModel : MonoBehaviour
         {
             PlayAnimation("BailingOut", enable);
         }
+
+        _audioController.Play(currentJob);
     }
 
     private void StopCurrentAnimation()
