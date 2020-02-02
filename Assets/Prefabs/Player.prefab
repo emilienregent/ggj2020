@@ -649,8 +649,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4a74a971f7facae478a5bbe33515e3f9, type: 3}
   - {fileID: 8300000, guid: b6d2a51f14ad0e34da58d63da5b8ac59, type: 3}
   - {fileID: 8300000, guid: 055e762cbbc1ef348acf6f631938dd3e, type: 3}
-  TurnLeftSFX: {fileID: 0}
-  TurnRightSFX: {fileID: 0}
+  TurnLeftSFX: {fileID: 8300000, guid: 9a2358619a3a6e54e8b8f0e9d13ce322, type: 3}
+  TurnRightSFX: {fileID: 8300000, guid: cf5a78a29ffd5d443a9365b7063054cc, type: 3}
   audioSource: {fileID: 0}
 --- !u!1 &6232282443956199036
 GameObject:

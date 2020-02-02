@@ -153,6 +153,7 @@ public class PlayerModel : MonoBehaviour
             setCurrentJob(Jobs.None);
             setBubbleIcon(null);
             transform.parent.GetComponent<BoatController>().setCaptain(null);
+            _audioController.Stop();
         }
         if (currentJob == Jobs.Repair)
         {
@@ -336,6 +337,7 @@ public class PlayerModel : MonoBehaviour
         else if (currentJob == Jobs.Repair)
         {
             PlayAnimation("Repairing", enable);
+            _audioController.Play(currentJob);
         }
         else if (currentJob == Jobs.Direction)
         {
@@ -346,8 +348,6 @@ public class PlayerModel : MonoBehaviour
         {
             PlayAnimation("BailingOut", enable);
         }
-
-        _audioController.Play(currentJob);
     }
 
     private void StopCurrentAnimation()
@@ -371,6 +371,10 @@ public class PlayerModel : MonoBehaviour
     public void SetAnimationValue(string parameter, float value)
     {
         _animator.SetFloat(parameter, value);
+        if(parameter == "Direction")
+        {
+            _audioController.PlayTurnDirection(value);
+        }
     }
 
     public Jobs getCurrentJob()
