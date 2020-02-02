@@ -5,11 +5,13 @@ using UnityEngine;
 public class FloatingDamage : MonoBehaviour
 {
     private TileGrid _grid;
+    Camera _camera;
 
     // Start is called before the first frame update
     void Start()
     {
         _grid = transform.parent.GetComponentInChildren<TileGrid>();
+        _camera = Camera.main;
     }
 
     // Update is called once per frame
@@ -23,7 +25,8 @@ public class FloatingDamage : MonoBehaviour
         if (col.gameObject.tag == "Reef")
         {
             _grid.doDamage();
-            //add animation feedback
+
+            _camera.GetComponent<CameraShakeBehaviour>().Shake();
         }
     }
 }
