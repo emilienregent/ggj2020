@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResourcesCounter : MonoBehaviour
+public class InventoryController : MonoBehaviour
 {
     public Text countText;
     // Start is called before the first frame update

@@ -11,11 +11,15 @@ public class GameManager : MonoBehaviour
 
     public PlayerController[] players = new PlayerController[4];
 
-    public MenuController menuController;
+    public StartMenuController startMenuController;
+    public EndScreenController endScreenController;
 
     private PlayerInputManager _playerInputManager;
 
-    public enum enumGameState { Menu, Game, End };
+    // Game Elements
+    public BoatController ship;
+
+    public enum enumGameState { Menu, Game, GameOver, End };
     public enumGameState currentGameState;
 
     public static GameManager instance
@@ -66,17 +70,7 @@ public class GameManager : MonoBehaviour
     public void PlayerJoined(PlayerController player)
     {
         _instance.players[player.currentPlayerIndex] = player;
-        menuController.PlayerJoin();
-    }
-
-    public void PlayerLeft(int index)
-    {
-        Debug.Log(index);
-        PlayerController playerToDestroy = _instance.players[index];
-        _instance.players[index] = null;
-        PlayerController.Index--;
-        Destroy(playerToDestroy.gameObject);
-
+        startMenuController.PlayerJoin();
     }
 
     public void reloadGame()
@@ -85,9 +79,13 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameOver() {
-        currentGameState = GameManager.enumGameState.End;
+        currentGameState = GameManager.enumGameState.GameOver;
+    }
 
-        Debug.Log("GAME OVER");
+    public void EndGame()
+    {
+        currentGameState = GameManager.enumGameState.End;
+        endScreenController.gameObject.SetActive(true);
     }
 
     public void Update()

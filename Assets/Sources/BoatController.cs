@@ -36,6 +36,27 @@ public class BoatController : MonoBehaviour
         float transformAngleZ = transform.rotation.eulerAngles.z - 180;
 
         Vector3 newPosition = transform.position + (Vector3.down * Mathf.Sin(transformAngleZ * Mathf.Deg2Rad) * _speed * Time.deltaTime);
+
+        // Cas particulier du end game
+        if (
+            GameManager.instance.currentGameState == GameManager.enumGameState.GameOver ||
+            GameManager.instance.currentGameState == GameManager.enumGameState.End
+        )
+        {
+            Vector3 moveVectorBackward = new Vector3(-0.8f, 0, 0);
+            transform.position = transform.position + (moveVectorBackward * _speed * Time.deltaTime);
+
+            rotation.z += Quaternion.Euler(new Vector3(0f, 0f, _rotationSpeed * Time.deltaTime)).z;
+            transform.rotation = rotation;
+
+            if(transform.position.x < -18f && GameManager.instance.currentGameState != GameManager.enumGameState.End)
+            {
+                GameManager.instance.EndGame();
+            }
+
+            return;
+        }
+
         newPosition.y = Mathf.Clamp(newPosition.y, _maxBottom, _maxTop);
 
         transform.position = newPosition;

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class MenuController : MonoBehaviour
+public class StartMenuController : MonoBehaviour
 {
     public Text TimerTextUI;
     public GameObject buttonJoin;
