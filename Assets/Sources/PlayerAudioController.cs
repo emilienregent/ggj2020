@@ -78,7 +78,7 @@ public class PlayerAudioController : MonoBehaviour
                 }
             }
 
-            if(clipToPlay != null)
+            if (clipToPlay != null)
             {
                 audioSourceVoice.clip = clipToPlay;
                 audioSourceVoice.Play();

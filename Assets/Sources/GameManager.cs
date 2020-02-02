@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public StartMenuController startMenuController;
     public EndScreenController endScreenController;
+    public ItemBonusManager itemBonusManager;
+    public ItemMalusManager itemMalusManager;
 
     public AudioManager audioManager;
 

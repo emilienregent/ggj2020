@@ -23,6 +23,8 @@ public class ItemManager : MonoBehaviour
     private List<ItemController> availableItems = new List<ItemController>();
     private Dictionary<int, ItemController> inGameItems = new Dictionary<int, ItemController>();
 
+    public int inGameItemsCount { get { return inGameItems.Count; } }
+
     private void Start()
     {
         StartCoroutine("SpawnItems");
