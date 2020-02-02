@@ -12,6 +12,7 @@ public class PlayerAudioController : MonoBehaviour
     public AudioClip TurnLeftSFX;
     public AudioClip TurnRightSFX;
     public AudioClip BailOutSFX;
+    public AudioClip PressButtonSFX;
 
     // Voices
     public List<AudioClip> BrokenTileVoice;
@@ -77,7 +78,13 @@ public class PlayerAudioController : MonoBehaviour
         }
     }
 
-    public void PlaySFX(Jobs currentJob)
+    public void PlayInputSFX()
+    {
+        audioSourceSFX.clip = PressButtonSFX;
+        audioSourceSFX.Play();
+    }
+
+    public void PlayJobSFX(Jobs currentJob)
     {
         switch(currentJob)
         {

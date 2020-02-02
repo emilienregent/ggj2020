@@ -5,27 +5,27 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
 
-    private AudioSource _audioSource;
+    public AudioSource audioSource;
 
     public AudioClip startScreenMusic;
     public AudioClip endScreenMusic;
 
-    private void Awake()
-    {
-        _audioSource = GetComponent<AudioSource>();
-    }
+    //private void Start()
+    //{
+    //    _audioSource = GetComponent<AudioSource>();
+    //}
 
     public void PlayStartScreenMusic(float delay = 0f)
     {
-        _audioSource.Stop();
-        _audioSource.clip = startScreenMusic;
+        audioSource.Stop();
+        audioSource.clip = startScreenMusic;
         Play(delay);
     }
 
     public void PlayEndScreenMusic(float delay = 0f)
     {
-        _audioSource.Stop();
-        _audioSource.clip = endScreenMusic;
+        audioSource.Stop();
+        audioSource.clip = endScreenMusic;
         Play(delay);
     }
 
@@ -33,11 +33,11 @@ public class AudioManager : MonoBehaviour
     {
         if (delay > 0f)
         {
-            StartCoroutine(AudioEffects.FadeIn(_audioSource, delay));
+            StartCoroutine(AudioEffects.FadeIn(audioSource, delay));
         }
         else
         {
-            _audioSource.Play();
+            audioSource.Play();
         }
     }
 
@@ -45,10 +45,10 @@ public class AudioManager : MonoBehaviour
     {
         if(delay > 0f)
         {
-            StartCoroutine(AudioEffects.FadeOut(_audioSource, delay));
+            StartCoroutine(AudioEffects.FadeOut(audioSource, delay));
         } else
         {
-            _audioSource.Stop();
+            audioSource.Stop();
         }
     }
 

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969330d987a21df4b900f818cca9f7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 7987759591280678204}
   startScreenMusic: {fileID: 8300000, guid: 86b272f50ccd7124793e3f90da890141, type: 3}
   endScreenMusic: {fileID: 8300000, guid: 7c0571e5c2ff8cc4f852ac9bfa195ac3, type: 3}
 --- !u!82 &7987759591280678204
