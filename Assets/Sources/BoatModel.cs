@@ -9,8 +9,11 @@ public class BoatModel : MonoBehaviour
 
     [SerializeField]
     private float _health;
+    [SerializeField]
+    private SpriteRenderer _shadowRenderer;
 
     public Sprite[] boatSprites;
+    public Sprite[] shadowSprites;
 
     public float shipHealthDestructedLimit = 20f; // 80% de dégâts
     public float shipHealthOKLimit = 60f; // 40% de dégâts
@@ -50,5 +53,6 @@ public class BoatModel : MonoBehaviour
           spriteIndex = 2;
         }
         _spriteRenderer.sprite = boatSprites[spriteIndex];
+        _shadowRenderer.sprite = shadowSprites[spriteIndex];
     }
 }
