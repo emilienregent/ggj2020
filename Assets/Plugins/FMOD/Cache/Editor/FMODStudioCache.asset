@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: event:/Music/Musique_Menu
   guid: 31f23f6390701d4db72be838ced4a77e
   Banks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -38,7 +38,7 @@ MonoBehaviour:
   Path: event:/Music/Jingle_Loose
   guid: f54671106843e043b1530b25719b0342
   Banks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -46,6 +46,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 20500
+--- !u!114 &-8163634925179885504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Dialogue/2D/Phrase_r\xE9paration_planch\xE9"
+  m_EditorClassIdentifier: 
+  Path: "event:/Dialogue/2D/Phrase_r\xE9paration_planch\xE9"
+  guid: 8ac7d004f688294ba94f3fc7093785a7
+  Banks:
+  - {fileID: -4422547899015602907}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2336
 --- !u!114 &-7573230979653444606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,8 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Dialogue/3D/Phrase_Flaque
   guid: 36b367738b07264b8411396dea1000a8
-  Banks:
-  - {fileID: -5574863520996517037}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -83,8 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Dialogue/3D/Phrase_A_tribord
   guid: 0aa2941f1db05f46aac7aa72b6397e66
-  Banks:
-  - {fileID: -5574863520996517037}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -128,6 +149,29 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-6990935740442087289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Dialogue/2D/Phrase_peche_gauche
+  m_EditorClassIdentifier: 
+  Path: event:/Dialogue/2D/Phrase_peche_gauche
+  guid: 3f3c21d9ac0d14498527b2994860e1f3
+  Banks:
+  - {fileID: -4422547899015602907}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2336
 --- !u!114 &-6633774069805354599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,12 +221,12 @@ MonoBehaviour:
   Path: "event:/SD/d\xE9placement_bateau"
   guid: efe959930fefa74b95b8a4a90c2f5dbf
   Banks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 180132564915900327}
+  - {fileID: 714822706941606803}
   MinDistance: 1
   MaxDistance: 20
   Length: 55000
@@ -203,7 +247,30 @@ MonoBehaviour:
   lastModified: 637162349853640583
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
+--- !u!114 &-5477094882960754343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Dialogue/2D/Phrase_De_Bienvenue
+  m_EditorClassIdentifier: 
+  Path: event:/Dialogue/2D/Phrase_De_Bienvenue
+  guid: 25330442ef8bf64f94bd78f94257561f
+  Banks:
+  - {fileID: -4422547899015602907}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2336
 --- !u!114 &-5281734036121107939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +288,47 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &-4422547899015602907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Global Game Jam 2020 Session Fmod/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637162422164365766
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-3662490227021970116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Dialogue/2D/Phrase_peche_droite
+  m_EditorClassIdentifier: 
+  Path: event:/Dialogue/2D/Phrase_peche_droite
+  guid: 6e1eb244dc959a47a95c93755e221a1e
+  Banks:
+  - {fileID: -4422547899015602907}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2336
 --- !u!114 &-3640854381296757940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +344,7 @@ MonoBehaviour:
   Path: "event:/SD/Lanc\xE9 canne \xE0 peche"
   guid: 98027d24c9f4f84282047e5062c403a3
   Banks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -259,7 +367,7 @@ MonoBehaviour:
   Path: event:/SD/Flood
   guid: eacd6d187847ee44a9e436452676001a
   Banks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -282,7 +390,7 @@ MonoBehaviour:
   Path: event:/SD/gouvernail
   guid: 34ccf360a89a3e4aa6b0426e73abc1cf
   Banks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -324,6 +432,29 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-1871197260912719203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Dialogue/2D/Phrase_selection_personnage
+  m_EditorClassIdentifier: 
+  Path: event:/Dialogue/2D/Phrase_selection_personnage
+  guid: 7f7e12100e84f1499432aee2013501e5
+  Banks:
+  - {fileID: -4422547899015602907}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2336
 --- !u!114 &-1686220354630154450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,7 +470,7 @@ MonoBehaviour:
   Path: event:/SD/Bateau_qui_Coule
   guid: 8e65d6a83736bb40ba16ce617a968139
   Banks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -430,11 +561,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Global Game Jam 2020 Session Fmod/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637162349854250980
+  lastModified: 637162422164415958
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2304
+    Value: 2352
   Exists: 1
 --- !u!114 &-260590634255072161
 MonoBehaviour:
@@ -468,41 +599,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -416869189467598344}
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   EditorEvents:
   - {fileID: 7767519868259579578}
-  - {fileID: -7571613919128033870}
-  - {fileID: 3468059883636405377}
-  - {fileID: 8569306755358491523}
   - {fileID: 1789129287062974699}
-  - {fileID: 3215604425932642183}
   - {fileID: -2378517812146961510}
-  - {fileID: -7573230979653444606}
   - {fileID: 7033385772137224774}
-  - {fileID: 7250621610777203434}
   - {fileID: 4187239028733790761}
-  - {fileID: 6671396795498445406}
   - {fileID: 4261189839432047098}
-  - {fileID: 8489062474418620521}
   - {fileID: -1686220354630154450}
   - {fileID: -3640854381296757940}
-  - {fileID: 1112770965614281988}
   - {fileID: 2520477686088885139}
   - {fileID: -3099612768162657810}
-  - {fileID: 3412373003190822009}
   - {fileID: -6373266983762276793}
-  - {fileID: 1220159945187567292}
   - {fileID: 9171524367343742959}
   - {fileID: -9202785726279347336}
   - {fileID: -8630013836614128991}
+  - {fileID: -5477094882960754343}
+  - {fileID: 2038335124802189755}
+  - {fileID: -6990935740442087289}
+  - {fileID: 8093822022938400831}
+  - {fileID: 3733297599123593311}
+  - {fileID: 6131648812292285647}
+  - {fileID: -3662490227021970116}
+  - {fileID: -1871197260912719203}
+  - {fileID: -8163634925179885504}
+  - {fileID: 7264065133664990038}
+  - {fileID: 6637228068533220152}
+  - {fileID: 3009169008154213194}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   StringsBanks:
   - {fileID: -416869189467598344}
-  stringsBankWriteTime: 637162349854250980
+  stringsBankWriteTime: 637162422164415958
   cacheVersion: 3
 --- !u!114 &180132564915900327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: "parameter:/d\xE9placement_bateau/vitesse"
+  m_EditorClassIdentifier: 
+  Name: vitesse
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &714822706941606803
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -550,8 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Dialogue/3D/Phrase_Eau
   guid: bb7b7016966a85449bf9e86bdfe2e5af
-  Banks:
-  - {fileID: -5574863520996517037}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -573,8 +721,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Dialogue/3D/Phrase_Filet
   guid: f21637d6baa5aa4fac809e0f6922f79d
-  Banks:
-  - {fileID: -5574863520996517037}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -597,7 +744,7 @@ MonoBehaviour:
   Path: "event:/SD/r\xE9parations"
   guid: 297cf8f22ab5a64a92b75a9f6d8ffb55
   Banks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -605,6 +752,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3220
+--- !u!114 &2038335124802189755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Dialogue/2D/Phrase_flood
+  m_EditorClassIdentifier: 
+  Path: event:/Dialogue/2D/Phrase_flood
+  guid: 39b7f0ca52bd434f9f3f1743d05bd9c6
+  Banks:
+  - {fileID: -4422547899015602907}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2336
 --- !u!114 &2520477686088885139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +790,7 @@ MonoBehaviour:
   Path: "event:/SD/Impact_Roch\xE9"
   guid: c79eb4ebdd1c8045984c94991a22b1db
   Banks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -628,6 +798,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 4630
+--- !u!114 &3009169008154213194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Dialogue/2D/Phrase_peche
+  m_EditorClassIdentifier: 
+  Path: event:/Dialogue/2D/Phrase_peche
+  guid: d056538701d48f49bbc2f6a479d33b47
+  Banks:
+  - {fileID: -4422547899015602907}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2336
 --- !u!114 &3215604425932642183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,8 +835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Dialogue/3D/Phrase_A_Babord
   guid: 2ee00de1c670ad4ab228dbc66c13c255
-  Banks:
-  - {fileID: -5574863520996517037}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -665,8 +857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: "event:/Dialogue/3D/Phrase_Roch\xE9"
   guid: ec04651b4746394395207416c1ce6c3d
-  Banks:
-  - {fileID: -5574863520996517037}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -688,8 +879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Dialogue/2D/Phrase_de_Defaite
   guid: 11a03458620f524a8aeffd1aab1cbcf1
-  Banks:
-  - {fileID: -5574863520996517037}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -714,6 +904,29 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &3733297599123593311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Dialogue/2D/Phrase_Degat_navire
+  m_EditorClassIdentifier: 
+  Path: event:/Dialogue/2D/Phrase_Degat_navire
+  guid: 5ae24e1fd0733646b7d0bd8ebf80c9b9
+  Banks:
+  - {fileID: -4422547899015602907}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2336
 --- !u!114 &4187239028733790761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729,7 +942,7 @@ MonoBehaviour:
   Path: event:/SD/Ambiance
   guid: 6d486fd5acdf5e438db534056360fd68
   Banks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -752,7 +965,7 @@ MonoBehaviour:
   Path: event:/Music/Musique_Jeu
   guid: 7d1cbb7121a152419a627ba85e8ae784
   Banks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -796,6 +1009,29 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &6131648812292285647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Dialogue/2D/Phrase_troue_planch\xE9"
+  m_EditorClassIdentifier: 
+  Path: "event:/Dialogue/2D/Phrase_troue_planch\xE9"
+  guid: 5f9c5f83a151d54191441788eafc65c2
+  Banks:
+  - {fileID: -4422547899015602907}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2336
 --- !u!114 &6265089813025387111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,6 +1049,29 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 1
+--- !u!114 &6637228068533220152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Dialogue/2D/Phrase_roch\xE9_droite"
+  m_EditorClassIdentifier: 
+  Path: "event:/Dialogue/2D/Phrase_roch\xE9_droite"
+  guid: c439385f761ef046b096cd5b5eef2af9
+  Banks:
+  - {fileID: -4422547899015602907}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2336
 --- !u!114 &6671396795498445406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,8 +1086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: "event:/Dialogue/3D/Phrase_R\xE9paration"
   guid: 70ba8a08292bf64dac705115e2c3f942
-  Banks:
-  - {fileID: -5574863520996517037}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -851,7 +1109,7 @@ MonoBehaviour:
   Path: "event:/SD/cr\xE9ation_trou"
   guid: 6817d7867881684eab144f04cc3461aa
   Banks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -873,8 +1131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Dialogue/3D/Selection_Pirate
   guid: 684d84cc40b8ec489eb47af529fa7ac5
-  Banks:
-  - {fileID: -5574863520996517037}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -882,6 +1139,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &7264065133664990038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Dialogue/2D/Phrase_roch\xE9_gauche"
+  m_EditorClassIdentifier: 
+  Path: "event:/Dialogue/2D/Phrase_roch\xE9_gauche"
+  guid: 8c4d0ab1bdf6a94d985edba6b84825b9
+  Banks:
+  - {fileID: -4422547899015602907}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2336
 --- !u!114 &7767519868259579578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,7 +1177,7 @@ MonoBehaviour:
   Path: "event:/SD/r\xE9cup\xE9ration_ressource"
   guid: 02cd713882a7fc40baa708f57f8d64bc
   Banks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -905,6 +1185,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 4625
+--- !u!114 &8093822022938400831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Dialogue/2D/Phrase_roch\xE9"
+  m_EditorClassIdentifier: 
+  Path: "event:/Dialogue/2D/Phrase_roch\xE9"
+  guid: 3f8c290caf801e4ab8e0d355a59563c9
+  Banks:
+  - {fileID: -4422547899015602907}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2336
 --- !u!114 &8489062474418620521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -919,8 +1222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Dialogue/3D/Phrase_Ressource
   guid: 8d71f5b7566d094aa2135ac226c72d6f
-  Banks:
-  - {fileID: -5574863520996517037}
+  Banks: []
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -942,8 +1244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Dialogue/2D/Phrase_de_Bienvenue
   guid: 25330442ef8bf64f94bd78f94257561f
-  Banks:
-  - {fileID: -5574863520996517037}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -966,7 +1267,7 @@ MonoBehaviour:
   Path: event:/SD/UI_Button_Press_Start
   guid: b8b1f36ebcb3024ea8bfa72a29a7afef
   Banks:
-  - {fileID: -5574863520996517037}
+  - {fileID: -4422547899015602907}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1

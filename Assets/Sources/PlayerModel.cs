@@ -153,7 +153,7 @@ public class PlayerModel : MonoBehaviour
             setCurrentJob(Jobs.None);
             setBubbleIcon(null);
             transform.parent.GetComponent<BoatController>().setCaptain(null);
-            _audioController.Stop();
+            _audioController.StopSFX();
         }
         if (currentJob == Jobs.Repair)
         {
@@ -337,7 +337,7 @@ public class PlayerModel : MonoBehaviour
         else if (currentJob == Jobs.Repair)
         {
             PlayAnimation("Repairing", enable);
-            _audioController.Play(currentJob);
+            _audioController.PlaySFX(currentJob);
         }
         else if (currentJob == Jobs.Direction)
         {
@@ -347,7 +347,7 @@ public class PlayerModel : MonoBehaviour
         else if (currentJob == Jobs.BailOut)
         {
             PlayAnimation("BailingOut", enable);
-            _audioController.Play(currentJob);
+            _audioController.PlaySFX(currentJob);
         }
     }
 
