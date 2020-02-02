@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 610630102280843443}
   - component: {fileID: 8763744098102319680}
   - component: {fileID: -9084910260656783274}
-  - component: {fileID: 3018072252028612630}
+  - component: {fileID: 7839483271323742429}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -96,6 +96,8 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   actionDuration: 3
+  fishDuration: 2
+  audioController: {fileID: 0}
 --- !u!114 &610630102280843443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,7 +752,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 055e762cbbc1ef348acf6f631938dd3e, type: 3}
   TurnLeftSFX: {fileID: 8300000, guid: 9a2358619a3a6e54e8b8f0e9d13ce322, type: 3}
   TurnRightSFX: {fileID: 8300000, guid: cf5a78a29ffd5d443a9365b7063054cc, type: 3}
-  BailOutSFX: {fileID: 8300000, guid: fac8abf632359b742839bb54439ccf72, type: 3}
+  BailOutSFX: {fileID: 8300000, guid: 2f910c78a1bd4cd4e8533b2a9ac9d0bd, type: 3}
   PressButtonSFX: {fileID: 8300000, guid: dc12234a0ee80344e882909218a61640, type: 3}
   BrokenTileVoice:
   - {fileID: 8300000, guid: 414b008e67125bc439c9d0bf288964d3, type: 3}
@@ -760,9 +762,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 653f47b4ea455874880f31752fe115e4, type: 3}
   - {fileID: 8300000, guid: 2be7f7b9064320f43b82e0354eae1fc0, type: 3}
   - {fileID: 8300000, guid: 9e1ec0d9fa494134fa02444b06c1eaa9, type: 3}
-  - {fileID: 8300000, guid: 5867307c514b1ed4aa4c127278a54df6, type: 3}
   - {fileID: 8300000, guid: 887a44ee6a91b754da80094539f3d543, type: 3}
   - {fileID: 8300000, guid: 29845376be0c31f45a929634ba811f79, type: 3}
+  RockItemVoice: []
+  PlankItemVoice: []
   audioSourceSFX: {fileID: 2852827415651888121}
   audioSourceVoice: {fileID: 6291875406219854200}
 --- !u!1 &6232282443956199036
