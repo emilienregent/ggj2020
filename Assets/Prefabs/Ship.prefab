@@ -52,7 +52,7 @@ MonoBehaviour:
   _countFloodedTiles: 0
   tilePrefab: {fileID: 5873487977653062813, guid: 232cc10859d3b4c4cbc547896643781d,
     type: 3}
-  _playtimeTreshold: 20
+  _playtimeTreshold: 60
   _minimumDelay: 1
   _maximumDelay: 5
   _difficultyByTime:
