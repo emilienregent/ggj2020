@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public StartMenuController startMenuController;
     public EndScreenController endScreenController;
 
+    public AudioManager audioManager;
+
     private PlayerInputManager _playerInputManager;
 
     // Game Elements
