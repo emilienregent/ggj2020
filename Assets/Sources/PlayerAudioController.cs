@@ -14,11 +14,17 @@ public class PlayerAudioController : MonoBehaviour
     public AudioClip BailOutSFX;
     public AudioClip PressButtonSFX;
 
-    // Voices
+    // VOICES
+    // TILES
     public List<AudioClip> BrokenTileVoice;
     private List<AudioClip> availableBrokenTileVoice;
     public List<AudioClip> FloodedTileVoice;
     private List<AudioClip> availableFloodedTileVoice;
+    //ITEMS
+    public List<AudioClip> RockItemVoice;
+    private List<AudioClip> availableRockItemVoice;
+    public List<AudioClip> PlankItemVoice;
+    private List<AudioClip> availablePlankItemVoice;
 
     // AudioSources
     public AudioSource audioSourceSFX;
@@ -33,6 +39,8 @@ public class PlayerAudioController : MonoBehaviour
     {
         availableBrokenTileVoice = BrokenTileVoice;
         availableFloodedTileVoice = FloodedTileVoice;
+        availableRockItemVoice = RockItemVoice;
+        availablePlankItemVoice = PlankItemVoice;
     }
 
     private void Update()
