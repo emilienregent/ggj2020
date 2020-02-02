@@ -96,6 +96,14 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   itemPrefabs:
+  - {fileID: 8075000233677767547, guid: bbd8c642f6a5649b09168eda56c124a4, type: 3}
+  - {fileID: 8075000233677767547, guid: bbd8c642f6a5649b09168eda56c124a4, type: 3}
+  - {fileID: 8213421318410477090, guid: edf50ac31e9504bafbb2c99e4392f721, type: 3}
+  - {fileID: 8213421318410477090, guid: edf50ac31e9504bafbb2c99e4392f721, type: 3}
+  - {fileID: 8213421318410477090, guid: edf50ac31e9504bafbb2c99e4392f721, type: 3}
+  - {fileID: 8213421318410477090, guid: edf50ac31e9504bafbb2c99e4392f721, type: 3}
+  - {fileID: 8213421318410477090, guid: edf50ac31e9504bafbb2c99e4392f721, type: 3}
+  - {fileID: 8213421318410477090, guid: edf50ac31e9504bafbb2c99e4392f721, type: 3}
   - {fileID: 8213421318410477090, guid: edf50ac31e9504bafbb2c99e4392f721, type: 3}
   - {fileID: 8213421318410477090, guid: edf50ac31e9504bafbb2c99e4392f721, type: 3}
 --- !u!114 &2044339555
@@ -163,5 +171,5 @@ MonoBehaviour:
     m_RotationOrder: 4
   itemPrefabs:
   - {fileID: 4593944381216188472, guid: 6d76a6de8a35ac94ea1d3becdebc73b8, type: 3}
-  - {fileID: 4593944381216188472, guid: 9ddb296286612ad48b1af0e71744eaa9, type: 3}
-  - {fileID: 4593944381216188472, guid: c60b080a69fdf52478945bf0d91f8ea6, type: 3}
+  - {fileID: 6083629197393423195, guid: 91f337d1a4b874118814d0c46e1521c6, type: 3}
+  - {fileID: 902092917690399417, guid: dcb6e724d65ab4cae9d1200d76051331, type: 3}

@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockWithPhysics
       objectReference: {fileID: 0}
+    - target: {fileID: 2879762176377551874, guid: edf50ac31e9504bafbb2c99e4392f721,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2893493649714567986, guid: edf50ac31e9504bafbb2c99e4392f721,
         type: 3}
       propertyPath: m_LocalPosition.x
