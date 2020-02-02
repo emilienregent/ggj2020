@@ -10,8 +10,7 @@ public enum TileType {
 
 public class Tile : MonoBehaviour {
 
-    [SerializeField]
-    Sprite[] tileSprites;
+    public Sprite[] tileSprites;
 
     [SerializeField]
     private TileGrid _grid;

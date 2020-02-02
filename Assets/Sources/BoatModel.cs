@@ -10,13 +10,10 @@ public class BoatModel : MonoBehaviour
     [SerializeField]
     private float _health;
 
-    [SerializeField]
-    Sprite[] boatSprites;
+    public Sprite[] boatSprites;
 
-    [SerializeField]
-    int shipHealthDestructedLimit;
-    [SerializeField]
-    int shipHealthOKLimit;
+    public float shipHealthDestructedLimit = 20f; // 80% de dégâts
+    public float shipHealthOKLimit = 60f; // 40% de dégâts
 
     private SpriteRenderer _spriteRenderer;
 
