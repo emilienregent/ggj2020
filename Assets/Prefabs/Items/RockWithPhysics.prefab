@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1815610526856983639
+--- !u!1001 &138422749083557209
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 2879762176377551874, guid: edf50ac31e9504bafbb2c99e4392f721,
         type: 3}
       propertyPath: m_Name
-      value: RockRight
+      value: RockWithPhysics
       objectReference: {fileID: 0}
     - target: {fileID: 2893493649714567986, guid: edf50ac31e9504bafbb2c99e4392f721,
         type: 3}
@@ -67,16 +67,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7452824876476199812, guid: edf50ac31e9504bafbb2c99e4392f721,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7626072102457727616, guid: edf50ac31e9504bafbb2c99e4392f721,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 5396231385170846349, guid: da53f9490215c47dfb756f667a11337e,
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626072102457727616, guid: edf50ac31e9504bafbb2c99e4392f721,
         type: 3}
-    - target: {fileID: 8213421318410477090, guid: edf50ac31e9504bafbb2c99e4392f721,
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626072102457727616, guid: edf50ac31e9504bafbb2c99e4392f721,
         type: 3}
-      propertyPath: _speedOffset
-      value: 2
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edf50ac31e9504bafbb2c99e4392f721, type: 3}

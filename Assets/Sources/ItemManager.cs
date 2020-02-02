@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-    private static int inGameIndex = 0;
+    private int inGameIndex = 0;
     
     [SerializeField]
     private float _playtimeTreshold = 0f;
