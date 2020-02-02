@@ -8,6 +8,7 @@ public class PlayerAudioController : MonoBehaviour
     public List<AudioClip> RepairSFX;
     public AudioClip TurnLeftSFX;
     public AudioClip TurnRightSFX;
+    public AudioClip BailOutSFX;
     public AudioSource audioSource;
 
     private void Awake()
@@ -28,13 +29,14 @@ public class PlayerAudioController : MonoBehaviour
             case Jobs.Repair:
                 if (RepairSFX.Count > 0)
                 {
-                    audioSource.loop = false;
                     audioSource.clip = RepairSFX[Random.Range(0, RepairSFX.Count)];
                     audioSource.Play();
                 }
                 break;
 
             case Jobs.BailOut:
+                audioSource.clip = BailOutSFX;
+                audioSource.Play();
                 break;
 
             default:

@@ -347,6 +347,7 @@ public class PlayerModel : MonoBehaviour
         else if (currentJob == Jobs.BailOut)
         {
             PlayAnimation("BailingOut", enable);
+            _audioController.Play(currentJob);
         }
     }
 
