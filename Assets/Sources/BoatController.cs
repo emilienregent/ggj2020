@@ -20,7 +20,8 @@ public class BoatController : MonoBehaviour
     private float _maxBottom = -4f;
 
     [SerializeField]
-    private GameObject captainPlayer;
+    private GameObject _captainPlayer;
+    public GameObject captainPlayer { get { return _captainPlayer; } }
 
     // Start is called before the first frame update
     void Start()
@@ -74,10 +75,10 @@ public class BoatController : MonoBehaviour
         }
 
         // personne a la barre, monsieur!
-        if (captainPlayer == null)
+        if (_captainPlayer == null)
             return;
 
-        Vector2 move = captainPlayer.GetComponent<PlayerController>().move;
+        Vector2 move = _captainPlayer.GetComponent<PlayerController>().move;
         Vector3 moveVector = new Vector3(move.x, move.y, 0);
         
         if(moveVector != Vector3.zero)
@@ -97,13 +98,16 @@ public class BoatController : MonoBehaviour
             }
             transform.rotation = rotation;
 
-            captainPlayer.GetComponent<PlayerModel>().SetAnimationValue("Direction", move.y);
+            _captainPlayer.GetComponent<PlayerModel>().SetAnimationValue("Direction", move.y);
         }
         
     }
 
     public void setCaptain(GameObject captainToSet)
     {
-        captainPlayer = captainToSet;
+        if(captainToSet == null || _captainPlayer == null)
+        {
+            _captainPlayer = captainToSet;
+        }
     }
 }

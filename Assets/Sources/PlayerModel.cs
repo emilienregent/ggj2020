@@ -108,6 +108,13 @@ public class PlayerModel : MonoBehaviour
             isInAction = true;
         } else // j'ai appuyé sur A, j'ai pas de taff, et je suis sur la zone du gouvernail, je deviens captain !
         {
+            BoatController boatController = transform.parent.GetComponent<BoatController>();
+
+            if(boatController.captainPlayer != null)
+            {
+                return;
+            } 
+
             Collider2D myBoxCollider = GetComponent<Collider2D>();
 
             // liste des colliders sur lesquels je suis
@@ -116,13 +123,14 @@ public class PlayerModel : MonoBehaviour
 
             // Pour chaque collider sur lequel je suis...
             int i = 0;
+            
             while (i < hitColliders.Count)
             {
                 if (hitColliders[i].gameObject.GetComponent<PositionModel>().job == Jobs.Direction)
                 {
                     setCurrentJob(Jobs.Direction);
                     setBubbleIcon((Sprite)jobsImages[currentJob]);
-                    transform.parent.GetComponent<BoatController>().setCaptain(gameObject);
+                    boatController.setCaptain(gameObject);
                     PlayJobAnimation(true);
                     break;
                 }
@@ -291,7 +299,7 @@ public class PlayerModel : MonoBehaviour
                 setBubbleIcon(null);
             }
 
-            if (colliderJob == Jobs.Direction && currentJob != Jobs.Direction)
+            if (colliderJob == Jobs.Direction && currentJob != Jobs.Direction && transform.parent.GetComponent<BoatController>().captainPlayer == null)
             {
                 setBubbleIcon((Sprite)jobsImages[colliderJob]);
             }
