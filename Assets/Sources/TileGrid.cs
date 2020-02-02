@@ -107,27 +107,32 @@ public class TileGrid : MonoBehaviour
                 _minimumDelay, _maximumDelay);
 
             yield return new WaitForSeconds(delay);
+            doDamage();
 
-            if (_availableTiles.Count > 0)
+        }
+    }
+
+    public void doDamage()
+    {
+        if (_availableTiles.Count > 0)
+        {
+            int random = Random.Range(0, _availableTiles.Count - 1);
+            GameObject selectedTile = _availableTiles[random] as GameObject;
+            TileType newType = selectedTile.GetComponent<Tile>().DoDamage();
+
+            switch (newType)
             {
-                int random = Random.Range(0, _availableTiles.Count - 1);
-                GameObject selectedTile = _availableTiles[random] as GameObject;
-                TileType newType = selectedTile.GetComponent<Tile>().DoDamage();
+                case TileType.BROKEN:
+                    _countEmptyTiles--;
+                    _countBrokenTiles++;
+                    break;
 
-                switch(newType)
-                {
-                    case TileType.BROKEN:
-                        _countEmptyTiles--;
-                        _countBrokenTiles++;
-                        break;
-
-                    case TileType.FLOODED:
-                        _countBrokenTiles--;
-                        _countFloodedTiles++;
-                        _availableTiles.RemoveAt(random);
-                        _unavailableTiles.Add(selectedTile);
-                        break;
-                }
+                case TileType.FLOODED:
+                    _countBrokenTiles--;
+                    _countFloodedTiles++;
+                    _availableTiles.RemoveAt(random);
+                    _unavailableTiles.Add(selectedTile);
+                    break;
             }
         }
     }
