@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8581253813491223974}
   - component: {fileID: 2044339554}
   - component: {fileID: 2044339555}
+  - component: {fileID: 8421688347383657719}
   m_Layer: 0
   m_Name: ItemManager
   m_TagString: Untagged
@@ -173,3 +174,32 @@ MonoBehaviour:
   - {fileID: 4593944381216188472, guid: 6d76a6de8a35ac94ea1d3becdebc73b8, type: 3}
   - {fileID: 6083629197393423195, guid: 91f337d1a4b874118814d0c46e1521c6, type: 3}
   - {fileID: 902092917690399417, guid: dcb6e724d65ab4cae9d1200d76051331, type: 3}
+--- !u!114 &8421688347383657719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8581253813491223969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14eae468dbd8a483cbace8f9eeeb36b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playtimeTreshold: 0
+  _minimumDelay: 3
+  _maximumDelay: 5
+  _difficultyByTime:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _spawnDelayByDifficulty:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  itemPrefabs:
+  - {fileID: 2537797072717451405, guid: 021adeeff2f58124786d31bef1ef17f5, type: 3}

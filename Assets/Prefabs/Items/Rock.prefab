@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemType: 0
-  _speedOffset: 3
+  _speedOffset: 0
 --- !u!61 &7452824876476199812
 BoxCollider2D:
   m_ObjectHideFlags: 0
