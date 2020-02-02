@@ -7,4 +7,12 @@ public class ItemMalusManager : ItemManager
     {
         GameManager.instance.itemMalusManager = this;
     }
+
+    public override void StartSpawnItems() 
+    {
+        if(GameManager.instance.currentGameState == GameManager.enumGameState.Game)
+        {
+            base.StartSpawnItems();
+        }
+    }
 }

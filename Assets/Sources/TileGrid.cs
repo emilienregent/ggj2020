@@ -97,6 +97,10 @@ public class TileGrid : MonoBehaviour
         if(_damageShipStarted == false && GameManager.instance.currentGameState == GameManager.enumGameState.Game)
         {
             _damageShipStarted = true;
+            if(PlayerController.Index > 1)
+            {
+                _minimumDelay = _minimumDelay / (PlayerController.Index * playerNumberImpact);
+            }
             StartCoroutine("DamageShip");
         }
     }
@@ -113,11 +117,7 @@ public class TileGrid : MonoBehaviour
     private IEnumerator DamageShip() {
         while(true)
         {
-            if (PlayerController.Index > 1)
-            {
-                _minimumDelay = _minimumDelay / (PlayerController.Index * playerNumberImpact);
-            }
-            float difficulty = _difficultyByTime.Evaluate(Time.timeSinceLevelLoad / _playtimeTreshold);
+            float difficulty = _difficultyByTime.Evaluate(GameManager.instance.playTime / _playtimeTreshold);
 
             // From maximum delay (no difficulty) to minimum delay
             float delay = Mathf.Clamp(

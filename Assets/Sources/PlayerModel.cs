@@ -21,6 +21,9 @@ public class PlayerModel : MonoBehaviour
     private float actionStartTime = 0;
     private bool isInAction = false;
     public float actionDuration = 1.5f;
+
+
+    public float fishDuration = 2f;
     private Sprite missingPlankImage;
 
     private Animator _animator = null;
@@ -30,6 +33,8 @@ public class PlayerModel : MonoBehaviour
     public SpriteRenderer sprite { get { return _sprite; } }
 
     public PlayerAudioController audioController;
+
+    Tile _hitTile;
 
     private void Awake()
     {
@@ -64,9 +69,10 @@ public class PlayerModel : MonoBehaviour
     {
         if (isInAction == true)
         {
+            float duration = currentJob == Jobs.Fish1 || currentJob == Jobs.Fish2 ? fishDuration : actionDuration;
             // le bloc suivant gère la gauge
             float actionTime = (Time.time - actionStartTime);
-            float progress = actionTime / actionDuration;
+            float progress = actionTime / duration;
             transform.Find("Gauge/gaugeFill").GetComponent<Transform>().localScale = new Vector3(125.0f * progress, 10.0f, 1.0f);
             if (progress > 1)
             {
@@ -82,28 +88,16 @@ public class PlayerModel : MonoBehaviour
     {
         actionStartTime = Time.time;
 
-        if (currentJob == Jobs.Repair)
+        if (currentJob == Jobs.Repair || currentJob == Jobs.BailOut)
         {
-            if(ResourcesModel.getStock() <= 0)
+            if(ResourcesModel.getStock() <= 0 && currentJob == Jobs.Repair)
             {
                 return;
             }
-            Collider2D myBoxCollider = GetComponent<Collider2D>();
-
-            // liste des colliders sur lesquels je suis
-            List<Collider2D> hitColliders = new List<Collider2D>();
-            myBoxCollider.OverlapCollider(actionContactFilter, hitColliders);
-
-            int i = 0;
-            while (i < hitColliders.Count)
-            {
-                Tile hitTile = hitColliders[i].transform.gameObject.GetComponent<Tile>();
-                if (!!hitTile) 
+                if (!!_hitTile) 
                 {
-                    hitTile.SetUnderRepair(true);
+                    _hitTile.SetUnderRepair(true);
                 }
-                i++;
-            }
         }
 
         if (currentJob != Jobs.None)
@@ -157,24 +151,13 @@ public class PlayerModel : MonoBehaviour
             transform.parent.GetComponent<BoatController>().setCaptain(null);
             audioController.StopSFX();
         }
-        if (currentJob == Jobs.Repair)
+        if (currentJob == Jobs.Repair || currentJob == Jobs.BailOut)
         {
-            Collider2D myBoxCollider = GetComponent<Collider2D>();
-
-            // liste des colliders sur lesquels je suis
-            List<Collider2D> hitColliders = new List<Collider2D>();
-            myBoxCollider.OverlapCollider(actionContactFilter, hitColliders);
-
-            int i = 0;
-            while (i < hitColliders.Count)
+            if(!!_hitTile)
             {
-                Tile hitTile = hitColliders[i].transform.gameObject.GetComponent<Tile>();
-                if (!!hitTile) 
-                {
-                  hitTile.SetUnderRepair(false);
-                }
-                i++;
+                _hitTile.SetUnderRepair(false);
             }
+
         }
 
         StopCurrentAnimation();
@@ -186,6 +169,7 @@ public class PlayerModel : MonoBehaviour
         {
             transform.Find("CurrentAction/Bubble").gameObject.SetActive(false);
             transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = null;
+            _hitTile = null;
         } else {
             transform.Find("CurrentAction/Bubble").gameObject.SetActive(true);
             transform.Find("CurrentAction/Bubble/Icon").GetComponent<SpriteRenderer>().sprite = icon;
@@ -240,32 +224,18 @@ public class PlayerModel : MonoBehaviour
 
         if (currentJob == Jobs.Repair || currentJob == Jobs.BailOut)
         {
-            Collider2D myBoxCollider = GetComponent<Collider2D>();
-
-            // liste des colliders sur lesquels je suis
-            List<Collider2D> hitColliders = new List<Collider2D>();
-            myBoxCollider.OverlapCollider(actionContactFilter, hitColliders);
-
-            // Pour chaque collider dans la fishing zone ...
-            int i = 0;
-            while (i < hitColliders.Count)
+            if(_hitTile != null && _hitTile.type != TileType.EMPTY)
             {
-                Tile hitTile = hitColliders[i].transform.gameObject.GetComponent<Tile>();
-                if (hitTile != null && hitTile.type != TileType.EMPTY)
+                int res = 0;
+                if(currentJob == Jobs.Repair)
                 {
-                    int res = 0;
-                    if (currentJob == Jobs.Repair) 
-                    {
-                        res = ResourcesModel.Use(1);
-                    }
-                    if(res != -1) 
-                    {
-                        // détruit la planche
-                        hitColliders[i].transform.gameObject.GetComponent<Tile>().doRepair();
-                        break;
-                    }
+                    res = ResourcesModel.Use(1);
                 }
-                i++;
+                if(res != -1)
+                {
+                    // détruit la planche
+                    _hitTile.doRepair();
+                }
             }
             isInAction = true;
         }
@@ -290,6 +260,10 @@ public class PlayerModel : MonoBehaviour
                 // on marche sur une position
                 setCurrentJob(colliderJob);
                 setBubbleIcon((Sprite)jobsImages[currentJob]);
+                if(currentJob == Jobs.Repair ||currentJob == Jobs.BailOut)
+                {
+                    _hitTile = hitColliders[i].gameObject.GetComponent<Tile>();
+                }
                 if (currentJob == Jobs.Repair && ResourcesModel.getStock() == 0)
                 {
                     setBubbleIcon(missingPlankImage);
