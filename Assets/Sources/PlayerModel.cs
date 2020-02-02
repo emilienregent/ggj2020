@@ -324,8 +324,13 @@ public class PlayerModel : MonoBehaviour
 
     private void PlayJobAnimation(bool enable)
     {
+        transform.Find("Sprite").GetComponent<SpriteRenderer>().flipY = false;
         if (currentJob == Jobs.Fish1 || currentJob == Jobs.Fish2)
         {
+            if (currentJob == Jobs.Fish2)
+            {
+                transform.Find("Sprite").GetComponent<SpriteRenderer>().flipY = true;
+            }
             PlayAnimation("Fishing", enable);
         }
         else if (currentJob == Jobs.Repair)
