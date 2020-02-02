@@ -120,6 +120,7 @@ public class TileGrid : MonoBehaviour
                         _countEmptyTiles--;
                         _countBrokenTiles++;
                         break;
+
                     case TileType.FLOODED:
                         _countBrokenTiles--;
                         _countFloodedTiles++;
