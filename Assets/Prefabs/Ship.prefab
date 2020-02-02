@@ -357,8 +357,8 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &2258306175318269899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -882,7 +882,7 @@ GameObject:
   - component: {fileID: 1175867327042708350}
   - component: {fileID: 8962583816175114229}
   - component: {fileID: 4440446872955209862}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WalkingZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -937,7 +937,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8396427930323399402}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
