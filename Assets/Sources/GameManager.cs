@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public StartMenuController startMenuController;
     public EndScreenController endScreenController;
 
+    public AudioManager audioManager;
+
     private PlayerInputManager _playerInputManager;
 
     // Game Elements
@@ -85,11 +87,13 @@ public class GameManager : MonoBehaviour
     {
         _timeSpentBeforeStart = Time.timeSinceLevelLoad;
         currentGameState = GameManager.enumGameState.Game;
+        ship.GetComponentInChildren<TileGrid>().StartDamageShip();
     }
 
     public void GameOver() {
         currentGameState = GameManager.enumGameState.GameOver;
         endScreenController.score.text = Mathf.RoundToInt(Time.timeSinceLevelLoad - _timeSpentBeforeStart).ToString();
+        ship.GetComponentInChildren<TileGrid>().StopDamageShip();
     }
 
     public void EndGame()

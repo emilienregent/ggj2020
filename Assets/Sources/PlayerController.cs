@@ -33,6 +33,17 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
+    private void Update()
+    {
+        if (GameManager.instance.currentGameState == GameManager.enumGameState.End)
+        {
+            if(Input.GetButtonDown("ResetGame") == true)
+            {
+                GameManager.instance.reloadGame();
+            }
+        }
+    }
+
     private void Move() {
 
         if (model.canMove() == false)

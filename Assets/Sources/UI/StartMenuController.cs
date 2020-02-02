@@ -25,6 +25,16 @@ public class StartMenuController : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        GameManager.instance.audioManager.PlayStartScreenMusic(1f);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.audioManager.Stop(2f);
+    }
+
     private void EnableInput()
     {
         GetComponent<Animator>().SetBool("Idle", true);
