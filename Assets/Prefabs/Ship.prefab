@@ -277,6 +277,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2702cd5be94c8e2439816065757d64c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 0
+  boatSprites:
+  - {fileID: 21300000, guid: 1f1bcace45ac4d24595648abfcd523e7, type: 3}
+  - {fileID: 21300000, guid: 5dea09ac5d114794287114fa769454ed, type: 3}
+  - {fileID: 21300000, guid: fa9cc97aef7c35e499737e0137130466, type: 3}
+  shipHealthDestructedLimit: 20
+  shipHealthOKLimit: 60
 --- !u!114 &1250206274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +301,7 @@ MonoBehaviour:
   _maxRotationAngle: 45
   _maxTop: 5
   _maxBottom: -5
-  captainPlayer: {fileID: 0}
+  _captainPlayer: {fileID: 0}
 --- !u!68 &-8087059909955017535
 EdgeCollider2D:
   m_ObjectHideFlags: 0

@@ -10,9 +10,20 @@ public class BoatModel : MonoBehaviour
     [SerializeField]
     private float _health;
 
+    [SerializeField]
+    Sprite[] boatSprites;
+
+    [SerializeField]
+    int shipHealthDestructedLimit;
+    [SerializeField]
+    int shipHealthOKLimit;
+
+    private SpriteRenderer _spriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _grid = GetComponentInChildren<TileGrid>();
         _health = 100f; // En %
     }
@@ -31,5 +42,15 @@ public class BoatModel : MonoBehaviour
 
     public void UpdateShipLife() {
         _health = Mathf.Round(_grid.countEmptyTiles / _grid.totalTiles * 100f);
+
+        
+        int spriteIndex = 0;
+        if (_health > shipHealthDestructedLimit && _health < shipHealthOKLimit) {
+           spriteIndex = 1;
+        }
+        if (_health <= shipHealthDestructedLimit ) {
+          spriteIndex = 2;
+        }
+        _spriteRenderer.sprite = boatSprites[spriteIndex];
     }
 }
