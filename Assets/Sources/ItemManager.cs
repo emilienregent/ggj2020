@@ -23,16 +23,25 @@ public class ItemManager : MonoBehaviour
     private List<ItemController> availableItems = new List<ItemController>();
     private Dictionary<int, ItemController> inGameItems = new Dictionary<int, ItemController>();
 
-    private void Start()
-    {
-        StartCoroutine("SpawnItems");
+    private bool _itemSpawnStarted = false;
+
+    private void Update() {
+        StartSpawnItems();
+    }
+
+    public virtual void StartSpawnItems() {
+        if(_itemSpawnStarted == false)
+        {
+            _itemSpawnStarted = true;
+            StartCoroutine("SpawnItems");
+        }
     }
 
     private IEnumerator SpawnItems()
     {
         while (true)
         {
-            float difficulty = _difficultyByTime.Evaluate(Time.timeSinceLevelLoad / _playtimeTreshold);
+            float difficulty = _difficultyByTime.Evaluate(GameManager.instance.playTime / _playtimeTreshold);
 
             // From maximum delay (no difficulty) to minimum delay
             float delay = Mathf.Clamp(_maximumDelay * _spawnDelayByDifficulty.Evaluate(difficulty),

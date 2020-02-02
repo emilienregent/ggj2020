@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public enumGameState currentGameState;
 
     private float _timeSpentBeforeStart = 0f;
-
+    public float playTime { get { return Time.timeSinceLevelLoad - _timeSpentBeforeStart; } }
     public static GameManager instance
     {
         get
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver() {
         currentGameState = GameManager.enumGameState.GameOver;
-        endScreenController.score.text = Mathf.RoundToInt(Time.timeSinceLevelLoad - _timeSpentBeforeStart).ToString();
+        endScreenController.score.text = Mathf.RoundToInt(GameManager.instance.playTime).ToString();
         ship.GetComponentInChildren<TileGrid>().StopDamageShip();
     }
 
@@ -106,6 +106,13 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
             reloadGame();
+    }
+
+    public void StopAudioManager() {
+        if(audioManager != null)
+        {
+            audioManager.Stop(2f);
+        }
     }
 
 }

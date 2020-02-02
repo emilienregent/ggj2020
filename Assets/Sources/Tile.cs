@@ -94,6 +94,7 @@ public class Tile : MonoBehaviour {
                 changeTileType(TileType.BROKEN);
                 break;
         }
+        SetUnderRepair(false);
         // Préviens la grille qu'il faut mettre à jour ses listes de Tiles
         _grid.updateList(this.gameObject);
     }
@@ -107,9 +108,29 @@ public class Tile : MonoBehaviour {
         _underRepair = underRepair;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    private void OnDrawGizmos() {
+        // Draw a yellow sphere at the transform's position
+        if(_underRepair == false)
+        {
+            switch(_type)
+            {
+                case TileType.EMPTY:
+                    Gizmos.color = Color.grey;
+                    break;
+                case TileType.BROKEN:
+                    Gizmos.color = Color.red;
+                    break;
+                case TileType.FLOODED:
+                    Gizmos.color = Color.cyan;
+                    break;
+            }
+        }
+        else
+        {
+            Gizmos.color = Color.magenta;
+        }
         
+        
+        Gizmos.DrawSphere(transform.position, 0.5f);
     }
 }
