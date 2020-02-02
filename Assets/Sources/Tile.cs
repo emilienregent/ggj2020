@@ -47,13 +47,19 @@ public class Tile : MonoBehaviour {
         switch (_type)
         {
             case TileType.BROKEN:
-                audioSource.clip = BrokenTileSFX[Random.Range(0, BrokenTileSFX.Count)];
-                audioSource.Play();
+                if(BrokenTileSFX.Count > 0)
+                {
+                    audioSource.clip = BrokenTileSFX[Random.Range(0, BrokenTileSFX.Count)];
+                    audioSource.Play();
+                }
                 GetComponent<PositionModel>().setJob(Jobs.Repair);
                 break;
             case TileType.FLOODED:
-                audioSource.clip = FloodedTileSFX[Random.Range(0, FloodedTileSFX.Count)];
-                audioSource.Play();
+                if (FloodedTileSFX.Count > 0)
+                {
+                    audioSource.clip = FloodedTileSFX[Random.Range(0, FloodedTileSFX.Count)];
+                    audioSource.Play();
+                }
                 GetComponent<PositionModel>().setJob(Jobs.BailOut);
                 break;
             case TileType.EMPTY:

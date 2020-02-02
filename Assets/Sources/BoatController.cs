@@ -23,6 +23,8 @@ public class BoatController : MonoBehaviour
     private GameObject _captainPlayer;
     public GameObject captainPlayer { get { return _captainPlayer; } }
 
+    public float Speed { get => _speed; set => _speed = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,7 @@ public class BoatController : MonoBehaviour
         Quaternion rotation = transform.rotation;
         float transformAngleZ = transform.rotation.eulerAngles.z - 180;
 
-        Vector3 newPosition = transform.position + (Vector3.down * Mathf.Sin(transformAngleZ * Mathf.Deg2Rad) * _speed * Time.deltaTime);
+        Vector3 newPosition = transform.position + (Vector3.down * Mathf.Sin(transformAngleZ * Mathf.Deg2Rad) * Speed * Time.deltaTime);
 
         // Cas particulier du end game
         if (
@@ -45,7 +47,7 @@ public class BoatController : MonoBehaviour
         )
         {
             Vector3 moveVectorBackward = new Vector3(-0.8f, 0, 0);
-            transform.position = transform.position + (moveVectorBackward * _speed * Time.deltaTime);
+            transform.position = transform.position + (moveVectorBackward * Speed * Time.deltaTime);
 
             rotation.z += Quaternion.Euler(new Vector3(0f, 0f, _rotationSpeed * Time.deltaTime)).z;
             transform.rotation = rotation;

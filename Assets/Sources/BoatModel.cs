@@ -36,6 +36,7 @@ public class BoatModel : MonoBehaviour
 
         if(_health <= 0f && GameManager.instance.currentGameState == GameManager.enumGameState.Game)
         {
+            GetComponent<BoatController>().Speed *= 1.5f;
             GameManager.instance.GameOver();
         }
     }
