@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
         _rightCorner = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 
         currentGameState = GameManager.enumGameState.Menu;
+        PlayerController.Index = 0;       
     }
 
     public void PlayerJoined(PlayerController player)
