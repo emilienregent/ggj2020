@@ -35,6 +35,8 @@ public class BoatController : MonoBehaviour
     void FixedUpdate()
     {
 
+        Quaternion rotationMin = Quaternion.Euler(new Vector3(0f, 0f, _maxRotationAngle * -1));
+        Quaternion rotationMax = Quaternion.Euler(new Vector3(0f, 0f, _maxRotationAngle));
         Quaternion rotation = transform.rotation;
         float transformAngleZ = transform.rotation.eulerAngles.z - 180;
 
@@ -67,12 +69,25 @@ public class BoatController : MonoBehaviour
         if(newPosition.y <= _maxBottom && rotation.z != 0)
         {
             rotation.z += Quaternion.Euler(new Vector3(0f, 0f, _rotationSpeed * Time.deltaTime)).z;
-            transform.rotation = rotation;
         }
 
         if(newPosition.y >= _maxTop && rotation.z != 0)
         {
             rotation.z -= Quaternion.Euler(new Vector3(0f, 0f, _rotationSpeed * Time.deltaTime)).z;
+        }
+
+        if(rotation.z > rotationMax.z)
+        {
+            rotation.z -= Quaternion.Euler(new Vector3(0f, 0f, _rotationSpeed * Time.deltaTime)).z;
+        }
+
+        if(rotation.z < rotationMin.z)
+        {
+            rotation.z += Quaternion.Euler(new Vector3(0f, 0f, _rotationSpeed * Time.deltaTime)).z;
+        }
+
+        if(transform.rotation != rotation)
+        {
             transform.rotation = rotation;
         }
 
@@ -85,10 +100,6 @@ public class BoatController : MonoBehaviour
         
         if(moveVector != Vector3.zero)
         {
-            Quaternion rotationMin = Quaternion.Euler(new Vector3(0f, 0f, _maxRotationAngle * -1));
-            Quaternion rotationMax = Quaternion.Euler(new Vector3(0f, 0f, _maxRotationAngle));
-           
-
             if(move.y > 0 && rotation.z < rotationMax.z)
             {
                 rotation.z += Quaternion.Euler(new Vector3(0f, 0f, _rotationSpeed * Time.deltaTime)).z;
