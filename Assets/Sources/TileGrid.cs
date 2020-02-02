@@ -44,6 +44,8 @@ public class TileGrid : MonoBehaviour
 
     private bool _damageShipStarted = false;
 
+    public float playerNumberImpact = 0.65f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,12 +101,18 @@ public class TileGrid : MonoBehaviour
     private IEnumerator DamageShip() {
         while(true)
         {
-
+            if (PlayerController.Index > 1)
+            {
+                _minimumDelay = _minimumDelay / (PlayerController.Index * playerNumberImpact);
+            }
             float difficulty = _difficultyByTime.Evaluate(Time.timeSinceLevelLoad / _playtimeTreshold);
 
             // From maximum delay (no difficulty) to minimum delay
-            float delay = Mathf.Clamp(_maximumDelay * _spawnDelayByDifficulty.Evaluate(difficulty),
-                _minimumDelay, _maximumDelay);
+            float delay = Mathf.Clamp(
+                _maximumDelay * _spawnDelayByDifficulty.Evaluate(difficulty),
+                _minimumDelay,
+                _maximumDelay
+            );
 
             yield return new WaitForSeconds(delay);
             doDamage();
