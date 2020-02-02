@@ -32,7 +32,13 @@ public class StartMenuController : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.instance.StopAudioManager();
+        try
+        {
+            GameManager.instance.audioManager.Stop(2f);
+        } catch(Exception e)
+        {
+            Debug.Log(e);
+        }
     }
 
     private void EnableInput()

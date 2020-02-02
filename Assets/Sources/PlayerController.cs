@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             if(Input.GetButtonDown("ResetGame") == true)
             {
+                model.audioController.PlayInputSFX();
                 GameManager.instance.reloadGame();
             }
         }

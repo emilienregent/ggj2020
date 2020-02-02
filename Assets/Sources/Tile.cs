@@ -23,14 +23,12 @@ public class Tile : MonoBehaviour {
 
     private bool _underRepair;
 
+    // SFX
     public List<AudioClip> BrokenTileSFX;
     public List<AudioClip> FloodedTileSFX;
-    public AudioSource audioSource;
 
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
+    // AudioSources
+    public AudioSource audioSourceSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -48,16 +46,16 @@ public class Tile : MonoBehaviour {
             case TileType.BROKEN:
                 if(BrokenTileSFX.Count > 0)
                 {
-                    audioSource.clip = BrokenTileSFX[Random.Range(0, BrokenTileSFX.Count)];
-                    audioSource.Play();
+                    audioSourceSFX.clip = BrokenTileSFX[Random.Range(0, BrokenTileSFX.Count)];
+                    audioSourceSFX.Play();
                 }
                 GetComponent<PositionModel>().setJob(Jobs.Repair);
                 break;
             case TileType.FLOODED:
                 if (FloodedTileSFX.Count > 0)
                 {
-                    audioSource.clip = FloodedTileSFX[Random.Range(0, FloodedTileSFX.Count)];
-                    audioSource.Play();
+                    audioSourceSFX.clip = FloodedTileSFX[Random.Range(0, FloodedTileSFX.Count)];
+                    audioSourceSFX.Play();
                 }
                 GetComponent<PositionModel>().setJob(Jobs.BailOut);
                 break;

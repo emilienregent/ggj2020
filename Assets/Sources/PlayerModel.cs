@@ -32,7 +32,7 @@ public class PlayerModel : MonoBehaviour
     public Animator animator { get { return _animator; } }
     public SpriteRenderer sprite { get { return _sprite; } }
 
-    private PlayerAudioController _audioController;
+    public PlayerAudioController audioController;
 
     Tile _hitTile;
 
@@ -40,7 +40,7 @@ public class PlayerModel : MonoBehaviour
     {
         _sprite = GetComponentInChildren<SpriteRenderer>();
         _animator = GetComponentInChildren<Animator>();
-        _audioController = GetComponentInChildren<PlayerAudioController>();
+        audioController = GetComponentInChildren<PlayerAudioController>();
     }
 
     // Start is called before the first frame update
@@ -60,6 +60,8 @@ public class PlayerModel : MonoBehaviour
         jobsImages.Add(Jobs.BailOut, bailOutSpriteImage);
 
         missingPlankImage = Resources.Load<Sprite>("missingPlankImage");
+
+        audioController.PlayInputSFX();
     }
 
     // Update is called once per frame
@@ -147,6 +149,7 @@ public class PlayerModel : MonoBehaviour
             setCurrentJob(Jobs.None);
             setBubbleIcon(null);
             transform.parent.GetComponent<BoatController>().setCaptain(null);
+            audioController.StopSFX();
         }
         if (currentJob == Jobs.Repair || currentJob == Jobs.BailOut)
         {
@@ -310,6 +313,7 @@ public class PlayerModel : MonoBehaviour
         else if (currentJob == Jobs.Repair)
         {
             PlayAnimation("Repairing", enable);
+            audioController.PlayJobSFX(currentJob);
         }
         else if (currentJob == Jobs.Direction)
         {
@@ -319,9 +323,8 @@ public class PlayerModel : MonoBehaviour
         else if (currentJob == Jobs.BailOut)
         {
             PlayAnimation("BailingOut", enable);
+            audioController.PlayJobSFX(currentJob);
         }
-
-        _audioController.Play(currentJob);
     }
 
     private void StopCurrentAnimation()
@@ -345,6 +348,10 @@ public class PlayerModel : MonoBehaviour
     public void SetAnimationValue(string parameter, float value)
     {
         _animator.SetFloat(parameter, value);
+        if(parameter == "Direction")
+        {
+            audioController.PlayTurnDirection(value);
+        }
     }
 
     public Jobs getCurrentJob()
