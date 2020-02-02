@@ -80,7 +80,7 @@ public class PlayerAudioController : MonoBehaviour
 
             if (clipToPlay == null && GameManager.instance.itemMalusManager.inGameItemsCount > 0)
             {
-                if (RockItemVoice.Count > 0 && Random.Range(1, 3) == 1) // 33% de chance d'avoir un voice fx
+                if (RockItemVoice.Count > 0 && Random.Range(1, 5) == 1) // 20% de chance d'avoir un voice fx
                 {
                     clipToPlay = availableRockItemVoice[Random.Range(0, availableRockItemVoice.Count)];
                     availableRockItemVoice.Remove(clipToPlay);
@@ -93,7 +93,7 @@ public class PlayerAudioController : MonoBehaviour
 
             if (clipToPlay == null && GameManager.instance.itemBonusManager.inGameItemsCount > 0)
             {
-                if (PlankItemVoice.Count > 0 && Random.Range(1, 3) == 1) // 33% de chance d'avoir un voice fx
+                if (PlankItemVoice.Count > 0 && Random.Range(1, 10) == 1) // 10% de chance d'avoir un voice fx
                 {
                     clipToPlay = availablePlankItemVoice[Random.Range(0, availablePlankItemVoice.Count)];
                     availablePlankItemVoice.Remove(clipToPlay);
