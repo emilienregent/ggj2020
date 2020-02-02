@@ -98,6 +98,15 @@ public class TileGrid : MonoBehaviour
         }
     }
 
+    public void StopDamageShip()
+    {
+        if (_damageShipStarted == true)
+        {
+            _damageShipStarted = false;
+            StopCoroutine("DamageShip");
+        }
+    }
+
     private IEnumerator DamageShip() {
         while(true)
         {
