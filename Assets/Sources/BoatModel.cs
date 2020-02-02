@@ -34,8 +34,9 @@ public class BoatModel : MonoBehaviour
 
         UpdateShipLife();
 
-        if(_health <= 0f && GameManager.instance.currentGameState == GameManager.enumGameState.Game)
+        if(_health <= 99f && GameManager.instance.currentGameState == GameManager.enumGameState.Game)
         {
+            GetComponent<BoatController>().Speed *= 1.5f;
             GameManager.instance.GameOver();
         }
     }
