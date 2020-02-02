@@ -58,7 +58,7 @@ public class StartMenuController : MonoBehaviour
                 // Hide title screen
                 ResetCountDown();
                 gameObject.SetActive(false);
-                GameManager.instance.currentGameState = GameManager.enumGameState.Game;
+                GameManager.instance.StartGame();
             }
         }
     }

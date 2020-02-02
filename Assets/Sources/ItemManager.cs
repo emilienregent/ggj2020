@@ -5,9 +5,7 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour
 {
     private static int inGameIndex = 0;
-
-
-
+    
     [SerializeField]
     private float _playtimeTreshold = 0f;
     [SerializeField]
@@ -18,7 +16,6 @@ public class ItemManager : MonoBehaviour
     private AnimationCurve _difficultyByTime = new AnimationCurve();
     [SerializeField]
     private AnimationCurve _spawnDelayByDifficulty = new AnimationCurve();
-
 
     [SerializeField]
     private List<ItemController> itemPrefabs = new List<ItemController>();

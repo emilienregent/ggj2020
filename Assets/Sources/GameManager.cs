@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public enum enumGameState { Menu, Game, GameOver, End };
     public enumGameState currentGameState;
 
+    private float _timeSpentBeforeStart = 0f;
+
     public static GameManager instance
     {
         get
@@ -78,8 +80,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void StartGame()
+    {
+        _timeSpentBeforeStart = Time.timeSinceLevelLoad;
+        currentGameState = GameManager.enumGameState.Game;
+    }
+
     public void GameOver() {
         currentGameState = GameManager.enumGameState.GameOver;
+        endScreenController.score.text = Mathf.RoundToInt(Time.timeSinceLevelLoad - _timeSpentBeforeStart).ToString();
     }
 
     public void EndGame()

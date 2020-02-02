@@ -51,5 +51,6 @@ MonoBehaviour:
   startMenuController: {fileID: 0}
   endScreenController: {fileID: 0}
   ship: {fileID: 0}
+  itemManager: {fileID: 0}
   currentGameState: 0
   _speed: 5
