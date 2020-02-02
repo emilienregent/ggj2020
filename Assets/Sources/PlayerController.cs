@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         model = GetComponent<PlayerModel>();
+        model.setColorFromIndex(currentPlayerIndex);
         gameObject.transform.position = new Vector2(-5f, 0f);
     }
     

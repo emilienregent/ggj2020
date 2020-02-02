@@ -372,4 +372,20 @@ public class PlayerModel : MonoBehaviour
         }
     }
 
+    public void setColorFromIndex(int index) {
+        switch (index) {
+            case 0:
+                 _sprite.color = new Color32(255, 223, 81, 255);
+              break;
+            case 1:
+                 _sprite.color = new Color32(248, 154, 183, 255);
+                break;
+            case 2:
+                _sprite.color = new Color32(0, 195, 14, 255);
+                break;
+            case 3:
+                _sprite.color = new Color32(248, 154, 183, 255);
+                break;
+        }
+    }
 }
