@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8581253813491223974}
-  - component: {fileID: 8581253813491223975}
+  - component: {fileID: 2044339554}
+  - component: {fileID: 2044339555}
   m_Layer: 0
   m_Name: ItemManager
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8581253813491223975
+--- !u!114 &2044339554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,10 +41,76 @@ MonoBehaviour:
   m_GameObject: {fileID: 8581253813491223969}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14eae468dbd8a483cbace8f9eeeb36b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 27b14312b9fe94886ad2dab7178af7ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playtimeTreshold: 20
+  _playtimeTreshold: 60
+  _minimumDelay: 4
+  _maximumDelay: 8
+  _difficultyByTime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _spawnDelayByDifficulty:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -3.2790651
+      outSlope: -3.2790651
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.07560669
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.004174215
+      outSlope: -0.004174215
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19999999
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  itemPrefabs:
+  - {fileID: 8213421318410477090, guid: edf50ac31e9504bafbb2c99e4392f721, type: 3}
+  - {fileID: 8213421318410477090, guid: edf50ac31e9504bafbb2c99e4392f721, type: 3}
+--- !u!114 &2044339555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8581253813491223969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a11eb75d4d845f6872bc931388e5e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playtimeTreshold: 60
   _minimumDelay: 3
   _maximumDelay: 5
   _difficultyByTime:
@@ -75,7 +142,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 2
       outSlope: 2
       tangentMode: 0
@@ -84,7 +151,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -95,5 +162,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   itemPrefabs:
-  - {fileID: 8213421318410477090, guid: edf50ac31e9504bafbb2c99e4392f721, type: 3}
   - {fileID: 4593944381216188472, guid: 6d76a6de8a35ac94ea1d3becdebc73b8, type: 3}
+  - {fileID: 4593944381216188472, guid: 9ddb296286612ad48b1af0e71744eaa9, type: 3}
+  - {fileID: 4593944381216188472, guid: c60b080a69fdf52478945bf0d91f8ea6, type: 3}

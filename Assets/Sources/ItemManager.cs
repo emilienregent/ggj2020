@@ -38,7 +38,7 @@ public class ItemManager : MonoBehaviour
             float delay = Mathf.Clamp(_maximumDelay * _spawnDelayByDifficulty.Evaluate(difficulty),
                 _minimumDelay, _maximumDelay);
 
-            Debug.Log("Start for " + Time.timeSinceLevelLoad + "s\nDifficulty of " + difficulty + " --> Delay of " + delay + "s");
+            //Debug.Log("Start for " + Time.timeSinceLevelLoad + "s\nDifficulty of " + difficulty + " --> Delay of " + delay + "s");
 
             yield return new WaitForSeconds(delay);
 
