@@ -29,6 +29,9 @@ public class TileGrid : MonoBehaviour
 
     public float totalTiles { get { return _width * _height; } }
 
+    public int CountFloodedTiles { get => _countFloodedTiles; set => _countFloodedTiles = value; }
+    public int CountBrokenTiles { get => _countBrokenTiles; set => _countBrokenTiles = value; }
+
     public GameObject tilePrefab;
 
     [SerializeField]
@@ -52,8 +55,8 @@ public class TileGrid : MonoBehaviour
         _availableTiles = new ArrayList();
         _unavailableTiles = new ArrayList();
 
-        _countBrokenTiles = 0;
-        _countFloodedTiles = 0;
+        CountBrokenTiles = 0;
+        CountFloodedTiles = 0;
 
         for(int i = 0; i < _width; i++)
         {
@@ -141,12 +144,12 @@ public class TileGrid : MonoBehaviour
             {
                 case TileType.BROKEN:
                     _countEmptyTiles--;
-                    _countBrokenTiles++;
+                    CountBrokenTiles++;
                     break;
 
                 case TileType.FLOODED:
-                    _countBrokenTiles--;
-                    _countFloodedTiles++;
+                    CountBrokenTiles--;
+                    CountFloodedTiles++;
                     _availableTiles.RemoveAt(random);
                     _unavailableTiles.Add(selectedTile);
                     break;
@@ -166,20 +169,20 @@ public class TileGrid : MonoBehaviour
         {
             _unavailableTiles.Remove(tile);
             _availableTiles.Add(tile);
-            _countFloodedTiles--;
+            CountFloodedTiles--;
             if(tile.GetComponent<Tile>().type == TileType.EMPTY)
             {
                 _countEmptyTiles++;
             } else
             {
-                _countBrokenTiles++;
+                CountBrokenTiles++;
             }
         } else if(_availableTiles.Contains(tile) == true)
         {
             if(tile.GetComponent<Tile>().type == TileType.EMPTY)
             {
                 _countEmptyTiles++;
-                _countBrokenTiles--;
+                CountBrokenTiles--;
             }
         }
     }

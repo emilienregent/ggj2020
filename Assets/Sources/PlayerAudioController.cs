@@ -5,18 +5,94 @@ using UnityEngine;
 public class PlayerAudioController : MonoBehaviour
 {
 
+    private TileGrid _grid;
+
+    // SFX
     public List<AudioClip> RepairSFX;
     public AudioClip TurnLeftSFX;
     public AudioClip TurnRightSFX;
     public AudioClip BailOutSFX;
-    public AudioSource audioSource;
+    public AudioClip PressButtonSFX;
+
+    // VOICES
+    // TILES
+    public List<AudioClip> BrokenTileVoice;
+    private List<AudioClip> availableBrokenTileVoice;
+    public List<AudioClip> FloodedTileVoice;
+    private List<AudioClip> availableFloodedTileVoice;
+    //ITEMS
+    public List<AudioClip> RockItemVoice;
+    private List<AudioClip> availableRockItemVoice;
+    public List<AudioClip> PlankItemVoice;
+    private List<AudioClip> availablePlankItemVoice;
+
+    // AudioSources
+    public AudioSource audioSourceSFX;
+    public AudioSource audioSourceVoice;
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        _grid = GameManager.instance.ship.GetComponentInChildren<TileGrid>();
     }
 
-    public void Play(Jobs currentJob)
+    private void Start()
+    {
+        availableBrokenTileVoice = BrokenTileVoice;
+        availableFloodedTileVoice = FloodedTileVoice;
+        availableRockItemVoice = RockItemVoice;
+        availablePlankItemVoice = PlankItemVoice;
+    }
+
+    private void Update()
+    {
+        if(audioSourceVoice.isPlaying == false)
+        {
+
+            AudioClip clipToPlay = null;
+
+            // On a de la dispo pour parler, voyons ce qu'on peut dire
+            if(_grid.CountFloodedTiles > 0)
+            {
+                if (FloodedTileVoice.Count > 0 && Random.Range(1, 3) == 1) // 33% de chance d'avoir un voice fx
+                {
+                    clipToPlay = availableFloodedTileVoice[Random.Range(0, availableFloodedTileVoice.Count)];
+                    availableFloodedTileVoice.Remove(clipToPlay);
+                    if (availableFloodedTileVoice.Count == 0)
+                    {
+                        availableFloodedTileVoice = FloodedTileVoice;
+                    }
+                }
+            }
+
+            // Toujours rien à dire ?
+            if(clipToPlay == null && _grid.CountBrokenTiles > 0)
+            {
+                if (BrokenTileVoice.Count > 0 && Random.Range(1, 3) == 1) // 33% de chance d'avoir un voice fx
+                {
+                    clipToPlay = availableBrokenTileVoice[Random.Range(0, availableBrokenTileVoice.Count)];
+                    availableBrokenTileVoice.Remove(clipToPlay);
+                    if (availableBrokenTileVoice.Count == 0)
+                    {
+                        availableBrokenTileVoice = BrokenTileVoice;
+                    }
+                }
+            }
+
+            if(clipToPlay != null)
+            {
+                audioSourceVoice.clip = clipToPlay;
+                audioSourceVoice.Play();
+            }
+        }
+    }
+
+    public void PlayInputSFX()
+    {
+        audioSourceSFX.clip = PressButtonSFX;
+        audioSourceSFX.Play();
+    }
+
+    public void PlayJobSFX(Jobs currentJob)
     {
         switch(currentJob)
         {
@@ -29,14 +105,14 @@ public class PlayerAudioController : MonoBehaviour
             case Jobs.Repair:
                 if (RepairSFX.Count > 0)
                 {
-                    audioSource.clip = RepairSFX[Random.Range(0, RepairSFX.Count)];
-                    audioSource.Play();
+                    audioSourceSFX.clip = RepairSFX[Random.Range(0, RepairSFX.Count)];
+                    audioSourceSFX.Play();
                 }
                 break;
 
             case Jobs.BailOut:
-                audioSource.clip = BailOutSFX;
-                audioSource.Play();
+                audioSourceSFX.clip = BailOutSFX;
+                audioSourceSFX.Play();
                 break;
 
             default:
@@ -44,9 +120,14 @@ public class PlayerAudioController : MonoBehaviour
         }
     }
 
-    public void Stop()
+    public void StopSFX()
     {
-        audioSource.Stop();
+        audioSourceSFX.Stop();
+    }
+
+    public void StopVoice()
+    {
+        audioSourceVoice.Stop();
     }
 
     public void PlayTurnDirection(float value)
@@ -66,11 +147,11 @@ public class PlayerAudioController : MonoBehaviour
             newClip = TurnRightSFX;
         }
 
-        if(newClip != audioSource.clip)
+        if(newClip != audioSourceSFX.clip)
         {
-            audioSource.Stop();
-            audioSource.clip = newClip;
-            audioSource.Play();
+            audioSourceSFX.Stop();
+            audioSourceSFX.clip = newClip;
+            audioSourceSFX.Play();
         }
 
     }
