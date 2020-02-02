@@ -45,7 +45,7 @@ public class PlayerAudioController : MonoBehaviour
 
     private void Update()
     {
-        if(audioSourceVoice.isPlaying == false)
+        if(audioSourceVoice.isPlaying == false && GameManager.instance.currentGameState == GameManager.enumGameState.Game)
         {
 
             AudioClip clipToPlay = null;
