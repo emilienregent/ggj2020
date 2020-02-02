@@ -257,19 +257,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1e876b039febb584a921141b1dd1453c, type: 3}
   - {fileID: 8300000, guid: a3839857fd53170418e573e6a527175a, type: 3}
   - {fileID: 8300000, guid: 9872ba6182b04d441940a3d0c54a38bb, type: 3}
-  BrokenTileVoice:
-  - {fileID: 8300000, guid: 414b008e67125bc439c9d0bf288964d3, type: 3}
-  - {fileID: 8300000, guid: 587340b14f4b90d4e94deea935e5e724, type: 3}
-  - {fileID: 8300000, guid: 0e21d6b969ab6284495a1397ad75e0bd, type: 3}
-  FloodedTileVoice:
-  - {fileID: 8300000, guid: 653f47b4ea455874880f31752fe115e4, type: 3}
-  - {fileID: 8300000, guid: 2be7f7b9064320f43b82e0354eae1fc0, type: 3}
-  - {fileID: 8300000, guid: 9e1ec0d9fa494134fa02444b06c1eaa9, type: 3}
-  - {fileID: 8300000, guid: 5867307c514b1ed4aa4c127278a54df6, type: 3}
-  - {fileID: 8300000, guid: 887a44ee6a91b754da80094539f3d543, type: 3}
-  - {fileID: 8300000, guid: 29845376be0c31f45a929634ba811f79, type: 3}
+  - {fileID: 8300000, guid: fac8abf632359b742839bb54439ccf72, type: 3}
   audioSourceSFX: {fileID: -2991518994298780710}
-  audioSourceVoice: {fileID: 5256691450938852623}
 --- !u!212 &7542943705390231345
 SpriteRenderer:
   m_ObjectHideFlags: 0

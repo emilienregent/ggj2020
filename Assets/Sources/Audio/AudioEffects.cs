@@ -36,4 +36,17 @@ public static class AudioEffects
         audioSource.volume = startVolume;
     }
 
+    public static IEnumerator FadeOutToVolume(AudioSource audioSource, float fadeTime, float targetVolume)
+    {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > targetVolume)
+        {
+            audioSource.volume -= 0.1f * Time.deltaTime / fadeTime;
+
+            yield return null;
+        }
+
+    }
+
 }

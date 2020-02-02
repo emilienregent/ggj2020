@@ -10,11 +10,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip startScreenMusic;
     public AudioClip endScreenMusic;
 
-    //private void Start()
-    //{
-    //    _audioSource = GetComponent<AudioSource>();
-    //}
-
     public void PlayStartScreenMusic(float delay = 0f)
     {
         audioSource.Stop();
@@ -26,6 +21,7 @@ public class AudioManager : MonoBehaviour
     {
         audioSource.Stop();
         audioSource.clip = endScreenMusic;
+        audioSource.volume = 1f;
         Play(delay);
     }
 
@@ -50,6 +46,11 @@ public class AudioManager : MonoBehaviour
         {
             audioSource.Stop();
         }
+    }
+
+    public void FadeOutStartScreenMusic()
+    {
+        StartCoroutine(AudioEffects.FadeOutToVolume(audioSource, 0.60f, 0.15f));
     }
 
 }

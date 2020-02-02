@@ -27,14 +27,14 @@ public class StartMenuController : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.audioManager.PlayStartScreenMusic(1f);
+        GameManager.instance.audioManager.PlayStartScreenMusic(0.1f);
     }
 
     private void OnDisable()
     {
         try
         {
-            GameManager.instance.audioManager.Stop(2f);
+            GameManager.instance.audioManager.FadeOutStartScreenMusic();
         } catch(Exception e)
         {
             Debug.Log(e);
