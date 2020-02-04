@@ -25,10 +25,12 @@ public class BoatController : MonoBehaviour
 
     public float Speed { get => _speed; set => _speed = value; }
 
+    private Vector3 _startPosition;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -41,7 +43,11 @@ public class BoatController : MonoBehaviour
         float transformAngleZ = transform.rotation.eulerAngles.z - 180;
 
         Vector3 newPosition = transform.position + (Vector3.down * Mathf.Sin(transformAngleZ * Mathf.Deg2Rad) * Speed * Time.deltaTime);
-
+        if(transform.position.x < _startPosition.x && GameManager.instance.currentGameState == GameManager.enumGameState.Game)
+        {
+            newPosition = newPosition + (Vector3.right * Speed * 0.5f * Time.deltaTime);
+        }
+      
         // Cas particulier du end game
         if (
             GameManager.instance.currentGameState == GameManager.enumGameState.GameOver ||
@@ -121,6 +127,13 @@ public class BoatController : MonoBehaviour
         if(captainToSet == null || _captainPlayer == null)
         {
             _captainPlayer = captainToSet;
+        }
+    }
+
+    public void OnBecameInvisible() {
+        if(GameManager.instance.currentGameState == GameManager.enumGameState.Game)
+        {
+            GameManager.instance.EndGame();
         }
     }
 }
