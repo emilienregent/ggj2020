@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: event:/Music/Musique_Menu
   guid: 31f23f6390701d4db72be838ced4a77e
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -38,7 +38,7 @@ MonoBehaviour:
   Path: event:/Music/Jingle_Loose
   guid: f54671106843e043b1530b25719b0342
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -61,7 +61,7 @@ MonoBehaviour:
   Path: "event:/Dialogue/2D/Phrase_r\xE9paration_planch\xE9"
   guid: 8ac7d004f688294ba94f3fc7093785a7
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -164,7 +164,7 @@ MonoBehaviour:
   Path: event:/Dialogue/2D/Phrase_peche_gauche
   guid: 3f3c21d9ac0d14498527b2994860e1f3
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -221,12 +221,12 @@ MonoBehaviour:
   Path: "event:/SD/d\xE9placement_bateau"
   guid: efe959930fefa74b95b8a4a90c2f5dbf
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: -5533192034987201276}
+  - {fileID: -3319343783388660561}
   MinDistance: 1
   MaxDistance: 20
   Length: 55000
@@ -264,7 +264,7 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-5477094882960754343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +280,7 @@ MonoBehaviour:
   Path: event:/Dialogue/2D/Phrase_De_Bienvenue
   guid: 25330442ef8bf64f94bd78f94257561f
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -338,7 +338,7 @@ MonoBehaviour:
   Path: event:/Dialogue/2D/Phrase_peche_droite
   guid: 6e1eb244dc959a47a95c93755e221a1e
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -361,7 +361,7 @@ MonoBehaviour:
   Path: "event:/SD/Lanc\xE9 canne \xE0 peche"
   guid: 98027d24c9f4f84282047e5062c403a3
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -369,6 +369,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3510
+--- !u!114 &-3319343783388660561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: "parameter:/d\xE9placement_bateau/vitesse"
+  m_EditorClassIdentifier: 
+  Name: vitesse
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-3099612768162657810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,7 +401,7 @@ MonoBehaviour:
   Path: event:/SD/Flood
   guid: eacd6d187847ee44a9e436452676001a
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -407,7 +424,7 @@ MonoBehaviour:
   Path: event:/SD/gouvernail
   guid: 34ccf360a89a3e4aa6b0426e73abc1cf
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -449,6 +466,24 @@ MonoBehaviour:
   Max: 1
   Default: 0
   Exists: 0
+--- !u!114 &-1939668354258147404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Global Game Jam 2020 Session Fmod/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637164195028372361
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-1871197260912719203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +499,7 @@ MonoBehaviour:
   Path: event:/Dialogue/2D/Phrase_selection_personnage
   guid: 7f7e12100e84f1499432aee2013501e5
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -487,7 +522,7 @@ MonoBehaviour:
   Path: event:/SD/Bateau_qui_Coule
   guid: 8e65d6a83736bb40ba16ce617a968139
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -512,7 +547,7 @@ MonoBehaviour:
   lastModified: 637162459196874637
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-1122201458645938122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,7 +631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Global Game Jam 2020 Session Fmod/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637162459199636141
+  lastModified: 637164195028382117
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -634,7 +669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -416869189467598344}
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   EditorEvents:
   - {fileID: 7767519868259579578}
   - {fileID: 1789129287062974699}
@@ -664,10 +699,10 @@ MonoBehaviour:
   - {fileID: 3009169008154213194}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   StringsBanks:
   - {fileID: -416869189467598344}
-  stringsBankWriteTime: 637162459199636141
+  stringsBankWriteTime: 637164195028382117
   cacheVersion: 3
 --- !u!114 &180132564915900327
 MonoBehaviour:
@@ -779,7 +814,7 @@ MonoBehaviour:
   Path: "event:/SD/r\xE9parations"
   guid: 297cf8f22ab5a64a92b75a9f6d8ffb55
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -802,7 +837,7 @@ MonoBehaviour:
   Path: event:/Dialogue/2D/Phrase_flood
   guid: 39b7f0ca52bd434f9f3f1743d05bd9c6
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -825,7 +860,7 @@ MonoBehaviour:
   Path: "event:/SD/Impact_Roch\xE9"
   guid: c79eb4ebdd1c8045984c94991a22b1db
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -848,7 +883,7 @@ MonoBehaviour:
   Path: event:/Dialogue/2D/Phrase_peche
   guid: d056538701d48f49bbc2f6a479d33b47
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -954,7 +989,7 @@ MonoBehaviour:
   Path: event:/Dialogue/2D/Phrase_Degat_navire
   guid: 5ae24e1fd0733646b7d0bd8ebf80c9b9
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -977,7 +1012,7 @@ MonoBehaviour:
   Path: event:/SD/Ambiance
   guid: 6d486fd5acdf5e438db534056360fd68
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1000,7 +1035,7 @@ MonoBehaviour:
   Path: event:/Music/Musique_Jeu
   guid: 7d1cbb7121a152419a627ba85e8ae784
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1059,7 +1094,7 @@ MonoBehaviour:
   Path: "event:/Dialogue/2D/Phrase_troue_planch\xE9"
   guid: 5f9c5f83a151d54191441788eafc65c2
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1099,7 +1134,7 @@ MonoBehaviour:
   Path: "event:/Dialogue/2D/Phrase_roch\xE9_droite"
   guid: c439385f761ef046b096cd5b5eef2af9
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1144,7 +1179,7 @@ MonoBehaviour:
   Path: "event:/SD/cr\xE9ation_trou"
   guid: 6817d7867881684eab144f04cc3461aa
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1189,7 +1224,7 @@ MonoBehaviour:
   Path: "event:/Dialogue/2D/Phrase_roch\xE9_gauche"
   guid: 8c4d0ab1bdf6a94d985edba6b84825b9
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1212,7 +1247,7 @@ MonoBehaviour:
   Path: "event:/SD/r\xE9cup\xE9ration_ressource"
   guid: 02cd713882a7fc40baa708f57f8d64bc
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1235,7 +1270,7 @@ MonoBehaviour:
   Path: "event:/Dialogue/2D/Phrase_roch\xE9"
   guid: 3f8c290caf801e4ab8e0d355a59563c9
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1302,7 +1337,7 @@ MonoBehaviour:
   Path: event:/SD/UI_Button_Press_Start
   guid: b8b1f36ebcb3024ea8bfa72a29a7afef
   Banks:
-  - {fileID: -1169578643375355576}
+  - {fileID: -1939668354258147404}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1

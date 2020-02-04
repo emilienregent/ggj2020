@@ -42,8 +42,7 @@ public class BoatModel : MonoBehaviour
     }
 
     public void UpdateShipLife() {
-        _health = Mathf.Round(_grid.countEmptyTiles / _grid.totalTiles * 100f);
-
+        _health = Mathf.Floor(_grid.countEmptyTiles / _grid.totalTiles * 100f);
         
         int spriteIndex = 0;
         if (_health > shipHealthDestructedLimit && _health < shipHealthOKLimit) {

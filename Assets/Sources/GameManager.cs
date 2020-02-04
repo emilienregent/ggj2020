@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void reloadGame()
     {
+        ResourcesModel.Stock = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -106,8 +107,10 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if(Input.GetKeyDown(KeyCode.K) == true)
+        {
             reloadGame();
+        }
     }
 
     public void StopAudioManager() {
