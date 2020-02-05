@@ -386,4 +386,9 @@ public class PlayerModel : MonoBehaviour
                 break;
         }
     }
+
+    public void OnPlayerJoined()
+    {
+        Debug.Log("player joined");
+    }
 }

@@ -52,7 +52,7 @@ MonoBehaviour:
   _countFloodedTiles: 0
   tilePrefab: {fileID: 5873487977653062813, guid: 232cc10859d3b4c4cbc547896643781d,
     type: 3}
-  _playtimeTreshold: 60
+  _playtimeTreshold: 90
   _minimumDelay: 1
   _maximumDelay: 5
   _difficultyByTime:
@@ -529,6 +529,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4039697465620537289}
   - component: {fileID: 3673873803942801809}
+  - component: {fileID: 7953606294455698781}
   m_Layer: 0
   m_Name: FishZone2
   m_TagString: Untagged
@@ -576,6 +577,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.623086, y: 25.061108}
   m_EdgeRadius: 0
+--- !u!114 &7953606294455698781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2355547971100208955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f66445a398544249b28c452dd9c5ece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2421218877913713183
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8153267881730432415}
   - component: {fileID: 2881878298848989017}
+  - component: {fileID: 1845490227107847638}
   m_Layer: 0
   m_Name: FishZone1
   m_TagString: Untagged
@@ -633,6 +647,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.748802, y: 26.485165}
   m_EdgeRadius: 0
+--- !u!114 &1845490227107847638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421218877913713183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f66445a398544249b28c452dd9c5ece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2651774993130787969
 GameObject:
   m_ObjectHideFlags: 0
