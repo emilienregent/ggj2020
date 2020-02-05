@@ -26,6 +26,11 @@ public class PlayerController : MonoBehaviour
     {
         model = GetComponent<PlayerModel>();
         model.setColorFromIndex(currentPlayerIndex);
+        Debug.Log(currentPlayerIndex);
+        if (currentPlayerIndex > 0)
+        {
+            GetComponent<PlayerInput>().SwitchCurrentActionMap("Player2");
+        }
         gameObject.transform.position = new Vector2(-5f, 0f);
     }
     
