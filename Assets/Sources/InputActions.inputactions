@@ -233,12 +233,45 @@
                 },
                 {
                     "name": "",
+                    "id": "ac1c3413-a030-4dcf-928b-809633f5e5d9",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ActionPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c3da37bb-5708-49d2-a932-d5960ea4e280",
                     "path": "<Keyboard>/e",
                     "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "ActionReleased",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7619b1e1-67e1-4252-8a67-2b1c5fb83ce6",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ActionReleased",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c1bc533c-3991-4bef-a265-6b14888367b6",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DoAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

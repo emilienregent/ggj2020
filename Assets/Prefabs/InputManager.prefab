@@ -83,14 +83,6 @@ MonoBehaviour:
         m_Groups: 
         m_Action: Action
         m_Flags: 0
-      - m_Name: 
-        m_Id: c7596b36-b87c-44cd-ba7a-a41d2e3c49d8
-        m_Path: <Keyboard>/q
-        m_Interactions: Press
-        m_Processors: 
-        m_Groups: 
-        m_Action: Action
-        m_Flags: 0
     m_Reference: {fileID: 1510378863732630272, guid: 25abd34293300914f91c3aafddf7053c,
       type: 3}
   m_PlayerPrefab: {fileID: 1195057916998816545, guid: 73f230339b4e1794da1fa8542ac7236a,
